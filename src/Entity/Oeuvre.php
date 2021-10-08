@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OeuvreRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,6 +49,16 @@ class Oeuvre
      * @ORM\JoinColumn(nullable=false)
      */
     private $idType;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=tag::class, inversedBy="listeOeuvres")
+     */
+    private $listeTags;
+
+    public function __construct()
+    {
+        $this->listeTags = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -121,6 +133,30 @@ class Oeuvre
     public function setIdType(?type $idType): self
     {
         $this->idType = $idType;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|tag[]
+     */
+    public function getListeTags(): Collection
+    {
+        return $this->listeTags;
+    }
+
+    public function addListeTag(tag $listeTag): self
+    {
+        if (!$this->listeTags->contains($listeTag)) {
+            $this->listeTags[] = $listeTag;
+        }
+
+        return $this;
+    }
+
+    public function removeListeTag(tag $listeTag): self
+    {
+        $this->listeTags->removeElement($listeTag);
 
         return $this;
     }
