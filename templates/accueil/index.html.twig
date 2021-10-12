@@ -10,15 +10,11 @@
 
     <div class="example-wrapper">
         <header class="page-header">
-            <h1><a href="{{ path('accueil') }}">Accueil</a> News Œuvres Ateliers Contact</h1>
+            <a><a href="{{ path('accueil') }}">Accueil</a> <a href="{{ path('news') }}">News</a>
+                <a href="{{ path('oeuvres') }}">Œuvres</a> <a href="{{ path('ateliers') }}">Ateliers</a>
+                <a href="{{ path('contact') }}">Contact</a>
         </header>
 
-        <!--<h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Xampp/htdocs/Picassouille/Picassouille/src/Controller/AccueilController.php'|file_link(0) }}">src/Controller/AccueilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Xampp/htdocs/Picassouille/Picassouille/templates/accueil/index.html.twig'|file_link(0) }}">templates/accueil/index.html.twig</a></code></li>
-    </ul>-->
+        <h2>Page d'ACCUEIL</h2>
 </div>
 {% endblock %}
