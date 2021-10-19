@@ -157,4 +157,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    
+    public function setUtilisateur(string $login, string $password, string $nom, string $prenom){
+        $this->login = $login;
+        $this->password = $password;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        
+    }
 }

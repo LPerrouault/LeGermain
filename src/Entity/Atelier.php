@@ -45,7 +45,7 @@ class Atelier
     private $nbPlace;
 
     /**
-     * @ORM\OneToMany(targetEntity=Inscription::class, mappedBy="idAtelier", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Inscription::class, mappedBy="idAtelier", orphanRemoval=true, cascade={"persist"})
      */
     private $listeInscriptions;
 
@@ -147,5 +147,13 @@ class Atelier
         }
 
         return $this;
+    }
+    
+    public function setAtelier(string $titre, string $description, \DateTimeInterface $dateDebut, int $duree, int $nbPlace){
+        $this->titre = $titre;
+        $this->description = $description;
+        $this->dateDebut = $dateDebut;
+        $this->duree = $duree;
+        $this->nbPlace = $nbPlace;
     }
 }

@@ -45,13 +45,13 @@ class Oeuvre
     private $nomFichierImage;
 
     /**
-     * @ORM\ManyToOne(targetEntity=type::class)
+     * @ORM\ManyToOne(targetEntity=type::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $idType;
 
     /**
-     * @ORM\ManyToMany(targetEntity=tag::class, inversedBy="listeOeuvres")
+     * @ORM\ManyToMany(targetEntity=tag::class, inversedBy="listeOeuvres", cascade={"persist"})
      */
     private $listeTags;
 
@@ -159,5 +159,14 @@ class Oeuvre
         $this->listeTags->removeElement($listeTag);
 
         return $this;
+    }
+    
+    public function setOeuvre(string $titre, int $largeur, int $hauteur, string $nomFichierImage, string $description, ?type $idType){
+        $this->titre = $titre;
+        $this->largeur = $largeur;
+        $this->hauteur = $hauteur;
+        $this->nomFichierImage = $nomFichierImage;
+        $this->description = $description;
+        $this->idType = $idType;
     }
 }

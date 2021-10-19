@@ -40,7 +40,7 @@ class Article
     private $corpsArticle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=tag::class, inversedBy="listeArticles")
+     * @ORM\ManyToMany(targetEntity=tag::class, inversedBy="listeArticles", cascade={"persist"})
      */
     private $listeTags;
 
@@ -124,5 +124,12 @@ class Article
         $this->listeTags->removeElement($listeTag);
 
         return $this;
+    }
+    
+    public function setArticle(string $titre, \DateTimeInterface $dateHeureEnregistrement, string $nomFichierImage, string $corpsArticle){
+        $this->titre = $titre;
+        $this->dateHeureEnregistrement = $dateHeureEnregistrement;
+        $this->nomFichierImage = $nomFichierImage;
+        $this->corpsArticle = $corpsArticle;
     }
 }
