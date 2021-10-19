@@ -43,7 +43,7 @@ class Inscription
     private $message;
 
     /**
-     * @ORM\ManyToOne(targetEntity=atelier::class, inversedBy="listeInscriptions")
+     * @ORM\ManyToOne(targetEntity=atelier::class, inversedBy="listeInscriptions", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $idAtelier;
@@ -123,5 +123,14 @@ class Inscription
         $this->idAtelier = $idAtelier;
 
         return $this;
+    }
+    
+    public function setInscription(string $nom, string $prenom, string $email, ?string $telephone, ?string $message, Atelier $idAtelier){
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->email = $email;
+        $this->telephone = $telephone;
+        $this->message = $message;
+        $this->idAtelier = $idAtelier;
     }
 }

@@ -25,12 +25,12 @@ class Tag
     private $libelle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Oeuvre::class, mappedBy="listeTags")
+     * @ORM\ManyToMany(targetEntity=Oeuvre::class, mappedBy="listeTags", cascade={"persist"})
      */
     private $listeOeuvres;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="listeTags")
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="listeTags", cascade={"persist"})
      */
     private $listeArticles;
 
