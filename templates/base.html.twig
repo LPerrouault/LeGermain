@@ -14,6 +14,35 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+    <header id="header">
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ path('accueil') }}"> PICASSOUILLE </a>
+                    <a href="{{ path('accueil') }}">Accueil</a>
+                    <a href="{{ path('oeuvres') }}">Œuvres</a>
+                    <a href="{{ path('ateliers') }}">Ateliers</a>
+                    <a href="{{ path('news') }}">News</a>
+                    <a href="{{ path('contact') }}">Contact</a>
+                </div>
+
+            <!--    <div class="collapse navbar-collapse navbar-right"> -->
+
+
+
+           <!--     </div> -->
+
+            </div>
+            <!--/.container-->
+        </nav>
+        <!--/nav-->
+
+    </header>
+    <!--/header-->
+
+    {% block body %}{% endblock %}
     </body>
 </html>
