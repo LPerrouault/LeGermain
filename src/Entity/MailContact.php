@@ -206,4 +206,13 @@ class MailContact
     public function setRepondu(){
         $this->setReponse(1);
     }
+    
+    public function setMailContact($nom, $prenom, $email, $sujet, $contenu){
+       $this->nom = $nom;
+       $this->prenom = $prenom;
+       $this->email = $email;
+       $this->sujet = $sujet;
+       $this->contenu = $contenu;
+       $this->setARepondre();
+    }
 }
