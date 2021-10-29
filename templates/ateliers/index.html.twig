@@ -10,7 +10,18 @@
 
 <div class="example-wrapper">
 
-    <h2>Page des ATELIERS</h2>
+<section class="Ateliers">
+    {% for atelier in ateliers %}
+        <atelier>
+            <h2> {{ atelier.titre }} </h2>
+                <div class="content">
+                    <p> {{ atelier.description }} </p>
+                    <a href="{{ path('news') }}"> essai </a>
+                </div>
+        </atelier>
+    {% endfor %}
+
+</section>
 
 </div>
 {% endblock %}
