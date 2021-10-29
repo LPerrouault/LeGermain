@@ -3,6 +3,7 @@
 {% block title %}Hello NewsController!{% endblock %}
 
 {% block body %}
+
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
@@ -10,13 +11,22 @@
 
 <div class="example-wrapper">
     <header class="page-header">
-        <a href="{{ path('accueil') }}">Accueil</a> <a href="{{ path('news') }}">News</a>
+        <a><a href="{{ path('accueil') }}">Accueil</a> <a href="{{ path('news') }}">News</a>
             <a href="{{ path('oeuvres') }}">Œuvres</a> <a href="{{ path('ateliers') }}">Ateliers</a>
             <a href="{{ path('contact') }}">Contact</a>
     </header>
 
-    <h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2>    <h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2>
-    <h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2><h2>Page des NEWS</h2>
+    <h2>Page des NEWS</h2>
+
+    <ul>
+        {% for article in articles %}
+            <li>
+                <h2>{{ article.titre }}</h2>
+                <div>{{ article.corpsArticle }}</div>
+                <div>{{ article.dateHeureEnregistrement|date('h/m/s') }}</div>
+            </li>
+        {% endfor %}
+    </ul>
 
 </div>
 {% endblock %}
