@@ -26,8 +26,10 @@
         {{ form_row(form.sujet) }}
         {{ form_row(form.contenu) }}
 
-        {{ form_row(form.save, { 'label': 'Envoyer' }) }}
+        {{ form_row(form.save, {'label': 'Envoyer' }) }}
         {{ form_row(form.reset, {'label' : "Effacer"}) }}
         {{ form_end(form) }}
+        
+        {{ include('client/contact/erreur.html.twig') }}
     </div>
 {% endblock %}
