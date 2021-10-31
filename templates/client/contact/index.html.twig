@@ -29,7 +29,9 @@
         {{ form_row(form.save, {'label': 'Envoyer' }) }}
         {{ form_row(form.reset, {'label' : "Effacer"}) }}
         {{ form_end(form) }}
-        
-        {{ include('client/contact/erreur.html.twig') }}
+
+        {% if error is defined %}
+            {{ include('client/contact/erreur.html.twig') }}
+        {% endif %}
     </div>
 {% endblock %}
