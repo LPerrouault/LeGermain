@@ -45,13 +45,13 @@ class Oeuvre
     private $nomFichierImage;
 
     /**
-     * @ORM\ManyToOne(targetEntity=type::class, cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Type::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $idType;
 
     /**
-     * @ORM\ManyToMany(targetEntity=tag::class, inversedBy="listeOeuvres", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="listeOeuvres", cascade={"persist"})
      */
     private $listeTags;
 
@@ -125,12 +125,12 @@ class Oeuvre
         return $this;
     }
 
-    public function getIdType(): ?type
+    public function getIdType(): ?Type
     {
         return $this->idType;
     }
 
-    public function setIdType(?type $idType): self
+    public function setIdType(?Type $idType): self
     {
         $this->idType = $idType;
 
@@ -138,14 +138,14 @@ class Oeuvre
     }
 
     /**
-     * @return Collection|tag[]
+     * @return Collection|Tag[]
      */
     public function getListeTags(): Collection
     {
         return $this->listeTags;
     }
 
-    public function addListeTag(tag $listeTag): self
+    public function addListeTag(Tag $listeTag): self
     {
         if (!$this->listeTags->contains($listeTag)) {
             $this->listeTags[] = $listeTag;
@@ -154,14 +154,14 @@ class Oeuvre
         return $this;
     }
 
-    public function removeListeTag(tag $listeTag): self
+    public function removeListeTag(Tag $listeTag): self
     {
         $this->listeTags->removeElement($listeTag);
 
         return $this;
     }
     
-    public function setOeuvre(string $titre, int $largeur, int $hauteur, string $nomFichierImage, string $description, ?type $idType){
+    public function setOeuvre(string $titre, int $largeur, int $hauteur, string $nomFichierImage, string $description, ?Type $idType){
         $this->titre = $titre;
         $this->largeur = $largeur;
         $this->hauteur = $hauteur;
