@@ -13,6 +13,7 @@ class NewsController extends AbstractController
     #[Route('/news', name: 'news')]
     public function index(DataBaseFunction $baseFunction): Response{
         $articles = $baseFunction->fetchingObjectAll(Article::class);
-        return $this->render('news/index.html.twig', ['articles' => $articles,]);
+
+        return $this->render('news/index.html.twig', ['articles' => $articles]);
     }
 }
