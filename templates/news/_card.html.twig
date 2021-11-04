@@ -1,0 +1,13 @@
+<div class="card">
+    <img class="card-img-top" src="{{ asset('build/image/'~article.nomFichierImage) | trans}}" alt="{{ article.titre }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ article.titre }}</h5>
+        <div class="card-text">{{ article.corpsArticle }}</div>
+        <div class="card-time">{{ article.dateHeureEnregistrement|date('d/m/Y') }}</div>
+    </div>
+    <div>
+        {% for t in article.listeTags %}
+             <em class="text-muted text-primary text-italic">#{{ t.libelle}}</em>
+        {% endfor %}
+    </div>
+</div>

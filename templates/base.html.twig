@@ -9,18 +9,40 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
+        <style>
+            .grid{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 20px;
+            }
+            .filter{
+                display: block;
+                position: sticky;
+                top: 20px;
+            }
+        </style>
 
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <nav class="navbar navbar-dark bg-primary">
+        <a href="/" class="navbar-brand mb-0 h1">Test navbar</a>
+    </nav>
+    <div style="margin-top: 3rem;">
 
+        {% block body %}{% endblock %}
+    </div>
         <!--bouton top page-->
         <button onclick="function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
         }
-        topFunction()" id="myBtn" title="Go to top">Top</button>
+        topFunction()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+            </svg></button>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

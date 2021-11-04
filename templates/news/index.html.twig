@@ -4,41 +4,24 @@
 
 {% block body %}
 
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <header class="page-header">
-        <a><a href="{{ path('accueil') }}">Accueil</a> <a href="{{ path('news') }}">News</a>
-            <a href="{{ path('oeuvres') }}">Œuvres</a> <a href="{{ path('ateliers') }}">Ateliers</a>
-            <a href="{{ path('contact') }}">Contact</a>
-    </header>
 
     <h2>Page des NEWS</h2>
 
-    <div class="filte">
-        <div class="btn" id="btnAtelier"> Atelier</div>
-        <div class="btn" id="btnOeuvres"> Ouvres</div>
-        <div class="btn" id="btnExposition"> Exposition</div>
-        <div class="btn" id="btnEvenement"> Evénement</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">{% include 'news/_filter.html.twig'  with {form: form} only %}</div>
+            <div class="col-md-9">
+                <div class="grid">
+                    {% for article in articles %}
+                        {% include 'news/_card.html.twig' %}
+                    {% endfor %}
+                </div>
+
+                <div class="mt-4">
+                    {{ knp_pagination_render(articles) }}
+                </div>
+            </div>
+        </div>
     </div>
 
-    <ul class="newsViews">
-
-        {% for article in articles %}
-            <li class="news btn" >
-                <img src="{{ asset('build/image/'~article.nomFichierImage) | trans}}" alt="{{ article.titre }}">
-                <h2>{{ article.titre }}</h2>
-                <div>{{ article.corpsArticle }}</div>
-                <div>{{ article.dateHeureEnregistrement|date('h/m/s') }}</div>
-            </li>
-        {% endfor %}
-    </ul>
-
-
-
-
-</div>
 {% endblock %}

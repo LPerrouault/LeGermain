@@ -110,4 +110,9 @@ class tag
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->libelle;
+    }
 }

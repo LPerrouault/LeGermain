@@ -4,7 +4,7 @@ namespace App\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-class DataBaseFunction {
+class DataBaseFunction{
 
     private $em;
 
@@ -16,7 +16,7 @@ class DataBaseFunction {
     public function fetchingObject($repository, $data){
         $product = $this->em
             ->getRepository($repository)
-            ->findAll($data);
+            ->find($data);
 
         if (!$product) {
             throw $this->createNotFoundException(
@@ -89,5 +89,6 @@ class DataBaseFunction {
             ->createQuery($resqSQL)
             ->getResult();
     }
+
 
 }
