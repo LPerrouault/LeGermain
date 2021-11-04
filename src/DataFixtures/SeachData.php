@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Service;
-use App\Entity\tag;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormTypeInterface;
+namespace App\DataFixtures;
 
-class SearchData
+use App\Entity\tag;
+
+class SeachData
 {
     /**
      * @var int
@@ -21,6 +20,5 @@ class SearchData
      * @var tag[]
      */
     public $tags = [];
-
 
 }

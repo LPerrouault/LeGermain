@@ -1,15 +1,24 @@
 <?php
 
-namespace App\Service;
+namespace App\Repository;
 
+use App\DataFixtures\SeachData;
 use App\Entity\Article;
-use App\Entity\tag;
+use App\Entity\Inscription;
+use App\Service\TestData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
-class NewsDatabaseQuery extends ServiceEntityRepository
+/**
+ * @method Article|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Article|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Article[]    findAll()
+ * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+
+class ArticlesRepository extends ServiceEntityRepository
 {
     private $paginator;
 
@@ -19,10 +28,10 @@ class NewsDatabaseQuery extends ServiceEntityRepository
         $this->paginator = $paginator;
     }
 
-/**
- * @return PaginationInterface
- */
-    public function findSearch(SearchData $searchData) : PaginationInterface
+    /**
+     * @return PaginationInterface
+     */
+    public function findSearch(SeachData $searchData) : PaginationInterface
     {
         $query = $this
             ->createQueryBuilder('n')
@@ -43,5 +52,4 @@ class NewsDatabaseQuery extends ServiceEntityRepository
             10
         );
     }
-
 }

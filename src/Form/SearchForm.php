@@ -2,8 +2,9 @@
 
 namespace App\Form;
 
+use App\DataFixtures\SeachData;
 use App\Entity\tag;
-use App\Service\SearchData;
+use App\Service\TestData;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -27,7 +28,7 @@ class SearchForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => SearchData::class,
+            'data_class' => SeachData::class,
             'method' => 'GET',
             'csrf_protection' => false
         ]);
