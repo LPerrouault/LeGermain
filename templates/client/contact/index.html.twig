@@ -17,21 +17,26 @@
         </header>
 
         <h2>Page de CONTACT</h2>
-        {{ form_start(form, {'method' : 'POST'}) }}
-        {{ form_errors(form) }}
+        <div>
+            {{ form_start(form, {'method' : 'POST'}) }}
+            {{ form_errors(form) }}
 
-        {{ form_row(form.nom) }}
-        {{ form_row(form.prenom) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.sujet) }}
-        {{ form_row(form.contenu) }}
+            <div>
+                {{ form_row(form.nom) }}
+                {{ form_row(form.prenom) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.sujet) }}
+                {{ form_row(form.contenu) }}
 
-        {{ form_row(form.save, {'label': 'Envoyer' }) }}
-        {{ form_row(form.reset, {'label' : "Effacer"}) }}
-        {{ form_end(form) }}
-
-        {% if error is defined %}
-            {{ include('client/contact/erreur.html.twig') }}
-        {% endif %}
+                {{ form_row(form.save, {'label': 'Envoyer' }) }}
+                {{ form_row(form.reset, {'label' : "Effacer"}) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div>
+            {% if error is defined %}
+                {{ include('client/contact/erreur.html.twig') }}
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
