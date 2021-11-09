@@ -28,4 +28,14 @@ class NewsController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/news/{id}', name: 'news_views')]
+    public function affichageNews(int $id, ArticlesRepository $repository): Response{
+        $article = $repository->find($id);
+
+        return $this->render('news/view.html.twig', [
+            'article' => $article
+        ]);
+    }
+
 }
