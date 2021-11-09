@@ -16,10 +16,9 @@
             <h2> {{ atelier.titre }} </h2>
                 <div class="content">
                     <p> {{ atelier.description }} </p>
-                    <form action="{{ path('news') }}">
-                            <button type="submit">Voir l'atelier</button>
-                        </form>
-                    <!--   <a href="{{ path('news') }}"> Voir l'atelier </a> -->
+                    <button id="btn_ateliers">
+                        <a href="{{ path('ateliers_details',{id: atelier.id}) }}">Voir l'atelier</a>
+                    </button>
                 </div>
         </atelier>
     {% endfor %}
