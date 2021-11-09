@@ -16,10 +16,10 @@
             <h2> {{ atelier.titre }} </h2>
                 <div class="content">
                     <p> {{ atelier.description }} </p>
-                    <!--  <form action=>
+                    <form action="{{ path('news') }}">
                             <button type="submit">Voir l'atelier</button>
                         </form>
-                     <a href="{{ path('news') }}"> Voir l'atelier </a> -->
+                    <!--   <a href="{{ path('news') }}"> Voir l'atelier </a> -->
                 </div>
         </atelier>
     {% endfor %}
