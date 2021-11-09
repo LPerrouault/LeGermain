@@ -16,6 +16,37 @@
               crossorigin="anonymous">
     </head>
     <body>
+        <!--Header navbar-->
+        {% block header %}
+          <header id="header">
+            <nav class="navbar navbar-expand-lg"> <!--/navbar-dark bg-primary"-->
+                <div class="container">
+                    <a class="navbar-brand" href="{{ path('accueil') }}"> PICASSOUILLE </a>
+
+                    <div class="navbar-header">
+                        <ul class="nav nav-fill nav-justified">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('accueil') }}"> Accueil </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('oeuvres') }}">Œuvres</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('ateliers') }}">Ateliers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('news') }}">News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+          </header>
+        {% endblock %}
+
         {% block body %}{% endblock %}
 
         <!--bouton top page-->
@@ -28,7 +59,26 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
-        
+
+        <!--Footer-->
+        {% block footer %}
+            <footer id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="pull-right">
+                                <ul class="contact_footer">Contact</ul>
+                                <li>Nom Prénom </li>
+                                <li>Mail </li>
+                                <li>Téléphone </li>
+                                <li>Adresse </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+
         <!-- Accès à JQuery, Popper.js et JS de Bootstrap pour le bon fonctionnement de Bootstrap-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
