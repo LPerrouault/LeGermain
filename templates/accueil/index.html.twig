@@ -6,7 +6,7 @@
     <style>
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-        .accueil_bg{
+        .pi_accueil_bg{
             background-image: url('{{asset("images_l3/maple.jpg")}}');
             background-repeat: no-repeat;
             background-size: contain;
@@ -15,13 +15,13 @@
 
     <!--<div class="example-wrapper">
         Le header avant la nav-->
-        <header class="page-header">
+        <header class="pi_page-header">
             <a href="{{ path('accueil') }}">Accueil</a> <a href="{{ path('news') }}">News</a>
                 <a href="{{ path('oeuvres') }}">Œuvres</a> <a href="{{ path('ateliers') }}">Ateliers</a>
                 <a href="{{ path('contact') }}">Contact</a>
         </header>
 
-        <div class= "accueil_bg">
+        <div class="pi_accueil_bg">
             <h1>Picassouille</h1>
             <p>Illustrations, logos, affiches</p>
         <div/>
@@ -38,12 +38,13 @@
                 <p>Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
                     j’exerce en tant qu’illustratrice graphiste et ai réalisé
                     de nombreux projets professionnels depuis.<br>
-                    Vous pouvez décider de <a href="{{ path('contact') }}">me contacter</a>
+                    Vous pouvez décider de me contacter
                     dès maintenant pour commander la concrétisation de l'œuvre qui vous hante,
                     ou bien vous baladez un peu sur mon site avant — on se retrouve dans
-                    <a href="{{ path('contact') }}">Contact</a> dans ce cas !<br>
+                    Contact dans ce cas !<br>
                     À très vite ;)
                 </p>
+                <button id="contacter Eugénie"><a href="{{ path('contact') }}">Me contacter</a></button>
             </td>
         </table>
         <br><br><br><br><br>
@@ -70,9 +71,9 @@
                 </td>
             </tr>
             <tr>
-                <td><a href="{{ path('oeuvres') }}">voir plus</a></td>
-                <td><a href="{{ path('oeuvres') }}">voir plus</a></td>
-                <td><a href="{{ path('oeuvres') }}">voir plus</a></td>
+                <td><button id="plus_logos"><a href="{{ path('oeuvres') }}">voir plus</a></button></td>
+                <td><button id="plus_illustrations"><a href="{{ path('oeuvres') }}">voir plus</a></button></td>
+                <td><button id="plus_affiches"><a href="{{ path('oeuvres') }}">voir plus</a></button></td>
             </tr>
         </table>
         <br><br><br><br>
@@ -81,14 +82,12 @@
         <table>
             <td><img src="{{ asset('images_l3/ampoule.jpg') }}"
                      alt="ampoule sur fond noir avec un cœur jaune à l'intérieur"
-                     width="250" height="250"/><p>Eurêka amoureux</p></td>
+                     width="250" height="250"/><p>23/10/2021 : Eurêka amoureux</p></td>
             <td><img src="{{ asset('images_l3/ciel_sol.jpg') }}"
                      alt="homme regardant le ciel à travers un trou dans le sol"
-                     width="250" height="250"/><p>La lune dans le sol</p></td>
+                     width="250" height="250"/><p>9/11/2021 : La lune dans le sol</p></td>
         </table>
-        <a href="{{ path('news') }}">voir plus</a>
+        <button id="plus_news"><a href="{{ path('news') }}">voir plus</a></button>
         <br><br><br><br><br>
-
-    <!--</div>-->
 
 {% endblock %}
