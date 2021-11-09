@@ -21,6 +21,17 @@ class AteliersController extends AbstractController
         ]);
     }
 
+    #[Route('/ateliers/{id}', name: 'ateliers_details')]
+    public function ateliersDetails($id){
+
+        $repo = $this->getDoctrine()->getRepository(Atelier::class);
+        $atelier = $repo->find($id);
+
+        return $this->render('ateliers/details.html.twig', [
+            'atelier' => $atelier
+        ]);
+    }
+
     /**
     public function index(): Response
     {

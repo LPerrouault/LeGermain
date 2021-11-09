@@ -2,6 +2,36 @@
 <html>
     <head>
         <meta charset="UTF-8">
+{%  block header %}
+        <header id="header">
+            <nav class="navbar navbar-expand-lg"> <!--/navbar-dark bg-primary"-->
+                <div class="container">
+                    <a class="navbar-brand" href="{{ path('accueil') }}"> PICASSOUILLE </a>
+
+                       <div class="navbar-header">
+                           <ul class="nav nav-fill nav-justified">
+                               <li class="nav-item">
+                                   <a class="nav-link active" href="{{ path('accueil') }}"> Accueil </a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="nav-link" href="{{ path('oeuvres') }}">Œuvres</a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="nav-link" href="{{ path('ateliers') }}">Ateliers</a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="nav-link" href="{{ path('news') }}">News</a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                               </li>
+                           </ul>
+                       </div>
+                </div>
+            </nav>
+        </header>
+{% endblock %}
+
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
@@ -14,39 +44,8 @@
         {% endblock %}
     </head>
     <body>
-
-    <header id="header">
-
-        <nav class="navbar navbar-expand-lg"> <!--/navbar-dark bg-primary"-->
-            <div class="container">
-                <a class="navbar-brand" href="{{ path('accueil') }}"> PICASSOUILLE </a>
-
-                <div class="navbar-header">
-                    <ul class="nav nav-fill nav-justified">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ path('accueil') }}"> Accueil </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('oeuvres') }}">Œuvres</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('ateliers') }}">Ateliers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('news') }}">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-    </header>
-
-    {% block body %}{% endblock %}
-
+{% block body %}{% endblock %}
+{% block footer %}
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -63,6 +62,7 @@
             </div>
         </div>
     </footer>
+{% endblock %}
 
     </body>
 </html>
