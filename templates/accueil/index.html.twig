@@ -35,14 +35,14 @@
                      width="350" height="250"/>
             </td>
             <td><h2>Eugénie Picassouille</h2><br>
-                <a href="{{ path('contact') }}">Me contacter</a><br>
-                <p>
-
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p>Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
+                    j’exerce en tant qu’illustratrice graphiste et ai réalisé
+                    de nombreux projets professionnels depuis.<br>
+                    Vous pouvez décider de <a href="{{ path('contact') }}">me contacter</a>
+                    dès maintenant pour commander la concrétisation de l'œuvre qui vous hante,
+                    ou bien vous baladez un peu sur mon site avant — on se retrouve dans
+                    <a href="{{ path('contact') }}">Contact</a> dans ce cas !<br>
+                    À très vite ;)
                 </p>
             </td>
         </table>
@@ -50,13 +50,24 @@
 
         <h2>Œuvres</h2>
         <table>
+            <tr>Vous voulez un logo pour votre entreprise, une illustration pour votre décoration
+                 ou une affiche pour vos évènements ?<br>
+                Vous êtes au bon endroit !
+            </tr>
             <tr>
-                <td><p>Logos</p><img src="{{ asset('images_l3/flamme.png') }}" alt="flamme blanche"
-                         width="250" height="250"/></td>
-                <td><p>Illustrations</p><img src="{{ asset('images_l3/paysage.jpg') }}" alt="paysage ensoleillé"
-                         width="500" height="250"/></td>
-                <td><p>Affiches</p><img src="{{ asset('images_l3/pêcheur.png') }}" alt="pêcheur pêchant un sous-marin"
-                         width="250" height="475"/></td>
+                <td><p><a href="{{ path('oeuvres') }}">Logos</a></p>
+                    <img src="{{ asset('images_l3/flamme.png') }}" alt="flamme blanche"
+                         width="250" height="250"/>
+                </td>
+                <td>
+                    <p><a href="{{ path('oeuvres') }}">Illustrations</a></p>
+                    <img src="{{ asset('images_l3/paysage.jpg') }}" alt="paysage ensoleillé"
+                         width="500" height="250"/>
+                </td>
+                <td><p><a href="{{ path('oeuvres') }}">Affiches</a></p>
+                    <img src="{{ asset('images_l3/pêcheur.png') }}" alt="pêcheur pêchant un sous-marin"
+                         width="250" height="475"/>
+                </td>
             </tr>
             <tr>
                 <td><a href="{{ path('oeuvres') }}">voir plus</a></td>
@@ -70,10 +81,10 @@
         <table>
             <td><img src="{{ asset('images_l3/ampoule.jpg') }}"
                      alt="ampoule sur fond noir avec un cœur jaune à l'intérieur"
-                     width="250" height="250"/><p>Titre de l'article</p></td>
+                     width="250" height="250"/><p>Eurêka amoureux</p></td>
             <td><img src="{{ asset('images_l3/ciel_sol.jpg') }}"
                      alt="homme regardant le ciel à travers un trou dans le sol"
-                     width="250" height="250"/><p>Titre de l'article</p></td>
+                     width="250" height="250"/><p>La lune dans le sol</p></td>
         </table>
         <a href="{{ path('news') }}">voir plus</a>
         <br><br><br><br><br>
