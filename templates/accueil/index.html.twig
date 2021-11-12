@@ -14,19 +14,19 @@
     </style>
 
         <div class="pi_accueil_bg">
-            <h1>Picassouille</h1>
-            <p>Illustrations, logos, affiches</p>
+            <h1 id="pi_titre_accueil">Picassouille</h1>
+            <h2 id="pi_accroche_accueil">Illustrations, logos, affiches</h2>
         <div/>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
 
-        <table>
-            <td><img src="{{ asset('images_l3/chat.png') }}" alt="chat roux faisant un clin d'œil"
-                     width="350" height="250"/>
+        <table id="bio_accueil">
+            <td id="img_bio_accueil">
+                <img src="{{ asset('images_l3/chat.png') }}" alt="chat roux faisant un clin d'œil"
+                     width="465" height="300"/>
             </td>
-            <td><h2>Eugénie Picassouille</h2><br>
+            <td id="txt_biographie_accueil"><h2 id="pi_bioEP">Eugénie Picassouille</h2>
+                <button id="contacter_Eugénie">
+                    <a id="text_button" href="{{ path('contact') }}">Me contacter</a>
+                </button>
                 <p>Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
                     j’exerce en tant qu’illustratrice graphiste et ai réalisé
                     de nombreux projets professionnels depuis.<br>
@@ -36,10 +36,10 @@
                     Contact dans ce cas !<br>
                     À très vite ;)
                 </p>
-                <button id="contacter Eugénie"><a href="{{ path('contact') }}">Me contacter</a></button>
             </td>
         </table>
-        <br><br><br><br><br>
+
+        <hr id="hr_acceuil">
 
         <h2>Œuvres</h2>
         <table>

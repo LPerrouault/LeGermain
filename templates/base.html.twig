@@ -9,6 +9,9 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+        <style>
+
+        </style>
         
         <!-- Lien vers Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
@@ -26,16 +29,16 @@
                     <div class="navbar-header">
                         <ul class="nav nav-fill nav-justified">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ path('accueil') }}"> Accueil </a>
+                                <a class="nav-link" href="{{ path('accueil') }}"> Accueil </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('oeuvres') }}">Œuvres</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('ateliers') }}">Ateliers</a>
+                                <a class="nav-link" href="{{ path('news') }}">News</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('news') }}">News</a>
+                                <a class="nav-link" href="{{ path('ateliers') }}">Ateliers</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('contact') }}">Contact</a>
