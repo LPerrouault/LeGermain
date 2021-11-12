@@ -3,19 +3,69 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Accueil{% endblock %}- Picassouille</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-        
+
         <!-- Lien vers Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
               crossorigin="anonymous">
     </head>
     <body>
+        <!-- Style CSS de la navigation ci-dessous -->
+        <style>
+            .body {
+                background-color: #F8F7F4;
+            }
+            .navbar {
+                background-color: #2B2118;
+            }
+            .nav-link { 
+                color: #DE955A;
+            }
+            .navbar-brand, .active, .nav-link:hover, .nav-link:active {
+                color: #F8F7F4;
+            }
+        </style>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-md">
+            <!-- Logo Picassouille -->
+            <span class="navbar-brand">Picassouille
+                <!--<img class="" src="" alt="Picassouille" />-->
+            </span>
+            <!-- Bouton de collapse du menu (sur petit écrans)-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Eléments de navigation de la navbar-->
+            <div class="collapse navbar-collapse" id="collapsible-navbar">
+                <ul class="navbar-nav">
+                    <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
+                    pour définir cette page comme la page active-->
+                    <li class="nav-item">
+                        <a class="nav-link {% block nav_accueil %}{% endblock %}" href="{{ path('accueil') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block nav_oeuvres %}{% endblock %}" href="{{ path('oeuvres') }}">Œuvres</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block nav_news %}{% endblock %}" href="{{ path('news') }}">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block nav_ateliers %}{% endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block nav_contact %}{% endblock %}" href="{{ path('contact') }}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Contenu de la page -->
         {% block body %}{% endblock %}
 
         <!--bouton top page-->
@@ -24,11 +74,11 @@
                     document.documentElement.scrollTop = 0;
                 }
                 topFunction()" id="myBtn" title="Go to top">Top</button>
-                
+
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
-        
+
         <!-- Accès à JQuery, Popper.js et JS de Bootstrap pour le bon fonctionnement de Bootstrap-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 

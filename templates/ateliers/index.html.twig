@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Ateliers{% endblock %}
+{% block nav_ateliers %}active{% endblock %}
 
 {% block body %}
 <style>
@@ -9,11 +10,7 @@
 </style>
 
 <div class="example-wrapper">
-    <header class="page-header">
-        <a><a href="{{ path('accueil') }}">Accueil</a> <a href="{{ path('news') }}">News</a>
-            <a href="{{ path('oeuvres') }}">Œuvres</a> <a href="{{ path('ateliers') }}">Ateliers</a>
-            <a href="{{ path('contact') }}">Contact</a>
-    </header>
+    <header></header>
 
     <h2>Page des ATELIERS</h2>
 
