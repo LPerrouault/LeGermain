@@ -15,20 +15,24 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
               crossorigin="anonymous">
     </head>
-    <body>
+    <body class="">
         <!-- Style CSS de la navigation ci-dessous -->
         <style>
-            .body {
+            body {
                 background-color: #F8F7F4;
+                color: #2B2118;
             }
-            .navbar {
+            .navbar, footer {
                 background-color: #2B2118;
             }
             .nav-link { 
                 color: #DE955A;
             }
-            .navbar-brand, .active, .nav-link:hover, .nav-link:active {
+            .navbar-brand, .active, .nav-link:hover, .nav-link:active, footer{
                 color: #F8F7F4;
+            }
+            hr {
+                color: #AD1815;
             }
         </style>
         <!-- Navigation -->
@@ -41,29 +45,32 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <!-- Eléments de navigation de la navbar-->
-            <div class="collapse navbar-collapse" id="collapsible-navbar">
-                <ul class="navbar-nav">
-                    <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
-                    pour définir cette page comme la page active-->
-                    <li class="nav-item">
-                        <a class="nav-link {% block nav_accueil %}{% endblock %}" href="{{ path('accueil') }}">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% block nav_oeuvres %}{% endblock %}" href="{{ path('oeuvres') }}">Œuvres</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% block nav_news %}{% endblock %}" href="{{ path('news') }}">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% block nav_ateliers %}{% endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% block nav_contact %}{% endblock %}" href="{{ path('contact') }}">Contact</a>
-                    </li>
-                </ul>
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <div class="collapse navbar-collapse" id="collapsible-navbar">
+                    <ul class="navbar-nav">
+                        <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
+                        pour définir cette page comme la page active-->
+                        <li class="nav-item">
+                            <a class="nav-link {% block nav_accueil %}{% endblock %}" href="{{ path('accueil') }}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% block nav_oeuvres %}{% endblock %}" href="{{ path('oeuvres') }}">Œuvres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% block nav_news %}{% endblock %}" href="{{ path('news') }}">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% block nav_ateliers %}{% endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% block nav_contact %}{% endblock %}" href="{{ path('contact') }}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <hr>
         </nav>
         <!-- Contenu de la page -->
         {% block body %}{% endblock %}
@@ -73,7 +80,14 @@
                     document.body.scrollTop = 0;
                     document.documentElement.scrollTop = 0;
                 }
-                topFunction()" id="myBtn" title="Go to top">Top</button>
+                topFunction()" id="myBtn" title="Go to top">Top
+        </button>
+
+        <footer>
+            <div class="navbar">
+                Footer
+            </div>
+        </footer>
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
