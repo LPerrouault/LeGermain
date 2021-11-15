@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Tag;
+use App\Entity\tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
- * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
- * @method Tag[]    findAll()
- * @method Tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method tag|null find($id, $lockMode = null, $lockVersion = null)
+ * @method tag|null findOneBy(array $criteria, array $orderBy = null)
+ * @method tag[]    findAll()
+ * @method tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class TagRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Tag::class);
+        parent::__construct($registry, tag::class);
     }
 
     // /**
-    //  * @return Tag[] Returns an array of Tag objects
+    //  * @return tag[] Returns an array of tag objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class TagRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Tag
+    public function findOneBySomeField($value): ?tag
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')
