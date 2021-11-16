@@ -4,32 +4,38 @@
 
 {% block body %}
     <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
         .pi_accueil_bg{
             background-image: url('{{asset("images_l3/maple.jpg")}}');
             background-repeat: no-repeat;
             background-size: contain;
         }
         #pi_case_logos {
-            background-image: url('{{ asset('images_l3/flamme.png') }}');
+            background-image: url('{{ asset('images_l3/licornes.jpg') }}');
             background-repeat: no-repeat;
-            background-size:contain;
+            background-size: contain;
             vertical-align: bottom;
+            width: 400px;
+            height: 400px;
+            padding-right: 100px;
         }
 
         #pi_case_illustrations {
-            background-image: url('{{ asset('images_l3/paysage.jpg') }}');
+            background-image: url('{{ asset('images_l3/licornes.jpg') }}');
             background-repeat: no-repeat;
-            background-size:contain;
+            background-size: contain;
             vertical-align: bottom;
+            width: 400px;
+            height: 400px;
+            padding-right: 100px;
         }
 
         #pi_case_affiches {
-            background-image: url('{{ asset('images_l3/pêcheur.png') }}');
+            background-image: url('{{ asset('images_l3/licornes.jpg') }}');
             background-repeat: no-repeat;
-            background-size:contain;
+            background-size: contain;
             vertical-align: bottom;
+            width: 400px;
+            height: 400px;
         }
     </style>
 
@@ -38,14 +44,14 @@
             <h2 id="pi_accroche_accueil">Illustrations, logos, affiches</h2>
         <div/>
 
-        <table id="bio_accueil">
-            <td id="img_bio_accueil">
+        <table>
+            <td id="pi_img_bio_accueil">
                 <img src="{{ asset('images_l3/chat.png') }}" alt="chat roux faisant un clin d'œil"
                      width="465" height="300"/>
             </td>
-            <td id="txt_biographie_accueil"><h2 id="pi_h2">Eugénie Picassouille</h2>
-                <button id="contacter_Eugénie">
-                    <a id="text_button" href="{{ path('contact') }}">Me contacter</a>
+            <td id="pi_txt_biographie_accueil"><h2 id="pi_h2">Eugénie Picassouille</h2>
+                <button id="pi_contacter_Eugénie_button">
+                    <a id="pi_txt_button" href="{{ path('contact') }}">Me contacter</a>
                 </button>
                 <p>Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
                     j’exerce en tant qu’illustratrice graphiste et ai réalisé
@@ -59,10 +65,10 @@
             </td>
         </table>
 
-        <hr id="hr_acceuil">
+        <hr id="pi_hr_acceuil">
 
         <h2 id="pi_h2">Œuvres</h2>
-        <p id="txt_accroche_oeuvres">
+        <p id="pi_txt_accroche_oeuvres">
             Vous voulez un logo pour votre entreprise, une illustration pour votre décoration
             ou une affiche pour vos évènements ?<br>
             Vous êtes au bon endroit !
@@ -72,17 +78,17 @@
             <tr>
                 <!--case des logos-->
                 <td id="pi_case_logos">
-                    <a id="pi_logo_accueil" href="{{ path('oeuvres') }}">Logos</a>
+                    <a id="pi_txt_logo_accueil" href="{{ path('oeuvres') }}">Logos</a>
                 </td>
 
                 <!--case des illustrations-->
                 <td id="pi_case_illustrations">
-                    <a id="pi_logo_accueil" href="{{ path('oeuvres') }}">Illustrations</a>
+                    <a id="pi_txt_illustrations_accueil" href="{{ path('oeuvres') }}">Illustrations</a>
                 </td>
 
                 <!--case des affiches-->
                 <td id="pi_case_affiches">
-                    <a id="pi_logo_accueil" href="{{ path('oeuvres') }}">Affiches</a>
+                    <a id="pi_txt_affiches_accueil" href="{{ path('oeuvres') }}">Affiches</a>
                 </td>
             </tr>
 
@@ -90,36 +96,43 @@
                 <!--id="plus_logos"id="plus_illustrations"id="plus_affiches"-->
                 <!--bouton voir plus de logos-->
                 <td>
-                    <button id="pi_logo_accueil_button">
-                        <a id="text_button" href="{{ path('oeuvres') }}">voir plus</a>
+                    <button id="pi_voir_plus_button">
+                        <a id="pi_txt_button" href="{{ path('oeuvres') }}">voir plus</a>
                     </button>
                 </td>
 
                 <!--bouton voir plus d'illustrations-->
                 <td>
-                    <button id="pi_logo_accueil_button">
-                        <a href="{{ path('oeuvres') }}">voir plus</a>
+                    <button id="pi_voir_plus_button">
+                        <a id="pi_txt_button" href="{{ path('oeuvres') }}">voir plus</a>
                     </button>
                 </td>
 
                 <!--bouton voir plus d'affiches-->
                 <td>
-                    <button id="pi_logo_accueil_button">
-                        <a href="{{ path('oeuvres') }}">voir plus</a>
+                    <button id="pi_voir_plus_button">
+                        <a id="pi_txt_button" href="{{ path('oeuvres') }}">voir plus</a>
                     </button>
                 </td>
             </tr>
         </table>
-        <br><br><br><br>
 
-        <h2>Dernières actualités</h2>
-        <table>
-            <td><img src="{{ asset('images_l3/ampoule.jpg') }}"
+        <hr id="pi_hr_acceuil">
+
+        <h2 id="pi_h2">Dernières actualités</h2>
+        <table id="pi_accueil_table_types_img">
+            <td>
+                <img src="{{ asset('images_l3/ampoule.jpg') }}"
                      alt="ampoule sur fond noir avec un cœur jaune à l'intérieur"
-                     width="250" height="250"/><p>23/10/2021 : Eurêka amoureux</p></td>
-            <td><img src="{{ asset('images_l3/ciel_sol.jpg') }}"
+                     width="250" height="250"/>
+                <p>23/10/2021 : Eurêka amoureux</p>
+            </td>
+            <td>
+                <img src="{{ asset('images_l3/ciel_sol.jpg') }}"
                      alt="homme regardant le ciel à travers un trou dans le sol"
-                     width="250" height="250"/><p>9/11/2021 : La lune dans le sol</p></td>
+                     width="250" height="250"/>
+                <p>9/11/2021 : La lune dans le sol</p>
+            </td>
         </table>
         <button id="plus_news"><a href="{{ path('news') }}">voir plus</a></button>
         <br><br><br><br><br>

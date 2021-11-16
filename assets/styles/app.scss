@@ -41,14 +41,7 @@ body {
     padding-bottom: 200px;
 }
 
-#img_bio_accueil {
-    padding-left: 50px;
-}
-
-#txt_biographie_accueil {
-    font-size: 25px;
-    text-align: justify;
-    padding-right: 50px;
+#pi_img_bio_accueil {
     padding-left: 50px;
 }
 
@@ -59,7 +52,7 @@ body {
     padding-bottom: 20px;
 }
 
-#contacter_Eugénie {
+#pi_contacter_Eugénie_button {
     text-align: center;
     background-color: #7A1D07;
     border-radius: 30px;
@@ -67,45 +60,65 @@ body {
     width: 100%;
 }
 
-#text_button {
+#pi_txt_button {
     font-size: 22px;
     color: #F8F7F4;
-    padding-right: 50px;
-}
-
-/*#hr_acceuil {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border: none;
-    height: 3px;
-    color: #7A1D07;
-}*/
-
-#txt_accroche_oeuvres {
-    font-size: 25px;
     text-align: center;
 }
 
-#pi_accueil_table_types_img {
-    margin-top: 20px;
-    margin-left: 50px;
+#pi_txt_biographie_accueil {
+    font-size: 25px;
+    text-align: justify;
+    padding: 5px 50px 0px 50px;
 }
 
-#pi_logo_accueil {
-    width:100%;
-    padding-right: 200px;
-    padding-left: 200px;
-    padding-bottom: 10px;
-    font-size: 50px;
+#pi_hr_acceuil {
+    margin: 50px 0px 30px 0px;
+    color: #7A1D07;
+    opacity: 1;
+}
+
+#pi_txt_accroche_oeuvres {
+    font-size: 25px;
+    text-align: center;
+    padding: 0px 0px 20px 0px;
+}
+
+#pi_accueil_table_types_img {
+    margin: auto;
+}
+
+#pi_txt_logo_accueil {
+    //padding: haut droite bas gauche
+    padding: 0px 0px 10px 0px;
+    font-size: 40px;
     color: #2B2118;
     background-color: #F8F7F4;
 }
 
-#pi_logo_accueil_button {
+#pi_txt_illustrations_accueil {
+    //padding: haut droite bas gauche
+    padding: 0px 0px 10px 0px;
+    font-size: 40px;
+    color: #2B2118;
+    background-color: #F8F7F4;
+}
+
+#pi_txt_affiches_accueil {
+    //padding: haut droite bas gauche
+    padding: 0px 0px 10px 0px;
+    font-size: 40px;
+    color: #2B2118;
+    background-color: #F8F7F4;
+}
+
+#pi_voir_plus_button {
     background-color: #7A1D07;
     border-radius: 30px;
     height: 50px;
-    width: 100%;
+    text-align: center;
+    padding-left: 185px;
+    padding-right: 180px;
 }
 
 #myBtn {
