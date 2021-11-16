@@ -1,23 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OeuvresController!{% endblock %}
+{% block title %}Oeuvres - Picassouille{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <header class="page-header">
-        <a href="{{ path('accueil') }}">Accueil</a> <a href="{{ path('news') }}">News</a>
-            <a href="{{ path('oeuvres') }}">Œuvres</a> <a href="{{ path('ateliers') }}">Ateliers</a>
-            <a href="{{ path('contact') }}">Contact</a>
-    </header>
 
-    <!--"Œ" fait avec alt 0140-->
-    <h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2>
-    <h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2>
-    <h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2><h2>Page des ŒUVRES</h2>
-</div>
+    <h2>Oeuvres</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">{% include 'oeuvres/_filter.html.twig'  %}</div>
+            <div class="col-md-9">
+                <div class="grid">
+                    {% for oeuvres in oeuvres %}
+                        {% include 'oeuvres/_card.html.twig' %}
+                    {% endfor %}
+                </div>
+
+                <div class="mt-4">
+                    {{ knp_pagination_render(oeuvres) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

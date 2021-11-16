@@ -1,0 +1,16 @@
+<div class="card">
+    <a href="{{ path('oeuvres_views', {id: oeuvres.id}) }}">
+        <img class="card-img-top" src="{{ asset('build/image/'~oeuvres.nomFichierImage) | trans}}" alt="{{ oeuvres.titre }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ oeuvres.titre }}</h5>
+            <div class="card-text">{{ oeuvres.largeur }}</div>
+            <div class="card-text">{{ oeuvres.hauteur }}</div>
+            <div class="card-time">{{ oeuvres.description}}</div>
+        </div>x
+    </a>
+    <div>
+        {% for t in oeuvres.listeTags %}
+             <em class="text-muted text-primary text-italic">#{{ t.libelle}}</em>
+        {% endfor %}
+    </div>
+</div>

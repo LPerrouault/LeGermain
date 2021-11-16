@@ -2,9 +2,15 @@
 
 namespace App\Repository;
 
+use App\DataFixtures\SeachData;
 use App\Entity\Oeuvre;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
+use App\Service\TestData;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Oeuvre|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,37 +20,58 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class OeuvreRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+
+    private $paginator;
+
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Oeuvre::class);
+        $this->paginator = $paginator;
     }
 
-    // /**
-    //  * @return Oeuvre[] Returns an array of Oeuvre objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return PaginationInterface
+     */
+    public function findSearchFilter(SeachData $searchData) : PaginationInterface
     {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $query = $this
+            ->createQueryBuilder('o')
+            ->select('t', 'o')
+            ->join('o.listeTags', 't');
 
-    /*
-    public function findOneBySomeField($value): ?Oeuvre
-    {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        if (!empty($searchData->tags)){
+            $query = $query
+                ->andWhere('t.id IN (:listeOeuvre)')
+                ->setParameter('listeOeuvre', $searchData->tags);
+        }
+
+        $query=$query->getQuery();
+       // dd($query);
+        return $this->paginator->paginate(
+            $query,
+            $searchData->page,
+            10
+        );
     }
-    */
+
+    public function findSearchAfterFilter(Request $request, SeachData $searchData): PaginationInterface
+    {
+        $articleTag = array_keys($request->query->get('searchTag'));
+        // dd($articleTag);
+
+        $query = $this
+            ->createQueryBuilder('o')
+            ->select('t', 'o')
+            ->join('o.listeTags', 't')
+            ->andWhere('t.libelle IN (:tagOeuvre)')
+            ->setParameter('tagOeuvre', $articleTag);
+
+        $query=$query->getQuery();
+
+        return $this->paginator->paginate(
+            $query,
+            $searchData->page,
+            10
+        );
+    }
 }
