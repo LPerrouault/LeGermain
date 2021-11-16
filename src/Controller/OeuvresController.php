@@ -21,7 +21,6 @@ class OeuvresController extends AbstractController
         $tag = $this->getDoctrine()->getRepository(Tag::class)->findAll();
         $type = $this->getDoctrine()->getRepository(Type::class)->findAll();
 
-
         $tagOeuvre = [];
 
         foreach ($tag as $tag){
@@ -31,14 +30,17 @@ class OeuvresController extends AbstractController
         }
 
 
-        $countTag = $request->query->get('searchTag');
-        //dd($countTag);
-
-        if ($countTag == null){
-            $oeuvres = $repository->findSearchFilter($data);
+        if (!empty($request->query->get('searchTag')) && !empty($request->query->get('searchType'))){
+            $oeuvres = $repository->findSearchTagAndType($request, $data);
+        }
+        elseif (!empty($request->query->get('searchTag')) && empty($request->query->get('searchType'))){
+            $oeuvres = $repository->findSearchTag($request, $data);
+        }
+        elseif (empty($request->query->get('searchTag')) && !empty($request->query->get('searchType'))){
+            $oeuvres = $repository->findSearchType($request, $data);
         }
         else{
-            $oeuvres = $repository->findSearchAfterFilter($request, $data);
+            $oeuvres = $repository->findSearchFilter($data);
         }
 
 

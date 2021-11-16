@@ -36,8 +36,7 @@ class OeuvreRepository extends ServiceEntityRepository
     {
         $query = $this
             ->createQueryBuilder('o')
-            ->select('t', 'o')
-            ->join('o.listeTags', 't');
+            ->select('o');
 
         if (!empty($searchData->tags)){
             $query = $query
@@ -54,17 +53,58 @@ class OeuvreRepository extends ServiceEntityRepository
         );
     }
 
-    public function findSearchAfterFilter(Request $request, SeachData $searchData): PaginationInterface
+    public function findSearchTag(Request $request, SeachData $searchData): PaginationInterface
     {
-        $articleTag = array_keys($request->query->get('searchTag'));
-        // dd($articleTag);
+        $oeuvreTag = array_keys($request->query->get('searchTag'));
+            $query = $this
+                ->createQueryBuilder('o')
+                ->select('t', 'o')
+                ->join('o.listeTags', 't')
+                ->andWhere('t.libelle IN (:tagOeuvre)')
+                ->setParameter('tagOeuvre', $oeuvreTag);
 
+        $query=$query->getQuery();
+
+        return $this->paginator->paginate(
+            $query,
+            $searchData->page,
+            10
+        );
+    }
+
+    public function findSearchType(Request $request, SeachData $searchData): PaginationInterface
+    {
+        $oeuvreType = array_keys($request->query->get('searchType'));
         $query = $this
             ->createQueryBuilder('o')
             ->select('t', 'o')
-            ->join('o.listeTags', 't')
-            ->andWhere('t.libelle IN (:tagOeuvre)')
-            ->setParameter('tagOeuvre', $articleTag);
+            ->join('o.idType', 't')
+            ->andWhere('t.libelle IN (:typeOeuvre)')
+            ->setParameter('typeOeuvre', $oeuvreType);
+
+        $query=$query->getQuery();
+
+        return $this->paginator->paginate(
+            $query,
+            $searchData->page,
+            10
+        );
+    }
+
+    public function findSearchTagAndType(Request $request, SeachData $searchData): PaginationInterface
+    {
+        $oeuvreTag = array_keys($request->query->get('searchTag'));
+        $oeuvreType = array_keys($request->query->get('searchType'));
+        $query = $this
+            ->createQueryBuilder('o')
+            ->select('tag','type', 'o')
+            ->join('o.listeTags', 'tag')
+            ->join('o.idType', 'type')
+            ->andWhere('tag.libelle IN (:tagOeuvre)')
+            ->andWhere('type.libelle IN (:typeOeuvre)')
+            ->setParameter('typeOeuvre', $oeuvreType)
+            ->setParameter('tagOeuvre', $oeuvreTag);
+
 
         $query=$query->getQuery();
 
