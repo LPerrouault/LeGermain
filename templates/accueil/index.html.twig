@@ -11,6 +11,26 @@
             background-repeat: no-repeat;
             background-size: contain;
         }
+        #pi_case_logos {
+            background-image: url('{{ asset('images_l3/flamme.png') }}');
+            background-repeat: no-repeat;
+            background-size:contain;
+            vertical-align: bottom;
+        }
+
+        #pi_case_illustrations {
+            background-image: url('{{ asset('images_l3/paysage.jpg') }}');
+            background-repeat: no-repeat;
+            background-size:contain;
+            vertical-align: bottom;
+        }
+
+        #pi_case_affiches {
+            background-image: url('{{ asset('images_l3/pêcheur.png') }}');
+            background-repeat: no-repeat;
+            background-size:contain;
+            vertical-align: bottom;
+        }
     </style>
 
         <div class="pi_accueil_bg">
@@ -23,7 +43,7 @@
                 <img src="{{ asset('images_l3/chat.png') }}" alt="chat roux faisant un clin d'œil"
                      width="465" height="300"/>
             </td>
-            <td id="txt_biographie_accueil"><h2 id="pi_bioEP">Eugénie Picassouille</h2>
+            <td id="txt_biographie_accueil"><h2 id="pi_h2">Eugénie Picassouille</h2>
                 <button id="contacter_Eugénie">
                     <a id="text_button" href="{{ path('contact') }}">Me contacter</a>
                 </button>
@@ -41,31 +61,53 @@
 
         <hr id="hr_acceuil">
 
-        <h2>Œuvres</h2>
-        <table>
-            <tr>Vous voulez un logo pour votre entreprise, une illustration pour votre décoration
-                 ou une affiche pour vos évènements ?<br>
-                Vous êtes au bon endroit !
-            </tr>
+        <h2 id="pi_h2">Œuvres</h2>
+        <p id="txt_accroche_oeuvres">
+            Vous voulez un logo pour votre entreprise, une illustration pour votre décoration
+            ou une affiche pour vos évènements ?<br>
+            Vous êtes au bon endroit !
+        </p>
+
+        <table id="pi_accueil_table_types_img">
             <tr>
-                <td><p><a href="{{ path('oeuvres') }}">Logos</a></p>
-                    <img src="{{ asset('images_l3/flamme.png') }}" alt="flamme blanche"
-                         width="250" height="250"/>
+                <!--case des logos-->
+                <td id="pi_case_logos">
+                    <a id="pi_logo_accueil" href="{{ path('oeuvres') }}">Logos</a>
                 </td>
+
+                <!--case des illustrations-->
+                <td id="pi_case_illustrations">
+                    <a id="pi_logo_accueil" href="{{ path('oeuvres') }}">Illustrations</a>
+                </td>
+
+                <!--case des affiches-->
+                <td id="pi_case_affiches">
+                    <a id="pi_logo_accueil" href="{{ path('oeuvres') }}">Affiches</a>
+                </td>
+            </tr>
+
+            <tr>
+                <!--id="plus_logos"id="plus_illustrations"id="plus_affiches"-->
+                <!--bouton voir plus de logos-->
                 <td>
-                    <p><a href="{{ path('oeuvres') }}">Illustrations</a></p>
-                    <img src="{{ asset('images_l3/paysage.jpg') }}" alt="paysage ensoleillé"
-                         width="500" height="250"/>
+                    <button id="pi_logo_accueil_button">
+                        <a id="text_button" href="{{ path('oeuvres') }}">voir plus</a>
+                    </button>
                 </td>
-                <td><p><a href="{{ path('oeuvres') }}">Affiches</a></p>
-                    <img src="{{ asset('images_l3/pêcheur.png') }}" alt="pêcheur pêchant un sous-marin"
-                         width="250" height="475"/>
+
+                <!--bouton voir plus d'illustrations-->
+                <td>
+                    <button id="pi_logo_accueil_button">
+                        <a href="{{ path('oeuvres') }}">voir plus</a>
+                    </button>
                 </td>
-            </tr>
-            <tr>
-                <td><button id="plus_logos"><a href="{{ path('oeuvres') }}">voir plus</a></button></td>
-                <td><button id="plus_illustrations"><a href="{{ path('oeuvres') }}">voir plus</a></button></td>
-                <td><button id="plus_affiches"><a href="{{ path('oeuvres') }}">voir plus</a></button></td>
+
+                <!--bouton voir plus d'affiches-->
+                <td>
+                    <button id="pi_logo_accueil_button">
+                        <a href="{{ path('oeuvres') }}">voir plus</a>
+                    </button>
+                </td>
             </tr>
         </table>
         <br><br><br><br>
