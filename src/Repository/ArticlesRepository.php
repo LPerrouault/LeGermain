@@ -4,12 +4,13 @@ namespace App\Repository;
 
 use App\DataFixtures\SeachData;
 use App\Entity\Article;
-use App\Entity\Inscription;
 use App\Service\TestData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -31,18 +32,39 @@ class ArticlesRepository extends ServiceEntityRepository
     /**
      * @return PaginationInterface
      */
-    public function findSearch(SeachData $searchData) : PaginationInterface
+    public function findSearchFilter(SeachData $searchData) : PaginationInterface
     {
         $query = $this
-            ->createQueryBuilder('n')
-            ->select('t', 'n')
-            ->join('n.listeTags', 't');
+            ->createQueryBuilder('articles')
+            ->select('t', 'articles')
+            ->join('articles.listeTags', 't');
 
         if (!empty($searchData->tags)){
             $query = $query
-                ->andWhere('t.id IN (:listeTags)')
-                ->setParameter('listeTags', $searchData->tags);
+                ->andWhere('t.id IN (:listeArticle)')
+                ->setParameter('listeArticle', $searchData->tags);
         }
+
+        $query=$query->getQuery();
+
+        return $this->paginator->paginate(
+            $query,
+            $searchData->page,
+            10
+        );
+    }
+
+    public function findSearchAfterFilter(Request $request, SeachData $searchData): PaginationInterface
+    {
+        $articleTag = array_keys($request->query->get('searchTag'));
+        // dd($articleTag);
+
+        $query = $this
+            ->createQueryBuilder('a')
+            ->select('t', 'a')
+            ->join('a.listeTags', 't')
+            ->andWhere('t.libelle IN (:tagArticle)')
+            ->setParameter('tagArticle', $articleTag);
 
         $query=$query->getQuery();
 

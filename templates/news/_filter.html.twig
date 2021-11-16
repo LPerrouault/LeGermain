@@ -1,5 +1,14 @@
-{{ form_start(form, {attr: {class: 'filter'}}) }}
-<h4>Catégories</h4>
-{{ form_row(form.tags) }}
-<button type="submit" class="btn btn-primary w-100">Filtrer</button>
-{{ form_end(form) }}
+<form>
+    <h4>Catégories</h4>
+    {% for tag in tags %}
+        <div class="form-check">
+            <input class="form-check-input" name="searchTag[{{ tag.libelle }}]"  type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                {{ tag.libelle }}
+            </label>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+    <a href="{{ path('news') }}">reinitialiser filtre</a>
+
+</form>

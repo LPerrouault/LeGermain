@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
-use App\Entity\tag;
+use App\Entity\Tag;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -41,7 +41,7 @@ class Article
     private $corpsArticle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=tag::class, inversedBy="listeArticles", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="listeArticles", cascade={"persist"})
      */
     private $listeTags;
 
@@ -104,14 +104,14 @@ class Article
     }
 
     /**
-     * @return Collection|tag[]
+     * @return Collection|Tag[]
      */
     public function getListeTags(): Collection
     {
         return $this->listeTags;
     }
 
-    public function addListeTag(tag $listeTag): self
+    public function addListeTag(Tag $listeTag): self
     {
         if (!$this->listeTags->contains($listeTag)) {
             $this->listeTags[] = $listeTag;
@@ -120,7 +120,7 @@ class Article
         return $this;
     }
 
-    public function removeListeTag(tag $listeTag): self
+    public function removeListeTag(Tag $listeTag): self
     {
         $this->listeTags->removeElement($listeTag);
 
