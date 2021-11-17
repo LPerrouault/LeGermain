@@ -3,10 +3,7 @@
 {% block title %}Oeuvres - Picassouille{% endblock %}
 
 {% block body %}
-
-
     <h2>Oeuvres</h2>
-
     <div class="container">
         <div class="row">
             <div class="col-md-3">{% include 'oeuvres/_filter.html.twig'  %}</div>
@@ -16,7 +13,6 @@
                         {% include 'oeuvres/_card.html.twig' %}
                     {% endfor %}
                 </div>
-
                 <div class="mt-4">
                     {{ knp_pagination_render(oeuvres) }}
                 </div>
