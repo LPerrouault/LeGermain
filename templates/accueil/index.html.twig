@@ -15,8 +15,7 @@
             background-size: contain;
             vertical-align: bottom;
             width: 400px;
-            height: 400px;
-            padding-right: 100px;
+            height: 350px;
         }
 
         #pi_case_illustrations {
@@ -25,8 +24,7 @@
             background-size: contain;
             vertical-align: bottom;
             width: 400px;
-            height: 400px;
-            padding-right: 100px;
+            height: 380px;
         }
 
         #pi_case_affiches {
@@ -35,7 +33,7 @@
             background-size: contain;
             vertical-align: bottom;
             width: 400px;
-            height: 400px;
+            height: 380px;
         }
     </style>
 
@@ -74,21 +72,41 @@
             Vous êtes au bon endroit !
         </p>
 
+
+
+
         <table id="pi_accueil_table_types_img">
             <tr>
                 <!--case des logos-->
                 <td id="pi_case_logos">
-                    <a id="pi_txt_logo_accueil" href="{{ path('oeuvres') }}">Logos</a>
                 </td>
 
                 <!--case des illustrations-->
                 <td id="pi_case_illustrations">
-                    <a id="pi_txt_illustrations_accueil" href="{{ path('oeuvres') }}">Illustrations</a>
                 </td>
 
                 <!--case des affiches-->
                 <td id="pi_case_affiches">
-                    <a id="pi_txt_affiches_accueil" href="{{ path('oeuvres') }}">Affiches</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="pi_logo_accueil_btn">
+                        <a id="pi_txt_logo_accueil" href="{{ path('oeuvres') }}">Logo</a>
+                    </button>
+                </td>
+
+                <td>
+                    <button id="pi_illustrations_accueil_btn">
+                        <a id="pi_txt_illustrations_accueil" href="{{ path('oeuvres') }}">Illustrations</a>
+                    </button>
+                </td>
+
+                <td>
+                    <button id="pi_affiches_accueil_btn">
+                        <a id="pi_txt_affiches_accueil" href="{{ path('oeuvres') }}">Affiches</a>
+                    </button>
                 </td>
             </tr>
 

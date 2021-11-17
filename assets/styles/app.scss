@@ -84,13 +84,19 @@ body {
     padding: 0px 0px 20px 0px;
 }
 
+
+
+
+
+
 #pi_accueil_table_types_img {
     margin: auto;
+    text-align: center;
 }
 
 #pi_txt_logo_accueil {
     //padding: haut droite bas gauche
-    padding: 0px 0px 10px 0px;
+    //padding: 0px 0px 10px 0px;
     font-size: 40px;
     color: #2B2118;
     background-color: #F8F7F4;
@@ -98,15 +104,42 @@ body {
 
 #pi_txt_illustrations_accueil {
     //padding: haut droite bas gauche
-    padding: 0px 0px 10px 0px;
+    //padding: 0px 0px 10px 0px;
     font-size: 40px;
     color: #2B2118;
     background-color: #F8F7F4;
 }
 
+#pi_affiches_accueil_btn {
+    border: none;
+    text-align: center;
+    padding-right: 110px;
+    padding-left: 110px;
+    //padding-left: 185px;
+    //padding-right: 180px;
+}
+
+#pi_illustrations_accueil_btn {
+    border: none;
+    text-align: center;
+    padding-right: 110px;
+    padding-left: 110px;
+    //padding-left: 185px;
+    //padding-right: 180px;
+}
+
+#pi_logo_accueil_btn {
+    border: none;
+    text-align: center;
+    padding-right: 110px;
+    padding-left: 110px;
+    //padding-left: 185px;
+    //padding-right: 180px;
+}
+
 #pi_txt_affiches_accueil {
     //padding: haut droite bas gauche
-    padding: 0px 0px 10px 0px;
+    //padding: 0px 0px 10px 0px;
     font-size: 40px;
     color: #2B2118;
     background-color: #F8F7F4;
@@ -117,11 +150,33 @@ body {
     border-radius: 30px;
     height: 50px;
     text-align: center;
-    padding-left: 185px;
-    padding-right: 180px;
+    //padding-left: 185px;
+    //padding-right: 180px;
 }
 
-#myBtn {
+
+
+
+
+
+//css footer
+#footer {
+    background-color: #2B2118;
+    color: #DE955A;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 50px;
+    height: 50px;
+}
+
+
+
+
+
+
+
+#pi_topBtn {
     display: none;
     position: fixed;
     bottom: 20px;
@@ -136,6 +191,6 @@ body {
     padding: 15px;
     border-radius: 4px;
 }
-#myBtn:hover {
+#pi_topBtn:hover {
     background-color: #555;
 }
