@@ -40,7 +40,7 @@
         <div class="pi_accueil_bg">
             <h1 id="pi_titre_accueil">Picassouille</h1>
             <h2 id="pi_accroche_accueil">Illustrations, logos, affiches</h2>
-        <div/>
+        </div>
 
         <table>
             <td id="pi_img_bio_accueil">
@@ -49,7 +49,7 @@
             </td>
             <td id="pi_txt_biographie_accueil"><h2 id="pi_h2">Eugénie Picassouille</h2>
                 <button id="pi_contacter_Eugénie_button">
-                    <a id="pi_txt_button" href="{{ path('contact') }}">Me contacter</a>
+                    <a id="pi_txt_btn" href="{{ path('contact') }}">Me contacter</a>
                 </button>
                 <p>Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
                     j’exerce en tant qu’illustratrice graphiste et ai réalisé
@@ -75,66 +75,6 @@
 
 
 
-        <table id="pi_accueil_table_types_img">
-            <tr>
-                <!--case des logos-->
-                <td id="pi_case_logos">
-                </td>
-
-                <!--case des illustrations-->
-                <td id="pi_case_illustrations">
-                </td>
-
-                <!--case des affiches-->
-                <td id="pi_case_affiches">
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <button id="pi_logo_accueil_btn">
-                        <a id="pi_txt_logo_accueil" href="{{ path('oeuvres') }}">Logo</a>
-                    </button>
-                </td>
-
-                <td>
-                    <button id="pi_illustrations_accueil_btn">
-                        <a id="pi_txt_illustrations_accueil" href="{{ path('oeuvres') }}">Illustrations</a>
-                    </button>
-                </td>
-
-                <td>
-                    <button id="pi_affiches_accueil_btn">
-                        <a id="pi_txt_affiches_accueil" href="{{ path('oeuvres') }}">Affiches</a>
-                    </button>
-                </td>
-            </tr>
-
-            <tr>
-                <!--id="plus_logos"id="plus_illustrations"id="plus_affiches"-->
-                <!--bouton voir plus de logos-->
-                <td>
-                    <button id="pi_voir_plus_button">
-                        <a id="pi_txt_button" href="{{ path('oeuvres') }}">voir plus</a>
-                    </button>
-                </td>
-
-                <!--bouton voir plus d'illustrations-->
-                <td>
-                    <button id="pi_voir_plus_button">
-                        <a id="pi_txt_button" href="{{ path('oeuvres') }}">voir plus</a>
-                    </button>
-                </td>
-
-                <!--bouton voir plus d'affiches-->
-                <td>
-                    <button id="pi_voir_plus_button">
-                        <a id="pi_txt_button" href="{{ path('oeuvres') }}">voir plus</a>
-                    </button>
-                </td>
-            </tr>
-        </table>
-
         <hr id="pi_hr_acceuil">
 
         <h2 id="pi_h2">Dernières actualités</h2>
@@ -152,7 +92,7 @@
                 <p>9/11/2021 : La lune dans le sol</p>
             </td>
         </table>
-        <button id="plus_news"><a href="{{ path('news') }}">voir plus</a></button>
+        <button id="pi_voir_plus_btn"><a id="pi_txt_btn" href="{{ path('news') }}">voir plus</a></button>
         <br><br><br><br><br>
 
 {% endblock %}
