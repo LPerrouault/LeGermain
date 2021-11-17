@@ -21,33 +21,43 @@
     <body>
         <!--Header navbar-->
         {% block header %}
-          <header id="header">
-            <nav class="navbar navbar-expand-lg"> <!--/navbar-dark bg-primary"-->
-                <div class="container">
-                    <a class="navbar-brand" href="{{ path('accueil') }}"> PICASSOUILLE </a>
+        <div id="class-container">
+            <div id="content-wrap">
+                <!-- Navigation -->
+                <nav class="navbar navbar-expand-md">
+                    <!-- Logo Picassouille -->
+                    <img class="navbar-brand" src="{{asset('images/logo/logo.png')}}" alt="Picassouille" style="width: 180px; padding: 0px"/>
+                    <!-- Bouton de collapse du menu (sur petit écrans)-->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                    <div class="navbar-header">
-                        <ul class="nav nav-fill nav-justified">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('accueil') }}"> Accueil </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('oeuvres') }}">Œuvres</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('news') }}">News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('ateliers') }}">Ateliers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-                            </li>
-                        </ul>
+                    <!-- Eléments de navigation de la navbar-->
+                    <div class="container d-flex flex-column flex-md-row justify-content-between">
+                        <div class="collapse navbar-collapse" id="collapsible-navbar">
+                            <ul class="navbar-nav">
+                                <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
+                                pour définir cette page comme la page active-->
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_accueil %}{% endblock %}" href="{{ path('accueil') }}">Accueil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_oeuvres %}{% endblock %}" href="{{ path('oeuvres') }}">Œuvres</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_news %}{% endblock %}" href="{{ path('news') }}">News</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_ateliers %}{% endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_contact %}{% endblock %}" href="{{ path('contact') }}">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-          </header>
+                    <hr>
+                </nav>
         {% endblock %}
 
         {% block body %}{% endblock %}
@@ -77,7 +87,7 @@
 
         <!--Footer-->
         {% block footer %}
-            <footer id="footer">
+            <footer id="footer" class="navbar">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6">
@@ -110,3 +120,92 @@
 
     </body>
 </html>
+
+
+<!--
+<!-Style CSS de la navigation ci-dessous
+<style>
+    #page-container {
+        position: relative;
+        min-height: 100vh;
+    }
+
+    #content-wrap {
+        padding-bottom: 2.5rem;    /* Footer height */
+    }
+
+    #footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 2.5rem;            /* Footer height */
+    }
+    body {
+        background-color: #F8F7F4;
+        color: #2B2118;
+    }
+    .navbar, footer {
+        background-color: #2B2118;
+    }
+    .nav-link {
+        color: #DE955A;
+    }
+    .navbar-brand, .active, .nav-link:hover, .nav-link:active, footer{
+        color: #F8F7F4;
+    }
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 3px solid #AD1815;
+        opacity: 1;
+        border-radius: 10px;
+        margin: 0 10px 10px 10px;
+    }
+
+</style>
+<div id="class-container">
+    <div id="content-wrap">
+        <!-Navigation
+        <nav class="navbar navbar-expand-md">
+            <!-Logo Picassouille
+            <img class="navbar-brand" src="{asset('images/logo/logo.png')}}" alt="Picassouille" style="width: 180px; padding: 0px"/>
+            <!-Bouton de collapse du menu (sur petit écrans)
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+             Eléments de navigation de la navbar
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <div class="collapse navbar-collapse" id="collapsible-navbar">
+                    <ul class="navbar-nav">
+                        <!- Dans la page de l'accueil, ajouter active dans le block nav_accueil
+                        pour définir cette page comme la page active
+                        <li class="nav-item">
+                            <a class="nav-link { block nav_accueil %}{ endblock %}" href="{ path('accueil') }}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link { block nav_oeuvres %}{ endblock %}" href="{ path('oeuvres') }}">Œuvres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link { block nav_news %}{ endblock %}" href="{{ path('news') }}">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link { block nav_ateliers %}{endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link { block nav_contact %}{ endblock %}" href="{{ path('contact') }}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </nav>
+
+        Contenu de la page
+         block body %}% endblock %}
+    </div>
+    <footer id="footer" class="navbar">
+        <div>Eugenie Picassouille</div>
+    </footer>
+</div>-->

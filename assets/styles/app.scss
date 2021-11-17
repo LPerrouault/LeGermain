@@ -6,23 +6,24 @@
 //Blanc : #F8F7F4
 //Rouge : #7A1D07
 
-#header {
+.navbar, footer {
     background-color: #2B2118;
-    font-size: 20px;
 }
-
-.navbar-brand {
-    color: #DE955A;
-}
-.navbar-brand:hover {
-    color: #F8F7F4;
-}
-
 .nav-link {
     color: #DE955A;
 }
-.nav-link:hover {
+.navbar-brand, .active, .nav-link:hover, .nav-link:active, footer{
     color: #F8F7F4;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 3px solid #AD1815;
+    opacity: 1;
+    border-radius: 10px;
+    margin: 0 10px 10px 10px;
 }
 
 body {
@@ -161,15 +162,11 @@ body {
 
 //css footer
 #footer {
-    background-color: #2B2118;
-    color: #DE955A;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
-    padding-top: 50px;
-    height: 50px;
+    height: 2.5rem;            /* Footer height */
 }
-
 
 
 
