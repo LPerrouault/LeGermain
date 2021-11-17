@@ -63,7 +63,7 @@
             </td>
         </table>
 
-        <hr id="pi_hr_acceuil">
+        <hr>
 
         <h2 id="pi_h2">Œuvres</h2>
         <p id="pi_txt_accroche_oeuvres">
@@ -72,7 +72,33 @@
             Vous êtes au bon endroit !
         </p>
 
-
+    <div class="card-deck">
+        <div class="card w-50">
+            <img src="{{ asset('images_l3/flamme.png') }}"
+                 class="card-img-top" alt="flamme blanche sur fond noir">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.
+                </p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card w-50">
+            <img src="{{ asset('images_l3/licornes.jpg') }}"
+                 class="card-img-top" alt="trois licornes">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{ path('oeuvres') }}">Affiches</a></h5>
+            </div>
+        </div>
+        <div class="card w-50">
+            <img src="{{ asset('images_l3/feuilles.jpg') }}"
+                 class="card-img-top" alt="des feuilles">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{ path('oeuvres') }}">Affiches</a></h5>
+            </div>
+        </div>
+    </div>
 
 
         <hr id="pi_hr_acceuil">
