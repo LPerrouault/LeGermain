@@ -15,9 +15,24 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
               crossorigin="anonymous">
     </head>
-    <body class="">
+    <body>
         <!-- Style CSS de la navigation ci-dessous -->
         <style>
+            #page-container {
+                position: relative;
+                min-height: 100vh;
+            }
+
+            #content-wrap {
+                padding-bottom: 2.5rem;    /* Footer height */
+            }
+
+            #footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 2.5rem;            /* Footer height */
+            }
             body {
                 background-color: #F8F7F4;
                 color: #2B2118;
@@ -32,46 +47,62 @@
                 color: #F8F7F4;
             }
             hr {
-                color: #AD1815;
+                display: block; 
+                height: 1px;
+                border: 0; 
+                border-top: 3px solid #AD1815;
+                opacity: 1;
+                border-radius: 10px;
+                margin: 0 10px 10px 10px;
+                background-color: #AD1815;
             }
-        </style>
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-md">
-            <!-- Logo Picassouille -->
-            <img class="navbar-brand" src="{{asset('images/logo/logo.png')}}" alt="Picassouille" style="width: 180px; padding: 0px"/>
-            <!-- Bouton de collapse du menu (sur petit écrans)-->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <!-- Eléments de navigation de la navbar-->
-            <div class="container d-flex flex-column flex-md-row justify-content-between">
-                <div class="collapse navbar-collapse" id="collapsible-navbar">
-                    <ul class="navbar-nav">
-                        <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
-                        pour définir cette page comme la page active-->
-                        <li class="nav-item">
-                            <a class="nav-link {% block nav_accueil %}{% endblock %}" href="{{ path('accueil') }}">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% block nav_oeuvres %}{% endblock %}" href="{{ path('oeuvres') }}">Œuvres</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% block nav_news %}{% endblock %}" href="{{ path('news') }}">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% block nav_ateliers %}{% endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% block nav_contact %}{% endblock %}" href="{{ path('contact') }}">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+        </style>
+        <div id="class-container">
+            <div id="content-wrap">
+                <!-- Navigation -->
+                <nav class="navbar navbar-expand-md">
+                    <!-- Logo Picassouille -->
+                    <img class="navbar-brand" src="{{asset('images/logo/logo.png')}}" alt="Picassouille" style="width: 180px; padding: 0px"/>
+                    <!-- Bouton de collapse du menu (sur petit écrans)-->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Eléments de navigation de la navbar-->
+                    <div class="container d-flex flex-column flex-md-row justify-content-between">
+                        <div class="collapse navbar-collapse" id="collapsible-navbar">
+                            <ul class="navbar-nav">
+                                <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
+                                pour définir cette page comme la page active-->
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_accueil %}{% endblock %}" href="{{ path('accueil') }}">Accueil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_oeuvres %}{% endblock %}" href="{{ path('oeuvres') }}">Œuvres</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_news %}{% endblock %}" href="{{ path('news') }}">News</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_ateliers %}{% endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_contact %}{% endblock %}" href="{{ path('contact') }}">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                </nav>
+
+                <!-- Contenu de la page -->
+                {% block body %}{% endblock %}
             </div>
-            <hr>
-        </nav>
-        <!-- Contenu de la page -->
-        {% block body %}{% endblock %}
+            <footer id="footer" class="navbar">
+                <div>Eugenie Picassouille</div>
+            </footer>
+        </div>
 
         <!--bouton top page-->
         <button onclick="function topFunction() {
@@ -81,9 +112,7 @@
                 topFunction()" id="myBtn" title="Go to top">Top
         </button>
 
-        <footer class="navbar">
-            Footer
-        </footer>
+
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
