@@ -14,6 +14,12 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
               crossorigin="anonymous">
+
+        <!-- Liens vers les polices d'écriture-->
+        <!-- Rubik Bold-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet"> 
     </head>
     <body>
         <!-- Style CSS de la navigation ci-dessous -->
@@ -21,17 +27,21 @@
             #page-container {
                 position: relative;
                 min-height: 100vh;
+                margin-bottom: 0;
+                padding-bottom: 0;
             }
 
             #content-wrap {
-                padding-bottom: 2.5rem;    /* Footer height */
+                padding-bottom: 10rem; /* Footer height */
             }
 
             #footer {
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-                height: 2.5rem;            /* Footer height */
+                height: 10rem;         /* Footer height */
+                border-top: 2px solid #AD1815;
+                padding: 10px 5px;
             }
             body {
                 background-color: #F8F7F4;
@@ -39,12 +49,24 @@
             }
             .navbar, footer {
                 background-color: #2B2118;
+                font-family: 'Rubik', sans-serif;
             }
             .nav-link { 
                 color: #DE955A;
             }
+            .navbar-brand {
+                width: 10em; 
+                padding: 10px;
+                margin: 0 10px;
+            }
+            .nav-item {
+                padding-left: 5em;
+            }
             .navbar-brand, .active, .nav-link:hover, .nav-link:active, footer{
                 color: #F8F7F4;
+            }
+            #nav-links {
+                margin-left: 10em;
             }
             hr {
                 display: block; 
@@ -56,21 +78,25 @@
                 margin: 0 10px 10px 10px;
                 background-color: #AD1815;
             }
+            #copyright {
+                margin-top: 10px;
+                text-align: center
+            }
 
         </style>
-        <div id="class-container">
+        <div id="page-container">
             <div id="content-wrap">
                 <!-- Navigation -->
                 <nav class="navbar navbar-expand-md">
                     <!-- Logo Picassouille -->
-                    <img class="navbar-brand" src="{{asset('images/logo/logo.png')}}" alt="Picassouille" style="width: 180px; padding: 0px"/>
+                    <img class="navbar-brand" src="{{asset('images/logo/logo.png')}}" alt="Picassouille"/>
                     <!-- Bouton de collapse du menu (sur petit écrans)-->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
                     <!-- Eléments de navigation de la navbar-->
-                    <div class="container d-flex flex-column flex-md-row justify-content-between">
+                    <div id="nav-links" class="container d-flex flex-column flex-md-row justify-content-between">
                         <div class="collapse navbar-collapse" id="collapsible-navbar">
                             <ul class="navbar-nav">
                                 <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
@@ -99,8 +125,23 @@
                 <!-- Contenu de la page -->
                 {% block body %}{% endblock %}
             </div>
-            <footer id="footer" class="navbar">
-                <div>Eugenie Picassouille</div>
+            <footer id="footer">
+                <div class="container">
+                    <div class='row'>
+                        <div id='information-contact' class='col-8'>
+                            Eugénie Picassouille<br>
+                            11 route du test 37000 TOURS<br>
+                            eugeniepicassouille@gmail.com<br>
+                            0602060206
+                        </div>
+                        <div id='reseaux' class='col-4'>
+                            réseaux.png
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div id='copyright' class='col-12'>@ 2021 Eugénie Picassouille</div>
+                    </div>
+                </div>
             </footer>
         </div>
 
