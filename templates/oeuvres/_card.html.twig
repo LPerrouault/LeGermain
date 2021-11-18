@@ -1,8 +1,10 @@
-<div class="card">
+<div class="card ">
     <a href="{{ path('oeuvres_views', {id: oeuvres.id}) }}">
-        <img class="card-img-top" src="{{ asset('build/image/'~oeuvres.nomFichierImage) | trans}}" alt="{{ oeuvres.titre }}">
-        <div class="card-body">
-            <h5 class="card-title">{{ oeuvres.titre }}</h5>
+        <div class="cardOeuvre">
+            <img class="card-img-top cardOeuvre-img" src="{{ asset('/image/'~oeuvres.nomFichierImage) | trans}}" alt="{{ oeuvres.titre }}">
+            <div class="card-body cardOeuvre-titre">
+                <h5 class="card-title">{{ oeuvres.titre }}</h5>
+            </div>
         </div>
     </a>
     <div>

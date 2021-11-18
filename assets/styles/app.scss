@@ -135,13 +135,92 @@ body {
     background-color: #555;
 }
 
+#footer {
+    position: fixed;
+    bottom: 10%;
+    width: 100%;
+    height: 2.5rem;            /* Footer height */
+}
+
+//page Actualités et Oeuvres
+.button{
+    background-color: #FFFFFF;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btn-reset {
+    background-color: white;
+    color: #E61414;
+    border: 2px solid #E61414;
+    border-radius: 16px;
+}
+
+.btn-reset:hover {
+    background-color: #E61414;
+    text-decoration: none;
+    color: #E61414;
+    color: white;
+}
+
+.btn{
+    font-weight: bold;
+}
+
 .grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
 }
+
 .filter{
     display: block;
     position: sticky;
     top: 20px;
+}
+.filter{
+    display: block;
+    position: sticky;
+    top: 20px;
+}
+
+.card{
+    margin-left: 5%;
+}
+
+.cardOeuvre {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.cardOeuvre-titre {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #2B2118;
+    color: #fff;
+    visibility: hidden;
+    opacity: 2;
+
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+}
+
+.cardOeuvre:hover .cardOeuvre-titre {
+    visibility: visible;
+    text-align: center;
+    padding-top: 40%;
+    opacity: 1;
 }
