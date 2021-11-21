@@ -32,16 +32,15 @@
             }
 
             #content-wrap {
-                padding-bottom: 10rem; /* Footer height */
+                padding-bottom: 8rem; /* Footer height */
             }
 
             #footer {
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-                height: 10rem;         /* Footer height */
-                border-top: 2px solid #AD1815;
-                padding: 10px 5px;
+                height: 8rem;         /* Footer height */
+                padding: 20px 0px;
             }
             body {
                 background-color: #F8F7F4;
@@ -50,6 +49,9 @@
             .navbar, footer {
                 background-color: #2B2118;
                 font-family: 'Rubik', sans-serif;
+            }
+            footer {
+                font-size: 14px;
             }
             .nav-link { 
                 color: #DE955A;
@@ -79,10 +81,26 @@
                 background-color: #AD1815;
             }
             #copyright {
-                margin-top: 10px;
                 text-align: center
             }
 
+            #information-contact {
+                line-height: 1.25em;
+            }
+
+            .pi-logo-reseau {
+                max-width: 3em;
+                height: auto;
+                margin-left: 0.2em;
+            }
+
+            #reseaux {
+                position: absolute;
+                top: 25%;
+                left: 75%;
+                padding: 0px;
+                max-width: fit-content;
+            }
         </style>
         <div id="page-container">
             <div id="content-wrap">
@@ -135,7 +153,18 @@
                             0602060206
                         </div>
                         <div id='reseaux' class='col-4'>
-                            réseaux.png
+                            <a href="https://facebook.com/">
+                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_facebook.png')}}" alt="Facebook"/>
+                            </a>
+                            <a class="pi-logo-reseau" href="https://twitter.com/">
+                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_twitter.png')}}" alt="Facebook"/>
+                            </a>
+                            <a class="pi-logo-reseau" href="https://instagram.com/">
+                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_instagram.png')}}" alt="Facebook"/>
+                            </a>
+                            <a class="pi-logo-reseau" href="https://indeed.com/">
+                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_indeed.png')}}" alt="Facebook"/>
+                            </a>
                         </div>
                     </div>
                     <div class='row'>
@@ -150,7 +179,7 @@
                     document.body.scrollTop = 0;
                     document.documentElement.scrollTop = 0;
                 }
-                topFunction()" id="myBtn" title="Go to top">Top
+                topFunction()" id="myBtn" title="Go to top">^
         </button>
 
 
