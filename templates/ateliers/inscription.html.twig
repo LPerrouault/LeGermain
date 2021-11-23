@@ -7,22 +7,30 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
 
+
     <div class="example-wrapper">
 
 
         <section class="Ateliers">
+
                 <atelier>
                     <h2> {{ atelier.titre }} </h2>
                     <div class="content">
                         <p> {{ atelier.description }} </p>
-                        <p> {{ atelier.duree }} h </p>
 
-                        <button class="btn btn-primary bg-light">
-                            <a href="{{ path('ateliers_inscription',{id: atelier.id}) }}">S'inscrire</a>
-                        </button>
+                        <p> Pour s'inscrire à cet atelier veuillez remplir le formulaire ci-dessous : </p>
 
                     </div>
                 </atelier>
+
+            </section>
+
+        <section class="Inscription">
+
+                <inscription>
+                    <p> Le formulaire </p>
+                </inscription>
+
         </section>
 
     </div>

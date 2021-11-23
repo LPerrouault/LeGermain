@@ -16,7 +16,8 @@
             <h2> {{ atelier.titre }} </h2>
                 <div class="content">
                     <p> {{ atelier.description }} </p>
-                    <button id="btn_ateliers">
+
+                    <button class="btn btn-primary bg-light">
                         <a href="{{ path('ateliers_details',{id: atelier.id}) }}">Voir l'atelier</a>
                     </button>
                 </div>
