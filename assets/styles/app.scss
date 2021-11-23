@@ -1,51 +1,63 @@
 
 @import "~bootstrap/scss/bootstrap";
-//penser à effectuer npm run dev ou npm run watch pour que ça marche
+//Penser à effectuer npm run dev ou npm run watch pour que ça marche
+//Recharger page du navigateur en ignorant le cache: CTRL+Shift+R
 //Noir : #2B2118
 //Beige : #DE955A
 //Blanc : #F8F7F4
 //Rouge : #7A1D07
 
+
+//Stylisation de la navbar et du footer
 .navbar, footer {
     background-color: #2B2118;
+    font-family: 'Rubik', sans-serif;
+}
+footer {
+    font-size: 14px;
 }
 .nav-link {
     color: #DE955A;
 }
-.navbar-brand, .active, .nav-link:hover, .nav-link:active, footer{
+//Les liens pointés et de la page actuelle sont de la même couleur
+.active, .nav-link:hover, .nav-link:active, footer {
     color: #F8F7F4;
 }
+//Séparation visuelle des liens de nav
+#nav-links {
+    margin-left: 10em;
+}
+.nav-item {
+    padding-left: 5em;
+}
+//Taille du logo Picassouille
+.navbar-brand {
+    width: 10em;
+    padding: 10px;
+    margin: 0 10px;
+}
 
+
+//Stylisation des éléments hr (ligne horizontale)
 hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 3px solid #7A1D07;
+    border-top: 3px solid #AD1815;
     opacity: 1;
     border-radius: 10px;
     margin: 0 10px 10px 10px;
+    background-color: #AD1815;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #F8F7F4;
+    color: #2B2118;
 }
 
-#pi_titre_accueil {
-    text-align: center;
-    padding-top: 130px;
-    font-size: 150px;
-}
-
-#pi_accroche_accueil {
-    text-align: center;
-    font-size: 50px;
-    padding-bottom: 200px;
-}
-
-#pi_img_bio_accueil {
-    padding-left: 50px;
-}
-
+//css page accueil
+//stylisation des titres h2 dans accueil
 #pi_h2 {
     text-align: center;
     font-size: 50px;
@@ -53,6 +65,41 @@ body {
     padding-bottom: 20px;
 }
 
+//stylisation du texte des boutons dans accueil
+#pi_txt_btn {
+    font-size: 22px;
+    color: #F8F7F4;
+    text-align: center;
+}
+
+//titre sur la bannière
+#pi_titre_accueil {
+    text-align: center;
+    padding-top: 130px;
+    font-size: 150px;
+}
+
+//sous-titre de la bannière
+#pi_accroche_accueil {
+    text-align: center;
+    font-size: 50px;
+    padding-bottom: 200px;
+}
+
+//css de la biographie d'Eugénie dans la page accueil
+//centrage de la biographie d'Eugénie
+#pi_img_bio_accueil {
+    padding-left: 50px;
+}
+
+//stylisation du texte de la biographie d'Eugénie
+#pi_txt_biographie_accueil {
+    font-size: 25px;
+    text-align: justify;
+    padding: 5px 50px 0px 50px;
+}
+
+//bouton renvoyant à Contact dans la biographie d'Eugénie
 #pi_contacter_Eugénie_button {
     text-align: center;
     background-color: #7A1D07;
@@ -61,19 +108,8 @@ body {
     width: 100%;
 }
 
-#pi_txt_btn {
-    font-size: 22px;
-    color: #F8F7F4;
-    text-align: center;
-}
-
-#pi_txt_biographie_accueil {
-    font-size: 25px;
-    text-align: justify;
-    padding: 5px 50px 0px 50px;
-}
-
-
+//css de la partie œuvres dans accueil
+//sous-titre de la partie œuvres de l'accueil
 #pi_txt_accroche_oeuvres {
     font-size: 25px;
     text-align: center;
@@ -81,12 +117,7 @@ body {
 }
 
 
-
-
-
-
-
-
+//stylisation des boutons voir plus
 #pi_voir_plus_btn {
     background-color: #7A1D07;
     border-radius: 30px;
@@ -102,35 +133,68 @@ body {
 
 
 
-
 //css footer
+//Affichage du footer en bas de la page
+#page-container {
+    position: relative;
+    min-height: 100vh;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+#content-wrap {
+    padding-bottom: 8rem; /* Footer height */
+}
 #footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;            /* Footer height */
+    height: 8rem; /* Footer height */
+    padding: 20px 0px;
+}
+
+//Mise en place des différents éléments du footer
+#information-contact {
+    line-height: 1.25em;
+}
+#reseaux {
+    position: absolute;
+    top: 25%;
+    left: 75%;
+    padding: 0px;
+    max-width: fit-content;
+}
+#copyright {
+    text-align: center
+}
+
+//Taille des logos des réseaux sociaux
+.pi-logo-reseau {
+    max-width: 3em;
+    height: auto;
+    margin-left: 0.2em;
 }
 
 
 
-
-
-
+//Bouton retour en haut de la page
 #pi_topBtn {
+    font-family: 'Rubik', sans-serif;
+    height: 43px;
+    width: 48px;
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 30px;
+    bottom: 37px;
+    right: 40px;
     z-index: 99;
-    font-size: 18px;
+    font-size: 40px;
     border: none;
     outline: none;
-    background-color: #7A1D07;
-    color: white;
+    background-color: #AD1815;
+    color: #F8F7F4;
     cursor: pointer;
-    padding: 15px;
-    border-radius: 4px;
+    padding-top: 5px;
+    border-radius: 10px;
 }
 #pi_topBtn:hover {
-    background-color: #555;
+    background-color: #C5403E;
 }
