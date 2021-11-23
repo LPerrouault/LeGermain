@@ -27,7 +27,9 @@
                 <!-- Navigation -->
                 <nav class="navbar navbar-expand-md">
                     <!-- Logo Picassouille -->
-                    <img class="navbar-brand" src="{{asset('images/logo/logo.png')}}" alt="Picassouille"/>
+                    <a href="{{ path('accueil') }}">
+                        <img class="navbar-brand" src="{{asset('images/logo/logo.png')}}" alt="Picassouille"/>
+                    </a>
                     <!-- Bouton de collapse du menu (sur petit écrans)-->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
                         <span class="navbar-toggler-icon"></span>
@@ -74,16 +76,24 @@
                         </div>
                         <div id='reseaux' class='col-4'>
                             <a href="https://facebook.com/">
-                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_facebook.png')}}" alt="Facebook"/>
+                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_facebook.png')}}" 
+                                     onmouseover="this.src='{{asset('images/logo/logo_facebook_h.png')}}'" 
+                                     onmouseout="this.src='{{asset('images/logo/logo_facebook.png')}}'" alt="Facebook"/>
                             </a>
                             <a class="pi-logo-reseau" href="https://twitter.com/">
-                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_twitter.png')}}" alt="Facebook"/>
+                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_twitter.png')}}" 
+                                     onmouseover="this.src='{{asset('images/logo/logo_twitter_h.png')}}'" 
+                                     onmouseout="this.src='{{asset('images/logo/logo_twitter.png')}}'" alt="Twitter"/>
                             </a>
                             <a class="pi-logo-reseau" href="https://instagram.com/">
-                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_instagram.png')}}" alt="Facebook"/>
+                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_instagram.png')}}" 
+                                     onmouseover="this.src='{{asset('images/logo/logo_instagram_h.png')}}'" 
+                                     onmouseout="this.src='{{asset('images/logo/logo_instagram.png')}}'" alt="Instagram"/>
                             </a>
                             <a class="pi-logo-reseau" href="https://indeed.com/">
-                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_indeed.png')}}" alt="Facebook"/>
+                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_indeed.png')}}" 
+                                     onmouseover="this.src='{{asset('images/logo/logo_indeed_h.png')}}'" 
+                                     onmouseout="this.src='{{asset('images/logo/logo_indeed.png')}}'" alt="Indeed"/>
                             </a>
                         </div>
                     </div>
