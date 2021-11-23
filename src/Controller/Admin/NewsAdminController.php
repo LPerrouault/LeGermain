@@ -11,7 +11,7 @@ class NewsAdminController extends AbstractController
     #[Route('/admin/news', name: 'news_admin')]
     public function index(): Response
     {
-        return $this->render('news_admin/index.html.twig', [
+        return $this->render('admin/news_admin/index.html.twig', [
             'controller_name' => 'NewsAdminController',
         ]);
     }

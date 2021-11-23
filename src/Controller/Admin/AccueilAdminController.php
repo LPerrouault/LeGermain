@@ -11,7 +11,7 @@ class AccueilAdminController extends AbstractController
     #[Route('/admin/accueil', name: 'accueil_admin')]
     public function index(): Response
     {
-        return $this->render('accueil_admin/index.html.twig', [
+        return $this->render('admin/accueil_admin/index.html.twig', [
             'controller_name' => 'AccueilAdminController',
         ]);
     }

@@ -11,7 +11,7 @@ class OeuvresAdminController extends AbstractController
     #[Route('/admin/oeuvres', name: 'oeuvres_admin')]
     public function index(): Response
     {
-        return $this->render('oeuvres_admin/index.html.twig', [
+        return $this->render('admin/oeuvres_admin/index.html.twig', [
             'controller_name' => 'OeuvresAdminController',
         ]);
     }

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base_admin.html.twig' %}
 
 {% block title %}Hello AteliersAdminController!{% endblock %}
 
@@ -10,9 +10,7 @@
 
 <div class="example-wrapper">
     <header class="page-header">
-        <a><a href="{{ path('accueil_admin') }}">Accueil</a> <a href="{{ path('news_admin') }}">News</a>
-            <a href="{{ path('oeuvres_admin') }}">Œuvres</a> <a href="{{ path('ateliers_admin') }}">Ateliers</a>
-            <a href="{{ path('contact_admin') }}">Contact</a>
+
     </header>
 
     <h2>Vous êtes sur le Controller ADMIN d'Ateliers</h2>
