@@ -5,12 +5,12 @@
 {% block body %}
     <style>
         .pi_accueil_bg{
-            background-image: url('{{asset("images_l3/maple.jpg")}}');
+            background-image: url('{{asset("images/maple.jpg")}}');
             background-repeat: no-repeat;
             background-size: contain;
         }
         #pi_case_logos {
-            background-image: url('{{ asset('images_l3/licornes.jpg') }}');
+            background-image: url('{{ asset('images/licornes.jpg') }}');
             background-repeat: no-repeat;
             background-size: contain;
             vertical-align: bottom;
@@ -19,7 +19,7 @@
         }
 
         #pi_case_illustrations {
-            background-image: url('{{ asset('images_l3/licornes.jpg') }}');
+            background-image: url('{{ asset('images/licornes.jpg') }}');
             background-repeat: no-repeat;
             background-size: contain;
             vertical-align: bottom;
@@ -28,7 +28,7 @@
         }
 
         #pi_case_affiches {
-            background-image: url('{{ asset('images_l3/licornes.jpg') }}');
+            background-image: url('{{ asset('images/licornes.jpg') }}');
             background-repeat: no-repeat;
             background-size: contain;
             vertical-align: bottom;
@@ -44,7 +44,7 @@
 
         <table>
             <td id="pi_img_bio_accueil">
-                <img src="{{ asset('images_l3/chat.png') }}" alt="chat roux faisant un clin d'œil"
+                <img src="{{ asset('images/chat.png') }}" alt="chat roux faisant un clin d'œil"
                      width="465" height="300"/>
             </td>
             <td id="pi_txt_biographie_accueil"><h2 id="pi_h2">Eugénie Picassouille</h2>
@@ -72,53 +72,92 @@
             Vous êtes au bon endroit !
         </p>
 
-    <div class="card-deck">
-        <div class="card w-50">
-            <img src="{{ asset('images_l3/flamme.png') }}"
-                 class="card-img-top" alt="flamme blanche sur fond noir">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card w-50">
-            <img src="{{ asset('images_l3/licornes.jpg') }}"
-                 class="card-img-top" alt="trois licornes">
-            <div class="card-body">
-                <h5 class="card-title"><a href="{{ path('oeuvres') }}">Affiches</a></h5>
-            </div>
-        </div>
-        <div class="card w-50">
-            <img src="{{ asset('images_l3/feuilles.jpg') }}"
-                 class="card-img-top" alt="des feuilles">
-            <div class="card-body">
-                <h5 class="card-title"><a href="{{ path('oeuvres') }}">Affiches</a></h5>
-            </div>
-        </div>
-    </div>
+        <div class="container">
+            <div class="card-group">
+                <div class="row">
 
+                    <div class="col-4">
+                        <div class="card" style="border:none;">
+                            <img class="card-img-top" src="{{ asset('images/flamme.png') }}" alt="flamme blanche sur fond noir">
+                            <div class="card-body">
+                                <h4 class="card-title" style="text-align:center;">
+                                    <a href="{{ path('oeuvres') }}" style="color: #2B2118;">Logos</a>
+                                </h4>
+                            </div>
+                            <button id="pi_voir_plus_btn">
+                                <a id="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="card" style="border:none;">
+                            <img class="card-img-top" src="{{ asset('images/roses.png') }}" alt="trois licornes">
+                            <div class="card-body">
+                                <h4 class="card-title" style="text-align:center;">
+                                    <a href="{{ path('oeuvres') }}" style="color: #2B2118;">Illustrations</a>
+                                </h4>
+                            </div>
+                            <button id="pi_voir_plus_btn">
+                                <a id="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="card" style="border:none;">
+                            <img class="card-img-top" src="{{ asset('images/feuilles.jpg') }}" alt="des feuilles">
+                            <div class="card-body">
+                                <h4 class="card-title" style="text-align:center;">
+                                    <a href="{{ path('oeuvres') }}" style="color: #2B2118;">Affiches</a>
+                                </h4>
+                            </div>
+                            <button id="pi_voir_plus_btn">
+                                <a id="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
         <hr id="pi_hr_acceuil">
 
         <h2 id="pi_h2">Dernières actualités</h2>
-        <table id="pi_accueil_table_types_img">
-            <td>
-                <img src="{{ asset('images_l3/ampoule.jpg') }}"
-                     alt="ampoule sur fond noir avec un cœur jaune à l'intérieur"
-                     width="250" height="250"/>
-                <p>23/10/2021 : Eurêka amoureux</p>
-            </td>
-            <td>
-                <img src="{{ asset('images_l3/ciel_sol.jpg') }}"
-                     alt="homme regardant le ciel à travers un trou dans le sol"
-                     width="250" height="250"/>
-                <p>9/11/2021 : La lune dans le sol</p>
-            </td>
-        </table>
-        <button id="pi_voir_plus_btn"><a id="pi_txt_btn" href="{{ path('news') }}">voir plus</a></button>
-        <br><br><br><br><br>
+
+        <div class="container">
+            <div class="card-group">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card" style="border:none;">
+                            <img class="card-img-top" src="{{ asset('images/ampoule.jpg') }}" alt="ampoule sur fond noir avec un cœur jaune à l'intérieur">
+                            <div class="card-body">
+                                <h4 class="card-title" style="text-align:center;">
+                                    <a href="{{ path('news') }}" style="color: #2B2118;">23/10/2021 : Eurêka amoureux</a>
+                                </h4>
+                            </div>
+                            <button id="pi_voir_plus_btn">
+                                <a id="pi_txt_btn" href="{{ path('news') }}">voir plus</a>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <img class="card-img-top" src="{{ asset('images/ciel_sol.jpg') }}" alt="homme regardant le ciel à travers un trou dans le sol">
+                        <div class="card-body">
+                            <h4 class="card-title" style="text-align:center;">
+                                <a href="{{ path('news') }}" style="color: #2B2118;">9/11/2021 : La lune dans le sol</a>
+                            </h4>
+                        </div>
+                        <button id="pi_voir_plus_btn">
+                            <a id="pi_txt_btn" href="{{ path('news') }}">voir plus</a>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
 {% endblock %}
