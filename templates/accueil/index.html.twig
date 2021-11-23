@@ -9,38 +9,52 @@
             background-repeat: no-repeat;
             background-size: contain;
         }
-        #pi_case_logos {
-            background-image: url('{{ asset('images/licornes.jpg') }}');
-            background-repeat: no-repeat;
-            background-size: contain;
-            vertical-align: bottom;
-            width: 400px;
-            height: 350px;
-        }
-
-        #pi_case_illustrations {
-            background-image: url('{{ asset('images/licornes.jpg') }}');
-            background-repeat: no-repeat;
-            background-size: contain;
-            vertical-align: bottom;
-            width: 400px;
-            height: 380px;
-        }
-
-        #pi_case_affiches {
-            background-image: url('{{ asset('images/licornes.jpg') }}');
-            background-repeat: no-repeat;
-            background-size: contain;
-            vertical-align: bottom;
-            width: 400px;
-            height: 380px;
-        }
     </style>
 
         <div class="pi_accueil_bg">
             <h1 id="pi_titre_accueil">Picassouille</h1>
             <h2 id="pi_accroche_accueil">Illustrations, logos, affiches</h2>
         </div>
+
+
+
+<div class="container mb-5">
+    <div class="card-group">
+            <div class="col-6">
+                <div class="card" style="border:none;">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ asset('images/chat.png') }}"
+                             alt="chat roux faisant un clin d'œil" width="465" height="300">
+                    </div>
+                    <img class="card-img-top" >
+                </div>
+                <div class="col-6">
+                    <div class="card-body">
+                        <h2 id="pi_h2">Eugénie Picassouille</h2>
+                        <button id="pi_contacter_Eugénie_button">
+                            <a id="pi_txt_btn" href="{{ path('contact') }}">Me contacter</a>
+                        </button>
+                        <p>Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
+                            j’exerce en tant qu’illustratrice graphiste et ai réalisé
+                            de nombreux projets professionnels depuis.<br>
+                            Vous pouvez décider de me contacter
+                            dès maintenant pour commander la concrétisation de l'œuvre qui vous hante,
+                            ou bien vous baladez un peu sur mon site avant — on se retrouve dans
+                            Contact dans ce cas !<br>
+                            À très vite ;)
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
         <table>
             <td id="pi_img_bio_accueil">
@@ -72,7 +86,7 @@
             Vous êtes au bon endroit !
         </p>
 
-        <div class="container">
+        <div class="container mb-5">
             <div class="card-group">
                 <div class="row">
 
@@ -122,19 +136,33 @@
             </div>
         </div>
 
-        <hr id="pi_hr_acceuil">
+        <hr>
 
         <h2 id="pi_h2">Dernières actualités</h2>
 
-        <div class="container">
-            <div class="card-group">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="card" style="border:none;">
-                            <img class="card-img-top" src="{{ asset('images/ampoule.jpg') }}" alt="ampoule sur fond noir avec un cœur jaune à l'intérieur">
+        <div class="mb-5">
+            <div class="container">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card" style="border:none;">
+                                <img class="card-img-top" src="{{ asset('images/ampoule.jpg') }}" alt="ampoule sur fond noir avec un cœur jaune à l'intérieur">
+                                <div class="card-body">
+                                    <h4 class="card-title" style="text-align:center;">
+                                        <a href="{{ path('news') }}" style="color: #2B2118;">23/10/2021 : Eurêka amoureux</a>
+                                    </h4>
+                                </div>
+                                <button id="pi_voir_plus_btn">
+                                    <a id="pi_txt_btn" href="{{ path('news') }}">voir plus</a>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <img class="card-img-top" src="{{ asset('images/ciel_sol.jpg') }}" alt="homme regardant le ciel à travers un trou dans le sol">
                             <div class="card-body">
                                 <h4 class="card-title" style="text-align:center;">
-                                    <a href="{{ path('news') }}" style="color: #2B2118;">23/10/2021 : Eurêka amoureux</a>
+                                    <a href="{{ path('news') }}" style="color: #2B2118;">9/11/2021 : La lune dans le sol</a>
                                 </h4>
                             </div>
                             <button id="pi_voir_plus_btn">
@@ -142,21 +170,9 @@
                             </button>
                         </div>
                     </div>
-
-                    <div class="col-6">
-                        <img class="card-img-top" src="{{ asset('images/ciel_sol.jpg') }}" alt="homme regardant le ciel à travers un trou dans le sol">
-                        <div class="card-body">
-                            <h4 class="card-title" style="text-align:center;">
-                                <a href="{{ path('news') }}" style="color: #2B2118;">9/11/2021 : La lune dans le sol</a>
-                            </h4>
-                        </div>
-                        <button id="pi_voir_plus_btn">
-                            <a id="pi_txt_btn" href="{{ path('news') }}">voir plus</a>
-                        </button>
-                        </div>
-                    </div>
                 </div>
             </div>
+        </div>
 
 
 
