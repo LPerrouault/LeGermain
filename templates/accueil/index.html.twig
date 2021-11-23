@@ -8,78 +8,61 @@
             background-image: url('{{asset("images/maple.jpg")}}');
             background-repeat: no-repeat;
             background-size: contain;
+
         }
     </style>
 
         <div class="pi_accueil_bg">
-            <h1 id="pi_titre_accueil">Picassouille</h1>
+            <div class="pi_bannière">
+            <a href="{{ path('accueil') }}">
+                <img src="{{asset('images/logo/logo.png')}}" alt="Picassouille"/>
+            </a>
+            </div>
             <h2 id="pi_accroche_accueil">Illustrations, logos, affiches</h2>
         </div>
 
 
 
-<div class="container mb-5">
-    <div class="card-group">
-            <div class="col-6">
-                <div class="card" style="border:none;">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ asset('images/chat.png') }}"
-                             alt="chat roux faisant un clin d'œil" width="465" height="300">
-                    </div>
-                    <img class="card-img-top" >
-                </div>
-                <div class="col-6">
-                    <div class="card-body">
-                        <h2 id="pi_h2">Eugénie Picassouille</h2>
-                        <button id="pi_contacter_Eugénie_button">
-                            <a id="pi_txt_btn" href="{{ path('contact') }}">Me contacter</a>
-                        </button>
-                        <p>Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
-                            j’exerce en tant qu’illustratrice graphiste et ai réalisé
-                            de nombreux projets professionnels depuis.<br>
-                            Vous pouvez décider de me contacter
-                            dès maintenant pour commander la concrétisation de l'œuvre qui vous hante,
-                            ou bien vous baladez un peu sur mon site avant — on se retrouve dans
-                            Contact dans ce cas !<br>
-                            À très vite ;)
-                        </p>
+
+        <div class="mb-5">
+            <div class="container">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card">
+                                <img class="card-img-top" src="{{ asset('images/chat.png') }}"
+                                     alt="chat roux faisant un clin d'œil" width="465" height="400">
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h2>Eugénie Picassouille</h2>
+                            </div>
+                            <button id="pi_contacter_Eugénie_button">
+                                <a class="pi_txt_btn" href="{{ path('contact') }}">Me contacter</a>
+                            </button>
+                            <p id="pi_txt_biographie_accueil">
+                                Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
+                                j’exerce en tant qu’illustratrice graphiste et ai réalisé
+                                de nombreux projets professionnels depuis.<br>
+                                Vous pouvez décider de me contacter
+                                dès maintenant pour commander la concrétisation de l'œuvre qui vous hante,
+                                ou bien vous baladez un peu sur mon site avant — on se retrouve dans
+                                Contact dans ce cas !<br>
+                                À très vite ;)
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
-</div>
+        </div>
 
-
-
-
-
-
-
-
-        <table>
-            <td id="pi_img_bio_accueil">
-                <img src="{{ asset('images/chat.png') }}" alt="chat roux faisant un clin d'œil"
-                     width="465" height="300"/>
-            </td>
-            <td id="pi_txt_biographie_accueil"><h2 id="pi_h2">Eugénie Picassouille</h2>
-                <button id="pi_contacter_Eugénie_button">
-                    <a id="pi_txt_btn" href="{{ path('contact') }}">Me contacter</a>
-                </button>
-                <p>Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
-                    j’exerce en tant qu’illustratrice graphiste et ai réalisé
-                    de nombreux projets professionnels depuis.<br>
-                    Vous pouvez décider de me contacter
-                    dès maintenant pour commander la concrétisation de l'œuvre qui vous hante,
-                    ou bien vous baladez un peu sur mon site avant — on se retrouve dans
-                    Contact dans ce cas !<br>
-                    À très vite ;)
-                </p>
-            </td>
-        </table>
 
         <hr>
 
-        <h2 id="pi_h2">Œuvres</h2>
+
+        <h2>Œuvres</h2>
         <p id="pi_txt_accroche_oeuvres">
             Vous voulez un logo pour votre entreprise, une illustration pour votre décoration
             ou une affiche pour vos évènements ?<br>
@@ -92,46 +75,48 @@
 
                     <div class="col-4">
                         <div class="card" style="border:none;">
-                            <img class="card-img-top" src="{{ asset('images/flamme.png') }}" alt="flamme blanche sur fond noir">
+                            <img class="card-img-top" src="{{ asset('images/flamme.png') }}"
+                                 alt="flamme blanche sur fond noir">
                             <div class="card-body">
-                                <h4 class="card-title" style="text-align:center;">
-                                    <a href="{{ path('oeuvres') }}" style="color: #2B2118;">Logos</a>
+                                <h4 class="card-title">
+                                    <a class="pi_lien_oeuvres" href="{{ path('oeuvres') }}">Logos</a>
                                 </h4>
                             </div>
-                            <button id="pi_voir_plus_btn">
-                                <a id="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
+                            <button class="pi_voir_plus_btn">
+                                <a class="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
                             </button>
                         </div>
                     </div>
 
                     <div class="col-4">
                         <div class="card" style="border:none;">
-                            <img class="card-img-top" src="{{ asset('images/roses.png') }}" alt="trois licornes">
+                            <img class="card-img-top" src="{{ asset('images/roses.png') }}"
+                                 alt="une rose rouge et une rose rose">
                             <div class="card-body">
-                                <h4 class="card-title" style="text-align:center;">
-                                    <a href="{{ path('oeuvres') }}" style="color: #2B2118;">Illustrations</a>
+                                <h4 class="card-title">
+                                    <a class="pi_lien_oeuvres" href="{{ path('oeuvres') }}">Illustrations</a>
                                 </h4>
                             </div>
-                            <button id="pi_voir_plus_btn">
-                                <a id="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
+                            <button class="pi_voir_plus_btn">
+                                <a class="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
                             </button>
                         </div>
                     </div>
 
                     <div class="col-4">
                         <div class="card" style="border:none;">
-                            <img class="card-img-top" src="{{ asset('images/feuilles.jpg') }}" alt="des feuilles">
+                            <img class="card-img-top" src="{{ asset('images/feuilles.jpg') }}"
+                                 alt="des feuilles">
                             <div class="card-body">
-                                <h4 class="card-title" style="text-align:center;">
-                                    <a href="{{ path('oeuvres') }}" style="color: #2B2118;">Affiches</a>
+                                <h4 class="card-title">
+                                    <a class="pi_lien_oeuvres"  href="{{ path('oeuvres') }}">Affiches</a>
                                 </h4>
                             </div>
-                            <button id="pi_voir_plus_btn">
-                                <a id="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
+                            <button class="pi_voir_plus_btn">
+                                <a class="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
                             </button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
