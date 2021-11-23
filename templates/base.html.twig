@@ -1,201 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
+    <title>{% block title %}Accueil{% endblock %}- Picassouille</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-        <style>
-            .taille { min-height: 90em; }
-        </style>
-        
-        <!-- Lien vers Bootstrap-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
-              crossorigin="anonymous">
-    </head>
-    <body>
-        <!--Header navbar-->
-        {% block header %}
-        <div id="class-container">
-            <div id="content-wrap">
-                <!-- Navigation -->
-                <nav class="navbar navbar-expand-md">
-                    <!-- Logo Picassouille -->
-                    <img class="navbar-brand" src="{{asset('images_l3/logo/logo.png')}}" alt="Picassouille" style="width: 180px; padding: 0px"/>
-                    <!-- Bouton de collapse du menu (sur petit écrans)-->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-                    <!-- Eléments de navigation de la navbar-->
-                    <div class="container d-flex flex-column flex-md-row justify-content-between">
-                        <div class="collapse navbar-collapse" id="collapsible-navbar">
-                            <ul class="navbar-nav">
-                                <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
-                                pour définir cette page comme la page active-->
-                                <li class="nav-item">
-                                    <a class="nav-link {% block nav_accueil %}{% endblock %}" href="{{ path('accueil') }}">Accueil</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link {% block nav_oeuvres %}{% endblock %}" href="{{ path('oeuvres') }}">Œuvres</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link {% block nav_news %}{% endblock %}" href="{{ path('news') }}">News</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link {% block nav_ateliers %}{% endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link {% block nav_contact %}{% endblock %}" href="{{ path('contact') }}">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <hr>
-                </nav>
-        {% endblock %}
+    <!-- Lien vers Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 
-        {% block body %}{% endblock %}
-
-        <!--bouton top page-->
-        <button onclick="function topFunction() {
-                    document.body.scrollTop = 0;
-                    document.documentElement.scrollTop = 0;
-                }
-                topFunction()" id="pi_topBtn" title="Go to top">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="25"
-                 height="25"
-                 fill="currentColor"
-                 class="bi bi-arrow-up-circle"
-                 viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                      d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16
-                        0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1
-                        .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-            </svg>
-        </button>
-                
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-
-        <!--Footer-->
-        {% block footer %}
-            <footer id="footer" class="navbar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="pull-right">
-                                <ul class="contact_footer">Contact</ul>
-                                <li>Nom Prénom </li>
-                                <li>Mail </li>
-                                <li>Téléphone </li>
-                                <li>Adresse </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        {% endblock %}
-
-        <!-- Accès à JQuery, Popper.js et JS de Bootstrap pour le bon fonctionnement de Bootstrap-->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-                crossorigin="anonymous">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
-                crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous">
-        </script>
-        </div>
-    </div>
-    </body>
-</html>
-
-
-<!--
-<!-Style CSS de la navigation ci-dessous
-<style>
-    #page-container {
-        position: relative;
-        min-height: 100vh;
-    }
-
-    #content-wrap {
-        padding-bottom: 2.5rem;    /* Footer height */
-    }
-
-    #footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        height: 2.5rem;            /* Footer height */
-    }
-    body {
-        background-color: #F8F7F4;
-        color: #2B2118;
-    }
-    .navbar, footer {
-        background-color: #2B2118;
-    }
-    .nav-link {
-        color: #DE955A;
-    }
-    .navbar-brand, .active, .nav-link:hover, .nav-link:active, footer{
-        color: #F8F7F4;
-    }
-    hr {
-        display: block;
-        height: 1px;
-        border: 0;
-        border-top: 3px solid #AD1815;
-        opacity: 1;
-        border-radius: 10px;
-        margin: 0 10px 10px 10px;
-    }
-
-</style>
-<div id="class-container">
+    <!-- Liens vers les polices d'écriture-->
+    <!-- Rubik Bold-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="page-container">
     <div id="content-wrap">
-        <!-Navigation
+        <!-- Navigation -->
         <nav class="navbar navbar-expand-md">
-            <!-Logo Picassouille
-            <img class="navbar-brand" src="{asset('images/logo/logo.png')}}" alt="Picassouille" style="width: 180px; padding: 0px"/>
-            <!-Bouton de collapse du menu (sur petit écrans)
+            <!-- Logo Picassouille -->
+            <a href="{{ path('accueil') }}">
+                <img class="navbar-brand" src="{{asset('images/logo/logo.png')}}" alt="Picassouille"/>
+            </a>
+            <!-- Bouton de collapse du menu (sur petit écrans)-->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-             Eléments de navigation de la navbar
-            <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <!-- Eléments de navigation de la navbar-->
+            <div id="nav-links" class="container d-flex flex-column flex-md-row justify-content-between">
                 <div class="collapse navbar-collapse" id="collapsible-navbar">
                     <ul class="navbar-nav">
-                        <!- Dans la page de l'accueil, ajouter active dans le block nav_accueil
-                        pour définir cette page comme la page active
+                        <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
+                        pour définir cette page comme la page active-->
                         <li class="nav-item">
-                            <a class="nav-link { block nav_accueil %}{ endblock %}" href="{ path('accueil') }}">Accueil</a>
+                            <a class="nav-link {% block nav_accueil %}{% endblock %}" href="{{ path('accueil') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link { block nav_oeuvres %}{ endblock %}" href="{ path('oeuvres') }}">Œuvres</a>
+                            <a class="nav-link {% block nav_oeuvres %}{% endblock %}" href="{{ path('oeuvres') }}">Œuvres</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link { block nav_news %}{ endblock %}" href="{{ path('news') }}">News</a>
+                            <a class="nav-link {% block nav_news %}{% endblock %}" href="{{ path('news') }}">News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link { block nav_ateliers %}{endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
+                            <a class="nav-link {% block nav_ateliers %}{% endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link { block nav_contact %}{ endblock %}" href="{{ path('contact') }}">Contact</a>
+                            <a class="nav-link {% block nav_contact %}{% endblock %}" href="{{ path('contact') }}">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -203,10 +62,75 @@
             <hr>
         </nav>
 
-        Contenu de la page
-         block body %}% endblock %}
+        <!-- Contenu de la page -->
+        {% block body %}{% endblock %}
     </div>
-    <footer id="footer" class="navbar">
-        <div>Eugenie Picassouille</div>
+    <footer id="footer">
+        <div class="container">
+            <div class='row'>
+                <div id='information-contact' class='col-8'>
+                    Eugénie Picassouille<br>
+                    11 route du test 37000 TOURS<br>
+                    eugeniepicassouille@gmail.com<br>
+                    0602060206
+                </div>
+                <div id='reseaux' class='col-4'>
+                    <a href="https://facebook.com/">
+                        <img class="pi-logo-reseau" src="{{asset('images/logo/logo_facebook.png')}}"
+                             onmouseover="this.src='{{asset('images/logo/logo_facebook_h.png')}}'"
+                             onmouseout="this.src='{{asset('images/logo/logo_facebook.png')}}'" alt="Facebook"/>
+                    </a>
+                    <a class="pi-logo-reseau" href="https://twitter.com/">
+                        <img class="pi-logo-reseau" src="{{asset('images/logo/logo_twitter.png')}}"
+                             onmouseover="this.src='{{asset('images/logo/logo_twitter_h.png')}}'"
+                             onmouseout="this.src='{{asset('images/logo/logo_twitter.png')}}'" alt="Twitter"/>
+                    </a>
+                    <a class="pi-logo-reseau" href="https://instagram.com/">
+                        <img class="pi-logo-reseau" src="{{asset('images/logo/logo_instagram.png')}}"
+                             onmouseover="this.src='{{asset('images/logo/logo_instagram_h.png')}}'"
+                             onmouseout="this.src='{{asset('images/logo/logo_instagram.png')}}'" alt="Instagram"/>
+                    </a>
+                    <a class="pi-logo-reseau" href="https://indeed.com/">
+                        <img class="pi-logo-reseau" src="{{asset('images/logo/logo_indeed.png')}}"
+                             onmouseover="this.src='{{asset('images/logo/logo_indeed_h.png')}}'"
+                             onmouseout="this.src='{{asset('images/logo/logo_indeed.png')}}'" alt="Indeed"/>
+                    </a>
+                </div>
+            </div>
+            <div class='row'>
+                <div id='copyright' class='col-12'>@ 2021 Eugénie Picassouille</div>
+            </div>
+        </div>
     </footer>
-</div>-->
+</div>
+
+<!--bouton top page-->
+<button onclick="function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+                topFunction()" id="myBtn" title="Go to top">^
+</button>
+
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+<!-- Accès à JQuery, Popper.js et JS de Bootstrap pour le bon fonctionnement de Bootstrap-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous">
+</script>
+
+</body>
+</html>
