@@ -3,15 +3,12 @@
 {% block title %}Oeuvres - Picassouille{% endblock %}
 
 {% block body %}
-    <div class="oeuvre-title">
-        <img src="{{ asset('/image/') | trans}}">
-        <h2>Oeuvres</h2>
-    </div>
     <div class="container">
+        <h2>Oeuvres</h2>
         <div class="row">
-            <div class="col-md-2">{% include 'oeuvres/_filter.html.twig'  %}</div>
-            <div class="col-md-10">
-                <div class="grid">
+            <div class="col-2">{% include 'oeuvres/_filter.html.twig'  %}</div>
+            <div class="col-10">
+                <div class="mosaic">
                     {% for oeuvres in oeuvres %}
                         {% include 'oeuvres/_card.html.twig' %}
                     {% endfor %}
@@ -22,5 +19,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

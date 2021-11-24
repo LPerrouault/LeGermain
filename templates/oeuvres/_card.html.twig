@@ -1,18 +1,18 @@
-<div class="card ">
+<div class="ouvres-gallery ">
     <a href="{{ path('oeuvres_views', {id: oeuvres.id}) }}">
         <div class="cardOeuvre">
-            <img class="card-img-top cardOeuvre-img" src="{{ asset('/image/'~oeuvres.nomFichierImage) | trans}}" alt="{{ oeuvres.titre }}">
-            <div class="card-body cardOeuvre-titre">
+            <img class="cardOeuvre-img img-fluid" src="{{ asset('/image/'~oeuvres.nomFichierImage) | trans}}" alt="{{ oeuvres.titre }}">
+            <div class=" cardOeuvre-titre">
                 <h5 class="card-title">{{ oeuvres.titre }}</h5>
             </div>
         </div>
     </a>
-    <div>
+    {#<div>
         {% for t in oeuvres.listeTags %}
              <em class="text-muted text-primary text-italic">#{{ t.libelle}}</em>
         {% endfor %}
         {% for type in types %}
             <em class="text-muted text-primary text-italic">#{{ type.libelle}}</em>
         {% endfor %}
-    </div>
+    </div>#}
 </div>
