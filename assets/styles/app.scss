@@ -1,26 +1,121 @@
-
 @import "~bootstrap/scss/bootstrap";
-//penser à effectuer npm run dev ou npm run watch pour que ça marche
+//Penser à effectuer npm run dev ou npm run watch pour que ça marche
+//Recharger page du navigateur en ignorant le cache: CTRL+Shift+R
 
+// Page complète //
 body {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+    background-color: #F8F7F4;
+    color: #2B2118;
 }
+
+//Affichage du footer en bas de la page
+#page-container {
+    position: relative;
+    min-height: 100vh;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+#content-wrap {
+    padding-bottom: 8rem; /* Footer height */
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 8rem;         /* Footer height */
+    padding: 20px 0px;
+}
+
+//Bouton retour en haut de la page
 #myBtn {
+    font-family: 'Rubik', sans-serif;
+    height: 43px;
+    width: 48px;
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 30px;
+    bottom: 37px;
+    right: 40px;
     z-index: 99;
-    font-size: 18px;
+    font-size: 40px;
     border: none;
     outline: none;
-    background-color: #ff0000;
-    color: white;
+    background-color: #AD1815;
+    color: #F8F7F4;
     cursor: pointer;
-    padding: 15px;
-    border-radius: 4px;
+    padding-top: 5px;
+    border-radius: 10px;
 }
 #myBtn:hover {
-    background-color: #555;
+    background-color: #C5403E;
+}
+
+//Stylisation de la navbar et du footer
+.navbar, footer {
+    background-color: #2B2118;
+    font-family: 'Rubik', sans-serif;
+}
+footer {
+    font-size: 14px;
+}
+.nav-link { 
+    color: #DE955A;
+}
+//Les liens pointés et de la page actuelle sont de la même couleur
+.active, .nav-link:hover, .nav-link:active, footer {
+    color: #F8F7F4;
+}
+//Séparation visuelle des liens de nav
+#nav-links {
+    margin-left: 10em;
+}
+.nav-item {
+    padding-left: 5em;
+}
+//Taille du logo Picassouille
+.navbar-brand {
+    width: 10em; 
+    padding: 10px;
+    margin: 0 10px;
+}
+
+//Stylisation des éléments hr (ligne horizontale)
+hr {
+    display: block; 
+    height: 1px;
+    border: 0; 
+    border-top: 3px solid #AD1815;
+    opacity: 1;
+    border-radius: 10px;
+    margin: 0 10px 10px 10px;
+    background-color: #AD1815;
+}
+
+//Mise en place des différents du footer
+#information-contact {
+    line-height: 1.25em;
+}
+#reseaux {
+    position: absolute;
+    top: 25%;
+    left: 75%;
+    padding: 0px;
+    max-width: fit-content;
+}
+#copyright {
+    text-align: center
+}
+
+//Taille des logos des réseaux sociaux
+.pi-logo-reseau {
+    max-width: 3em;
+    height: auto;
+    margin-left: 0.2em;
+}
+
+    // Page accueil //
+//Description de l'auteur
+.pi-auteur-description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
 }
