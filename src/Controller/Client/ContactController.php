@@ -49,10 +49,10 @@ class ContactController extends AbstractController {
             //On insère les données dans la base de données
             $message_complet = new MailContact();
             $message_complet->setMailContact($nom, $prenom, $email, $sujet, $contenu);
-            //$entityManager->persist($message_complet);
+            $entityManager->persist($message_complet);
             try {
                 //Insertion des données
-                //$entityManager->flush();
+                $entityManager->flush();
                 //Affichage de la page de succès avec objet MailContact créé
                 return $this->render('client/contact/succes_envoi.html.twig', [
                             'controller_name' => 'TestController',
@@ -68,9 +68,16 @@ class ContactController extends AbstractController {
             //Création du formulaire de contact
             $form = ContactController::getContactForm();
             //Affichage de la page contact avec render du formulaire
+            //Les données déjà saisies sont réinsérées dans le formulaire
             return $this->renderForm('client/contact/index.html.twig',
                             ['form' => $form,
-                                'error' => $error_message]);
+                                'error' => $error_message,
+                                'nom' => $nom,
+                                'prenom' => $prenom,
+                                'email' => $email,
+                                'sujet' => $contenu,
+                                'contenu' => $contenu,
+                    ]);
         }
     }
 

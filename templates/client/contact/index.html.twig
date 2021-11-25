@@ -8,15 +8,33 @@
     <div class="pi-contact">
         {% form_theme form 'bootstrap_4_layout.html.twig' %}
         {{ form_start(form, {'method' : 'POST'}) }}
+
         <div class="pi-contact-error">
-            {{ form_errors(form) }}
+            {% if error is defined %}
+                {{ include('client/contact/erreur.html.twig') }}
+            {% endif %}
         </div>
+        
         <div class="pi-contact-form">
-            {{ form_row(form.nom) }}
-            {{ form_row(form.prenom) }}
-            {{ form_row(form.email) }}
-            {{ form_row(form.sujet) }}
-            {{ form_row(form.contenu) }}
+        <!-- Si des données incorrectes ont déjà été saisies -->
+        {% if nom is defined %}
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom, {'attr': {'value': nom}}) }}
+                {{ form_label(form.prenom) }}
+                {{ form_widget(form.prenom, {'attr': {'value': prenom}}) }}
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email, {'attr': {'value': email}}) }}
+                {{ form_label(form.sujet) }}
+                {{ form_widget(form.sujet, {'attr': {'value': sujet}}) }}
+                {{ form_label(form.contenu) }}
+                {{ form_widget(form.contenu, {'attr': {'value': contenu}}) }}
+        {% else %}
+                {{ form_row(form.nom) }}
+                {{ form_row(form.prenom) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.sujet) }}
+                {{ form_row(form.contenu) }}
+        {% endif %}
         </div>
         <div class="pi-contact-buttons">
             {{ form_row(form.save, {'label': 'Envoyer' }) }}
@@ -25,9 +43,7 @@
         </div>
     </div>
     <div>
-        {% if error is defined %}
-            {{ include('client/contact/erreur.html.twig') }}
-        {% endif %}
+
     </div>
 
     <div class="pi_map">
