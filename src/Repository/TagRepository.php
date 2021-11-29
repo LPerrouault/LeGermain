@@ -30,6 +30,16 @@ class TagRepository extends ServiceEntityRepository
         parent::__construct($registry, tag::class);
     }
 
+    public function serachId( $libelle){
+        $query = $this
+            ->createQueryBuilder('tag')
+            ->select('tag.id')
+             ->andWhere('tag.libelle IN (:tagArticle)')
+            ->setParameter('tagArticle', $libelle);
+
+        return $query->getQuery()->getResult();
+    }
+
    public function filterTag()
    {
        $query = $this->createQueryBuilder('t')

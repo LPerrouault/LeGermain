@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\DataFixtures\SeachData;
 use App\Entity\Article;
+use App\Entity\Tag;
 use App\Service\TestData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -73,5 +74,17 @@ class ArticlesRepository extends ServiceEntityRepository
             $searchData->page,
             10
         );
+    }
+
+    public function addArticle(Request $request,  $titre,  $nomFichier, $corpsArticle ){
+        $article = new Article();
+       /* $tag = array_keys($request->query->get('searchTag'));
+        $id = new TagRepository(Tag::class);
+        $id->serachId($tag);*/
+        $date = date('Y-m-d H:i:s');
+
+        dd($titre);
+        $article->setArticle($titre, $date, $nomFichier, $corpsArticle);
+        dd($article);
     }
 }
