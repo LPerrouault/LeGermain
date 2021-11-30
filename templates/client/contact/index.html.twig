@@ -3,51 +3,94 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-    <style></style>
-    <h2>Page de CONTACT</h2>
-    <div class="pi-contact">
-        {% form_theme form 'bootstrap_4_layout.html.twig' %}
-        {{ form_start(form, {'method' : 'POST'}) }}
+    <div class="container">
+        <h2>Besoin d'un renseignement?</h2>
+        <div class='row'>
+            <div class="pi-contact col-6">
+                {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                {{ form_start(form, {'method' : 'POST', }) }}
 
-        <div class="pi-contact-error">
-            {% if error is defined %}
-                {{ include('client/contact/erreur.html.twig') }}
-            {% endif %}
-        </div>
-        
-        <div class="pi-contact-form">
-        <!-- Si des données incorrectes ont déjà été saisies -->
-        {% if nom is defined %}
-                {{ form_label(form.nom) }}
-                {{ form_widget(form.nom, {'attr': {'value': nom}}) }}
-                {{ form_label(form.prenom) }}
-                {{ form_widget(form.prenom, {'attr': {'value': prenom}}) }}
-                {{ form_label(form.email) }}
-                {{ form_widget(form.email, {'attr': {'value': email}}) }}
-                {{ form_label(form.sujet) }}
-                {{ form_widget(form.sujet, {'attr': {'value': sujet}}) }}
-                {{ form_label(form.contenu) }}
-                {{ form_widget(form.contenu, {'attr': {'value': contenu}}) }}
-        {% else %}
-                {{ form_row(form.nom) }}
-                {{ form_row(form.prenom) }}
-                {{ form_row(form.email) }}
-                {{ form_row(form.sujet) }}
-                {{ form_row(form.contenu) }}
-        {% endif %}
-        </div>
-        <div class="pi-contact-buttons">
-            {{ form_row(form.save, {'label': 'Envoyer' }) }}
-            {{ form_row(form.reset, {'label' : "Effacer"}) }}
-            {{ form_end(form) }}
-        </div>
-    </div>
-    <div>
+                <div class="pi-contact-error">
+                    {% if error is defined %}
+                        {{ include('client/contact/erreur.html.twig') }}
+                    {% endif %}
+                </div>
 
-    </div>
+                <div class="pi-contact-form">
+                    <!-- Si des données incorrectes ont déjà été saisies -->
+                    <div class="container">
+                        <div class="row form-group">
+                            <div class="col-2">
+                                {{ form_label(form.nom) }}
+                            </div>
+                            <div class="col">
+                                {% if nom is defined %}
+                                    {{ form_widget(form.nom, {'attr': {'value': nom}}) }}
+                                {% else %}
+                                    {{ form_widget(form.nom) }}
+                                {% endif %}
+                            </div>
+                            <div class="col-2">
+                                {{ form_label(form.prenom) }}
+                            </div>
+                            <div class="col">
+                                {% if prenom is defined %}
+                                    {{ form_widget(form.prenom, {'attr': {'value': prenom}}) }}
+                                {% else %}
+                                    {{ form_widget(form.prenom) }}
+                                {% endif %}
+                            </div>
+                        </div>
 
-    <div class="pi_map">
-        <!-- Carte de moyenne taille -->
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.827139125682!2d0.7013963156218541!3d47.356772729168824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fcd5e89bf4475b%3A0xe8018091db1e4271!2sUniversit%C3%A9%20de%20Tours%20-%20Facult%C3%A9%20des%20Sciences%20et%20Techniques!5e0!3m2!1sfr!2sfr!4v1636903555043!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                {{ form_label(form.email) }}
+                            </div>
+                            <div class="col">
+                                {% if email is defined %}
+                                    {{ form_widget(form.email, {'attr': {'value': email}}) }}
+                                {% else %}
+                                    {{ form_widget(form.email) }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-2">
+                                {{ form_label(form.sujet) }}
+                            </div>
+                            <div class="col">
+                                {% if sujet is defined %}
+                                    {{ form_widget(form.sujet, {'attr': {'value': sujet}}) }}
+                                {% else %}
+                                    {{ form_widget(form.sujet) }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {% if contenu is defined %}
+                                {{ form_widget(form.contenu, {'attr': {'value': contenu}}) }}
+                            {% else %}
+                                {{ form_widget(form.contenu) }}
+                            {% endif %}
+                        </div>
+
+                        <div class="row pi-contact-buttons">
+                            <div class="col">
+                                {{ form_row(form.save, {'label': 'Envoyer' }) }}
+                            </div>
+                            <div class="col">
+                                {{ form_row(form.reset, {'label' : "Effacer"}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+            <!-- Carte de taille max-width (largeur limitée à col-6) x 300 -->
+            <iframe class="col-6"src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2702.827140619793!2d0.7013963!3d47.3567727!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fcd5e89bf4475b%3A0xe8018091db1e4271!2sUniversit%C3%A9%20de%20Tours%20-%20Facult%C3%A9%20des%20Sciences%20et%20Techniques!5e0!3m2!1sfr!2sfr!4v1638260245710!5m2!1sfr!2sfr" style="border:0;" height="300" allowfullscreen="" loading="lazy"></iframe>
+        </div>
     </div>
 {% endblock %}
