@@ -9,9 +9,11 @@ use App\Entity\MailContact;
 use \Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+
+//use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ContactController extends AbstractController {
 
@@ -77,7 +79,7 @@ class ContactController extends AbstractController {
                                 'email' => $email,
                                 'sujet' => $contenu,
                                 'contenu' => $contenu,
-                    ]);
+            ]);
         }
     }
 
@@ -130,10 +132,11 @@ class ContactController extends AbstractController {
                         ->add('prenom', TextType::class, array('required' => false))
                         ->add('email', EmailType::class, array('required' => false))
                         ->add('sujet', TextType::class, array('required' => false))
-                        ->add('contenu', CKEditorType::class, array(
-                            'config' => array(
-                                'uiColor' => '#ffffff',
-                                'toolbar' => 'standard')))
+                        ->add('contenu', TextareaType::class, array('required' => false))
+                        /* ->add('contenu', CKEditorType::class, array(
+                          'config' => array(
+                          'uiColor' => '#ffffff',
+                          'toolbar' => 'standard'))) */
                         ->add('reset', ResetType::class, array(
                             'attr' => array('class' => 'save')))
                         ->add('save', SubmitType::class, ['label' => 'Envoyer'])
