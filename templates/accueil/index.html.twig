@@ -7,31 +7,80 @@
     <style>
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .pi_accueil_bg{
+            background-image: url('{{asset("images_l3/maple.jpg")}}');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
     </style>
 
-    <div class="example-wrapper">
-        <header></header>
-
-        <h1>Picassouille</h1>
-        <p>Illustrations, logos, affiches</p>
+        <div class="pi_accueil_bg">
+            <h1>Picassouille</h1>
+            <p>Illustrations, logos, affiches</p>
+        <div/>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
         <br><br><br><br><br>
 
-        <hr>
-
-        <h2>Eugénie Picassouille</h2>
-        <p><a href="{{ path('contact') }}">Me contacter</a></p>
+        <table>
+            <td><img src="{{ asset('images_l3/chat.png') }}" alt="chat roux faisant un clin d'œil"
+                     width="350" height="250"/>
+            </td>
+            <td><h2>Eugénie Picassouille</h2><br>
+                <p>Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
+                    j’exerce en tant qu’illustratrice graphiste et ai réalisé
+                    de nombreux projets professionnels depuis.<br>
+                    Vous pouvez décider de me contacter
+                    dès maintenant pour commander la concrétisation de l'œuvre qui vous hante,
+                    ou bien vous baladez un peu sur mon site avant — on se retrouve dans
+                    Contact dans ce cas !<br>
+                    À très vite ;)
+                </p>
+                <button id="contacter Eugénie"><a href="{{ path('contact') }}">Me contacter</a></button>
+            </td>
+        </table>
         <br><br><br><br><br>
 
         <h2>Œuvres</h2>
-        <p>Logos <br><a href="{{ path('oeuvres') }}">voir plus</a></p><br>
-        <p>Illustrations <br><a href="{{ path('oeuvres') }}">voir plus</a></p><br>
-        <p>Affiches <br><a href="{{ path('oeuvres') }}">voir plus</a></p>
-        <br><br><br><br><br>
+        <table>
+            <tr>Vous voulez un logo pour votre entreprise, une illustration pour votre décoration
+                 ou une affiche pour vos évènements ?<br>
+                Vous êtes au bon endroit !
+            </tr>
+            <tr>
+                <td><p><a href="{{ path('oeuvres') }}">Logos</a></p>
+                    <img src="{{ asset('images_l3/flamme.png') }}" alt="flamme blanche"
+                         width="250" height="250"/>
+                </td>
+                <td>
+                    <p><a href="{{ path('oeuvres') }}">Illustrations</a></p>
+                    <img src="{{ asset('images_l3/paysage.jpg') }}" alt="paysage ensoleillé"
+                         width="500" height="250"/>
+                </td>
+                <td><p><a href="{{ path('oeuvres') }}">Affiches</a></p>
+                    <img src="{{ asset('images_l3/pêcheur.png') }}" alt="pêcheur pêchant un sous-marin"
+                         width="250" height="475"/>
+                </td>
+            </tr>
+            <tr>
+                <td><button id="plus_logos"><a href="{{ path('oeuvres') }}">voir plus</a></button></td>
+                <td><button id="plus_illustrations"><a href="{{ path('oeuvres') }}">voir plus</a></button></td>
+                <td><button id="plus_affiches"><a href="{{ path('oeuvres') }}">voir plus</a></button></td>
+            </tr>
+        </table>
+        <br><br><br><br>
 
         <h2>Dernières actualités</h2>
-        <p>Là y aura deux vignettes d'articles <br><a href="{{ path('news') }}">voir plus</a></p>
+        <table>
+            <td><img src="{{ asset('images_l3/ampoule.jpg') }}"
+                     alt="ampoule sur fond noir avec un cœur jaune à l'intérieur"
+                     width="250" height="250"/><p>23/10/2021 : Eurêka amoureux</p></td>
+            <td><img src="{{ asset('images_l3/ciel_sol.jpg') }}"
+                     alt="homme regardant le ciel à travers un trou dans le sol"
+                     width="250" height="250"/><p>9/11/2021 : La lune dans le sol</p></td>
+        </table>
+        <button id="plus_news"><a href="{{ path('news') }}">voir plus</a></button>
         <br><br><br><br><br>
-
-    </div>
 
 {% endblock %}

@@ -9,7 +9,7 @@
 import './styles/app.scss';
 import './styles/global.scss';
 
-const $ = require('jquery');
+//const $ = require('jquery');
 $(document).ready(function(){
     //Get the button
     var mybutton = document.getElementById("myBtn");
