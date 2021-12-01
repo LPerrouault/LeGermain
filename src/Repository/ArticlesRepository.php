@@ -32,6 +32,7 @@ class ArticlesRepository extends ServiceEntityRepository
     /**
      * @return PaginationInterface
      */
+    //requette SQL pour determiner les article qui sont dans tag par l'intermediaire de la table article_tag
     public function findSearchFilter(SeachData $searchData) : PaginationInterface
     {
         $query = $this
@@ -54,10 +55,12 @@ class ArticlesRepository extends ServiceEntityRepository
         );
     }
 
+//     requette SQL pour determiner les article qui sont dans tag par l'intermediaire de la table article_tag
+//     quand on aplique une action sur le filtre
+
     public function findSearchAfterFilter(Request $request, SeachData $searchData): PaginationInterface
     {
         $articleTag = array_keys($request->query->get('searchTag'));
-        // dd($articleTag);
 
         $query = $this
             ->createQueryBuilder('a')
