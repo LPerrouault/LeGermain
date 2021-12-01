@@ -14,7 +14,7 @@ class NewsController extends AbstractController
 {
     #[Route('/news', name: 'news')]
     public function index(ArticlesRepository $articlesRepository, Request $request): Response{
-//       Initialisation du variable SearchDat qui stoque les article qui on des tag
+//       Initialisation du variable SearchDat qui stoque les tag des article
 //        Puis on lui attribue la page 1 qui nous permet de mettre en place une pagination d
 //          des articles
         $data = new SeachData();
