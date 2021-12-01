@@ -78,12 +78,12 @@ class Article
         return $this;
     }
 
-    public function getDateHeureEnregistrement(): ?\DateTimeInterface
+    public function getDateHeureEnregistrement(): ?\DateTime
     {
         return $this->dateHeureEnregistrement;
     }
 
-    public function setDateHeureEnregistrement(\DateTimeInterface $dateHeureEnregistrement): self
+    public function setDateHeureEnregistrement(\DateTime $dateHeureEnregistrement): self
     {
         $this->dateHeureEnregistrement = $dateHeureEnregistrement;
 
@@ -125,11 +125,12 @@ class Article
 
         return $this;
     }
-    
-    public function setArticle(string $titre, \DateTimeInterface $dateHeureEnregistrement, string $nomFichierImage, string $corpsArticle){
+
+    public function setArticle(string $titre, \DateTime $dateHeureEnregistrement, string $nomFichierImage, string $corpsArticle, ){
         $this->titre = $titre;
         $this->dateHeureEnregistrement = $dateHeureEnregistrement;
         $this->nomFichierImage = $nomFichierImage;
         $this->corpsArticle = $corpsArticle;
+       // $this->listeTags = $listeTags;
     }
 }

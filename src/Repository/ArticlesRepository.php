@@ -44,6 +44,7 @@ class ArticlesRepository extends ServiceEntityRepository
             $query = $query
                 ->andWhere('t.id IN (:listeArticle)')
                 ->setParameter('listeArticle', $searchData->tags);
+
         }
 
         $query=$query->getQuery();
@@ -76,15 +77,4 @@ class ArticlesRepository extends ServiceEntityRepository
         );
     }
 
-    public function addArticle(Request $request,  $titre,  $nomFichier, $corpsArticle ){
-        $article = new Article();
-       /* $tag = array_keys($request->query->get('searchTag'));
-        $id = new TagRepository(Tag::class);
-        $id->serachId($tag);*/
-        $date = date('Y-m-d H:i:s');
-
-        dd($titre);
-        $article->setArticle($titre, $date, $nomFichier, $corpsArticle);
-        dd($article);
-    }
 }

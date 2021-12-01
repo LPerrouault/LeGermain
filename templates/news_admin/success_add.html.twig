@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter - Picassouille{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Article rédiger avec succée</h1>
+        <a class="btn btn-primary"  href="{{ path('news_admin') }}">Retour</a>
+        <a class="btn btn-secondary"  href="{{ path('news_admin_add') }}" >Rediger un autre article</a>
+    </div>
+{% endblock %}
