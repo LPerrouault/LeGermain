@@ -46,7 +46,7 @@ hr {
     border-top: 3px solid #AD1815;
     opacity: 1;
     border-radius: 10px;
-    margin: 0 10px 10px 10px;
+    margin: 0 10px 0px 10px;
     background-color: #AD1815;
 }
 
@@ -54,19 +54,6 @@ body {
     font-size: 20px;
     background-color: #F8F7F4;
     color: #2B2118;
-}
-
-//css page accueil
-//css du logo picassouille sur la bannière
-.pi_bannière {
-    padding-left: 18em;
-    padding-top: 3em;
-}
-//sous-titre de la bannière
-#pi_accroche_accueil {
-    text-align: center;
-    font-size: 70px;
-    padding-bottom: 200px;
 }
 
 //titre de carte mis au centre
@@ -80,14 +67,49 @@ h2 {
     font-size: 50px;
 }
 
-//stylisation du texte des boutons dans accueil
+
+
+
+//css page accueil
+//couleur des liens
+.pi_lien {
+    color: #2B2118;
+}
+.pi_lien:hover {
+    color: #2B2118;
+}
+
+//stylisation du texte des boutons
 .pi_txt_btn {
     font-size: 22px;
     color: #F8F7F4;
     text-align: center;
 }
 .pi_txt_btn:hover {
-    color: #2B2118;
+    color: #F8F7F4;
+}
+
+//stylisation des boutons voir plus
+.pi_voir_plus_btn {
+    background-color: #7A1D07;
+    width: 100%;
+    border-radius: 30px;
+    height: 50px;
+    text-align: center;
+    padding: 0px 20px 0px 20px;
+    border: none;
+}
+
+//css du logo picassouille sur la bannière
+.pi_bannière {
+    padding-left: 25em;
+    padding-top: 5em;
+}
+//sous-titre de la bannière
+#pi_accroche_accueil {
+    text-align: center;
+    font-size: 70px;
+    padding-bottom: 220px;
 }
 
 //css de la biographie d'Eugénie dans la page accueil
@@ -106,6 +128,12 @@ h2 {
     width: 100%;
 }
 
+//stylisation des titres œuvres et dernières actualités dans accueil
+.pi_h2 {
+    font-size: 55px;
+    padding: 10px 0px 10px 0px;
+}
+
 //css de la partie œuvres dans accueil
 //sous-titre de la partie œuvres de l'accueil
 #pi_txt_accroche_oeuvres {
@@ -114,23 +142,13 @@ h2 {
     padding: 0px 0px 20px 0px;
 }
 
-//couleur des liens pour Logos, Illustrations, Affiches
-.pi_lien_oeuvres {
-    color: #2B2118;
-}
-
-
-//stylisation des boutons voir plus
-.pi_voir_plus_btn {
-    background-color: #7A1D07;
-    width: 100%;
-    border-radius: 30px;
-    height: 50px;
+//css partie actualités
+//sous-titre des dernières actualités
+#pi_txt_accroche_actualités {
+    font-size: 25px;
     text-align: center;
-    padding: 0px 20px 0px 20px;
-    border: none;
+    padding: 10px 0px 10px 0px;
 }
-
 
 
 
