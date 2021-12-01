@@ -32,6 +32,7 @@ class OeuvreRepository extends ServiceEntityRepository
     /**
      * @return PaginationInterface
      */
+//    Requette qui effectue la recherche de tous les oeuvres
     public function findSearchFilter(SeachData $searchData) : PaginationInterface
     {
         $query = $this
@@ -53,6 +54,7 @@ class OeuvreRepository extends ServiceEntityRepository
         );
     }
 
+//  Requette qui effectue une recherche de toutes les oeuvre qui on le tag selectionné
     public function findSearchTag(Request $request, SeachData $searchData): PaginationInterface
     {
         $oeuvreTag = array_keys($request->query->get('searchTag'));
@@ -72,6 +74,7 @@ class OeuvreRepository extends ServiceEntityRepository
         );
     }
 
+//  Requette qui effectue une recherche de toutes les oeuvre qui on ce type selectionné
     public function findSearchType(Request $request, SeachData $searchData): PaginationInterface
     {
         $oeuvreType = array_keys($request->query->get('searchType'));
@@ -91,6 +94,7 @@ class OeuvreRepository extends ServiceEntityRepository
         );
     }
 
+//  Requette qui effectue une recherche de toutes les oeuvre qui on le type et le tag selectionné
     public function findSearchTagAndType(Request $request, SeachData $searchData): PaginationInterface
     {
         $oeuvreTag = array_keys($request->query->get('searchTag'));
