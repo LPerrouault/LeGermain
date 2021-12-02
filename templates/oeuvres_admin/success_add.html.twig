@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter - Picassouille{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Oeuvre rédiger avec succée</h1>
+        <a class="btn btn-primary"  href="{{ path('oeuvres_admin') }}">Retour</a>
+        <a class="btn btn-secondary"  href="{{ path('oeuvre_admin_add') }}" >Rediger un autre oeuvre</a>
+    </div>
+{% endblock %}

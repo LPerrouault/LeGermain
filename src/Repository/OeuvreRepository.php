@@ -36,7 +36,9 @@ class OeuvreRepository extends ServiceEntityRepository
     {
         $query = $this
             ->createQueryBuilder('o')
-            ->select('o');
+            ->select('o')
+            ->orderBy('o.id', 'DESC');
+
 
         if (!empty($searchData->tags)){
             $query = $query
@@ -60,6 +62,7 @@ class OeuvreRepository extends ServiceEntityRepository
                 ->createQueryBuilder('o')
                 ->select('t', 'o')
                 ->join('o.listeTags', 't')
+                ->orderBy('o.id', 'DESC')
                 ->andWhere('t.libelle IN (:tagOeuvre)')
                 ->setParameter('tagOeuvre', $oeuvreTag);
 
@@ -113,5 +116,38 @@ class OeuvreRepository extends ServiceEntityRepository
             $searchData->page,
             10
         );
+    }
+
+    public function updateOeuvre($id, $titre, $nomFichier , $corpsArticle){
+        if ($id!=null) {
+            $query = $this
+                ->createQueryBuilder('oeuvre')
+                ->update();
+            if ($titre != null && $nomFichier != null && $corpsArticle != null){
+                $query  ->set('articles.titre', ':titre')
+                        ->set('articles.nomFichierImage', ':nomFichier')
+                        ->set('articles.corpsArticle', ':corpsArticle')
+                        ->setParameter('titre', $titre)
+                        ->setParameter('nomFichier', $nomFichier)
+                        ->setParameter('corpsArticle', $corpsArticle);
+            }
+            elseif ($titre != null) {
+                $query->set('articles.titre', ':titre')
+                    ->setParameter('titre', $titre);
+
+            } elseif ($nomFichier != null) {
+                $query->set('articles.nomFichierImage', ':nomFichier')
+                    ->setParameter('nomFichier', $nomFichier);
+
+            } elseif ($corpsArticle == null) {
+                $query->set('articles.corpsArticle', ':corpsArticle')
+                    ->setParameter('corpsArticle', $corpsArticle);
+            }
+            $query->where('articles.id = ?2')
+                ->setParameter(2, $id);
+
+            return $query->getQuery()->getResult();
+        }
+
     }
 }

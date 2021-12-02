@@ -41,7 +41,7 @@ class TagRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-    public function searchTag($idArticle) {
+    public function searchTagArticle($idArticle) {
         $query = $this
             ->createQueryBuilder('tag')
             ->select('tag', 'article')
@@ -49,6 +49,18 @@ class TagRepository extends ServiceEntityRepository
             ->andWhere('article.id IN (:tagArticle)')
             ->setParameter('tagArticle',$idArticle);
 
+        return $query->getQuery()->getResult(Query::HYDRATE_OBJECT);
+    }
+
+    public function searchTagOeuvre($idOeuvre) {
+        $query = $this
+            ->createQueryBuilder('tag')
+            ->select('tag','oeuvre' )
+            ->join('tag.listeOeuvres', 'oeuvre')
+            ->andWhere('oeuvre.id IN (:tagOeuvre)')
+            ->setParameter('tagOeuvre',$idOeuvre);
+
+        dd($query->getQuery()->getResult(Query::HYDRATE_OBJECT));
         return $query->getQuery()->getResult(Query::HYDRATE_OBJECT);
     }
 

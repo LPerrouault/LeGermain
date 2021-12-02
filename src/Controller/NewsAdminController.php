@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\DataFixtures\SeachData;
-use App\Form\AddArticleFormType;
+use App\Entity\Type;
+use App\Form\ArticleFormType;
 use App\Entity\Article;
 use App\Entity\Tag;
+use App\Form\OeuvreFormType;
 use App\Repository\ArticlesRepository;
+use App\Repository\OeuvreRepository;
 use App\Repository\TagRepository;
+use App\Repository\TypeRepository;
 use App\Service\FilUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,7 +72,7 @@ class NewsAdminController extends AbstractController
     #[Route('/news_admin_remove/{id}', name: 'remove_news')]
     public function removeNews(int $id, Request $request, ArticlesRepository $repository, TagRepository $tagRepository): Response{
         $article = $repository->find($id);
-        $tag = $tagRepository->searchTag($article->getId());
+        $tag = $tagRepository->searchTagArticle($article->getId());
 
           if ($article != null){
               $article->removeListeTag($tag[0]);
@@ -82,18 +86,14 @@ class NewsAdminController extends AbstractController
         ]);
     }
 
+//    Route permettant le modification d'un article
     #[Route('/news_admin_update/{id}', name: 'update_news')]
     public function updateNews(int $id,Request $request,SluggerInterface $slugger,TagRepository $tagRepository, ArticlesRepository $repository): Response{
         $article = $repository->find($id);
-        $newArticle = new Article();
-        $newTag = new Tag();
-        $tag = $tagRepository->searchTag($id);
+        $tag = $tagRepository->searchTagArticle($id);
 
-//      initialisation de la variable date avec l'heur actuel
-        $time = date('Y-m-d H:i:s', time());
-        $date =new \DateTime();
-        $date->format($time);
-        $form = $this->createForm(AddArticleFormType::class, $article);
+//      initialisation des variable
+        $form = $this->createForm(ArticleFormType::class, $article);
         $form->get('titre')->setData($article->getTitre());
         $form->get('listeTags')->setData($tag[0]);
         $form->get('corpsArticle')->setData($article->getCorpsArticle()) ;
@@ -144,7 +144,7 @@ class NewsAdminController extends AbstractController
         $date->format($time);
 
 
-        $form = $this->createForm(AddArticleFormType::class, $article);
+        $form = $this->createForm(ArticleFormType::class, $article);
         $form->handleRequest($request);
 
           if ($form->isSubmitted() && $form->isValid()){
