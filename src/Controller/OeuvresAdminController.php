@@ -134,8 +134,7 @@ class OeuvresAdminController extends AbstractController
                     $form->get('idType')->getData()
                 );
                 //ajout de l'article avec le tag qui lui correspond
-                $tag->setLibelle($form->get('listeTags')->getData());
-                $oeuvre->addListeTag($tag);
+                $oeuvre->addListeTag($form->get('listeTags')->getData());
 
                 //envoie de la requette pour ajouter le nouveau article
                 $em = $this->getDoctrine()->getManager();
@@ -153,10 +152,10 @@ class OeuvresAdminController extends AbstractController
 
     //    Route permettant le modification d'un article
     #[Route('/oeuvre_admin_update/{id}', name: 'update_oeuvre')]
-    public function updateNews(int $id,Request $request,SluggerInterface $slugger, TypeRepository $typeRepository,TagRepository $tagRepository, OeuvreRepository $repository): Response{
+    public function updateNews(int $id,Request $request,SluggerInterface $slugger,TagRepository $tagRepository, OeuvreRepository $repository): Response{
         $oeuvre = $repository->find($id);
         $tag = new Tag();
-
+       // dd($oeuvre);
 //      initialisation des variable
         $form = $this->createForm(OeuvreFormType::class, $oeuvre);
 
@@ -190,7 +189,33 @@ class OeuvresAdminController extends AbstractController
                         );
                     } catch (FileException $e) { $e = null; }
                 }
+                /*
+               * Peparation de la requete pour la mise a jour dans la base de donnée
+               */
+                $oeuvre->setOeuvre(
+                    $form->get('titre')->getData(),
+                    $form->get('largeur')->getData(),
+                    $form->get('hauteur')->getData(),
+                    $newFilename,
+                    $form->get('description')->getData(),
+                    $form->get('idType')->getData()
+                );
+//              On enregistre dans le tag qui correspond a l'oeuvre
+                $oldTag = $tagRepository->searchTagOeuvre($id);
+//                Ajout de l'oeuvre avec le tag qui lui correspond.
+//              Si on mofifie le tag alors on change la correspondance dans la table
 
+                if ($oeuvre->getListeTags() != $form->get('listeTags')->getData()){
+                    $oeuvre->removeListeTag($oldTag[0]);
+                    $oeuvre->addListeTag($form->get('listeTags')->getData());
+                }
+
+                //envoie de la requette dans la base de donnée
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($oeuvre);
+                $em->flush();
+
+                $this->redirectToRoute('success_add');
             }
 
         }
