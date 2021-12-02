@@ -41,7 +41,7 @@ class TagRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-    public function searchTag($idArticle) {
+    public function searchTagArticle($idArticle) {
         $query = $this
             ->createQueryBuilder('tag')
             ->select('tag', 'article')

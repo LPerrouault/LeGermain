@@ -86,7 +86,7 @@ class NewsAdminController extends AbstractController
         $article = $repository->find($id);
         $newArticle = new Article();
         $newTag = new Tag();
-        $tag = $tagRepository->searchTag($id);
+        $tag = $tagRepository->searchTagArticle($id);
 
 //      initialisation de la variable date avec l'heur actuel
         $time = date('Y-m-d H:i:s', time());
@@ -121,7 +121,27 @@ class NewsAdminController extends AbstractController
                         );
                     } catch (FileException $e) { $e = null; }
                 }
+                /*
+                * Peparation de la requete pour la base de donnée
+                */
+                $article->setArticle(
+                    $form->get('titre')->getData(),
+                    $date,
+                    $newFilename,
+                    $form->get('corpsArticle')->getData(),
+                );
+//              On enregistre dans le tag qui correspond a l'oeuvre
+//                Ajout de l'oeuvre avec le tag qui lui correspond.
+//              Si on mofifie le tag alors on change la correspondance dans la table
 
+                if ($article->getListeTags() != $form->get('listeTags')->getData()){
+                    $article->removeListeTag($tag[0]);
+                    $article->addListeTag($form->get('listeTags')->getData());
+                }
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($article);
+                $em->flush();
             }
             $repository->updateArticle($id,$form->get('titre')->getData(),$newFilename, $form->get('corpsArticle')->getData());
         }
