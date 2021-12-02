@@ -77,4 +77,38 @@ class ArticlesRepository extends ServiceEntityRepository
         );
     }
 
+    public function updateArticle($id, $titre, $nomFichier , $corpsArticle){
+       if ($id!=null) {
+           $query = $this
+               ->createQueryBuilder('articles')
+               ->update();
+           if ($titre != null && $nomFichier != null && $corpsArticle != null){
+               $query->set('articles.titre', ':titre')
+                      ->set('articles.nomFichierImage', ':nomFichier')
+                      ->set('articles.corpsArticle', ':corpsArticle')
+                      ->setParameter('titre', $titre)
+                      ->setParameter('nomFichier', $nomFichier)
+                      ->setParameter('corpsArticle', $corpsArticle);
+
+           }
+           elseif ($titre != null) {
+               $query->set('articles.titre', ':titre')
+                      ->setParameter('titre', $titre);
+
+           } elseif ($nomFichier != null) {
+               $query->set('articles.nomFichierImage', ':nomFichier')
+                     ->setParameter('nomFichier', $nomFichier);
+
+           } elseif ($corpsArticle == null) {
+               $query->set('articles.corpsArticle', ':corpsArticle')
+                     ->setParameter('corpsArticle', $corpsArticle);
+           }
+           $query->where('articles.id = ?2')
+               ->setParameter(2, $id);
+
+           return $query->getQuery()->getResult();
+       }
+
+    }
+
 }

@@ -1,6 +1,6 @@
 <div class="card">
     <a href="{{ path('news_views', {id: article.id}) }}">
-        <img class="card-img-top" src="{{ asset('/image/'~article.nomFichierImage) | trans}}" alt="{{ article.titre }}">
+        <img class="card-img-top" src="{{ asset('/image/article/'~article.nomFichierImage) | trans}}" alt="{{ article.titre }}">
         <div class="card-body">
             <span class="card-title">
                 <h3 class="card-title">{{ article.titre }}</h3>
