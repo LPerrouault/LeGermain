@@ -38,7 +38,8 @@ class ArticlesRepository extends ServiceEntityRepository
         $query = $this
             ->createQueryBuilder('articles')
             ->select('t', 'articles')
-            ->join('articles.listeTags', 't');
+            ->join('articles.listeTags', 't')
+            ->orderBy('articles.dateHeureEnregistrement', 'DESC');
 
         if (!empty($searchData->tags)){
             $query = $query
@@ -65,6 +66,7 @@ class ArticlesRepository extends ServiceEntityRepository
             ->createQueryBuilder('a')
             ->select('t', 'a')
             ->join('a.listeTags', 't')
+            ->orderBy('articles.dateHeureEnregistrement', 'DESC')
             ->andWhere('t.libelle IN (:tagArticle)')
             ->setParameter('tagArticle', $articleTag);
 
