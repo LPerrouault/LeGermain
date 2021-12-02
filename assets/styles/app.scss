@@ -2,7 +2,12 @@
 //Penser à effectuer npm run dev ou npm run watch pour que ça marche
 //Recharger page du navigateur en ignorant le cache: CTRL+Shift+R
 
-// Page complète //
+//Noir : #2B2118
+//Beige : #DE955A
+//Blanc : #F8F7F4
+//Rouge : #7A1D07
+
+// Eléments en commun //
 body {
     font-size: 20px;
     background-color: #F8F7F4;
@@ -25,29 +30,6 @@ body {
     width: 100%;
     height: 8rem;         /* Footer height */
     padding: 20px 0px;
-}
-
-//Bouton retour en haut de la page
-#myBtn {
-    font-family: 'Rubik', sans-serif;
-    height: 43px;
-    width: 48px;
-    display: none;
-    position: fixed;
-    bottom: 37px;
-    right: 40px;
-    z-index: 99;
-    font-size: 40px;
-    border: none;
-    outline: none;
-    background-color: #AD1815;
-    color: #F8F7F4;
-    cursor: pointer;
-    padding-top: 5px;
-    border-radius: 10px;
-}
-#myBtn:hover {
-    background-color: #C5403E;
 }
 
 //Stylisation de la navbar et du footer
@@ -79,18 +61,6 @@ footer {
     margin: 0 10px;
 }
 
-//Stylisation des éléments hr (ligne horizontale)
-hr {
-    display: block; 
-    height: 1px;
-    border: 0; 
-    border-top: 3px solid #AD1815;
-    opacity: 1;
-    border-radius: 10px;
-    margin: 0 10px 10px 10px;
-    background-color: #AD1815;
-}
-
 //Mise en place des différents du footer
 #information-contact {
     line-height: 1.25em;
@@ -113,11 +83,155 @@ hr {
     margin-left: 0.2em;
 }
 
+//Bouton retour en haut de la page
+#pi_topBtn {
+    font-family: 'Rubik', sans-serif;
+    height: 43px;
+    width: 48px;
+    display: none;
+    position: fixed;
+    bottom: 37px;
+    right: 40px;
+    z-index: 99;
+    font-size: 40px;
+    border: none;
+    outline: none;
+    background-color: #AD1815;
+    color: #F8F7F4;
+    cursor: pointer;
+    padding-top: 5px;
+    border-radius: 10px;
+}
+#pi_topBtn:hover {
+    background-color: #C5403E;
+}
+
+//Eléments h*
+h1, h2, h3 {
+    text-align: center;
+}
+h2, h3 {
+    font-family: 'Rubik', sans-serif;
+}
+
+h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2.5em;
+}
+h2 {
+    font-weight: bold;
+    font-size: 2em;
+}
+h3 {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+//Elément hr (ligne horizontale)
+hr {
+    display: block; 
+    height: 1px;
+    border: 0; 
+    border-top: 3px solid #AD1815;
+    opacity: 1;
+    border-radius: 10px;
+    margin: 0 10px 10px 10px;
+    background-color: #AD1815;
+}
+
     // Page accueil //
+//Bannière de l'accueil
+.pi_banniere {
+    padding-top: 5.5em;
+}
+.pi_banniere_logo {
+    width:30em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pi_accroche_accueil {
+    padding-bottom: 5em;
+}
 //Description de l'auteur
 .pi-auteur-description {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
 }
 
-    //Page contact//
+
+//titre de carte mis au centre
+.card-title {
+    text-align: center;
+}
+
+//css page accueil
+//couleur des liens
+.pi_lien {
+    color: #2B2118;
+}
+.pi_lien:hover {
+    color: #2B2118;
+}
+
+//stylisation du texte des boutons
+.pi_txt_btn {
+    font-size: 22px;
+    color: #F8F7F4;
+    text-align: center;
+}
+.pi_txt_btn:hover {
+    color: #F8F7F4;
+}
+
+//stylisation des boutons voir plus
+.pi_voir_plus_btn {
+    background-color: #7A1D07;
+    width: 100%;
+    border-radius: 30px;
+    height: 50px;
+    text-align: center;
+    padding: 0px 20px 0px 20px;
+    border: none;
+}
+
+//css de la biographie d'Eugénie dans la page accueil
+//stylisation du texte de la biographie d'Eugénie
+#pi_txt_biographie_accueil {
+    font-size: 20px;
+    text-align: justify;
+}
+
+//bouton renvoyant à Contact dans la biographie d'Eugénie
+#pi_contacter_Eugénie_button {
+    text-align: center;
+    background-color: #7A1D07;
+    border-radius: 30px;
+    height: 50px;
+    width: 100%;
+}
+
+//stylisation des titres œuvres et dernières actualités dans accueil
+.pi_h2 {
+    font-size: 55px;
+    padding: 10px 0px 10px 0px;
+}
+
+//css de la partie œuvres dans accueil
+//sous-titre de la partie œuvres de l'accueil
+#pi_txt_accroche_oeuvres {
+    font-size: 25px;
+    text-align: center;
+    padding: 0px 0px 20px 0px;
+}
+
+//css partie actualités
+//sous-titre des dernières actualités
+#pi_txt_accroche_actualités {
+    font-size: 25px;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+}
+
+
+//Page contact//
