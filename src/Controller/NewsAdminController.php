@@ -8,7 +8,6 @@ use App\Entity\Article;
 use App\Entity\Tag;
 use App\Repository\ArticlesRepository;
 use App\Repository\TagRepository;
-use App\Service\FilUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -179,14 +178,13 @@ class NewsAdminController extends AbstractController
                         $newFilename,
                         $form->get('corpsArticle')->getData(),
                     );
-                    //ajout de l'article avec le tag qui lui correspond
-                    $tag->setLibelle($form->get('listeTags')->getData());
-                    $article->addListeTag($tag);
+                    $article->addListeTag($form->get('listeTags')->getData());
 
-                    //envoie de la requette pour ajouter le nouveau article
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($article);
                     $em->flush();
+                    //ajout de l'article avec le tag qui lui correspond
+
 
                 }
               return $this->redirectToRoute('success_add');
