@@ -60,7 +60,6 @@ class TagRepository extends ServiceEntityRepository
             ->andWhere('oeuvre.id IN (:tagOeuvre)')
             ->setParameter('tagOeuvre',$idOeuvre);
 
-        dd($query->getQuery()->getResult(Query::HYDRATE_OBJECT));
         return $query->getQuery()->getResult(Query::HYDRATE_OBJECT);
     }
 

@@ -2,17 +2,9 @@
 {% block title %}Ajouter - Picassouille{% endblock %}
 {% block body %}
     <div class="container">
-        <form>
-        <h1>L'oeuvre suivant à etait supprimé</h1>
+        <h1>L'oeuvre était supprimé avec succé</h1>
             <div class="row view-body">
-            <span class="view-img ">
-                <img src="{{ asset('/image/oeuvre/'~article.nomFichierImage) | trans}}" alt="{{ article.titre }}">
-            </span>
-                <span class="view-title"><h4>{{ oeuvre.titre }}</h4></span>
-                <span class="view-description">{{ oeuvre.description }}</span>
-                <span class="view-date"><p class="card-time">{{ article.dateHeureEnregistrement|date('d/m/Y') }}</p></span>
+                <button class="btn btn-primary"type="submit" onclick=""><a class="text-white" href="{{ path('oeuvres_admin') }}">Retour</a></button>
             </div>
-         <button class="btn btn-primary"type="submit" onclick=""><a class="text-white" href="{{ path('news_admin') }}">Retour</a></button>
-        </form>
     </div>
 {% endblock %}

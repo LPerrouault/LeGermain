@@ -76,7 +76,7 @@ class OeuvresAdminController extends AbstractController
     #[Route('/oeuvre_admin_remove/{id}', name: 'remove_oeuvre')]
     public function removeNews(int $id, Request $request, OeuvreRepository $repository, TagRepository $tagRepository): Response{
         $oeuvre = $repository->find($id);
-        $tag = $tagRepository->searchTagArticle($oeuvre->getId());
+        $tag = $tagRepository->searchTagOeuvre($oeuvre->getId());
 
         if ($oeuvre != null){
             $oeuvre->removeListeTag($tag[0]);
@@ -85,7 +85,7 @@ class OeuvresAdminController extends AbstractController
             $em->flush();
         }
 
-        return $this->render('news_admin/remove.html.twig', [
+        return $this->render('oeuvres_admin/remove.html.twig', [
             'oeuvres' => $oeuvre
         ]);
     }
@@ -95,12 +95,6 @@ class OeuvresAdminController extends AbstractController
     public function addNews(Request $request, TypeRepository $typeRepository, SluggerInterface $slugger): Response{
         $oeuvre= new Oeuvre();
         $tag = new Tag();
-        $type = new Type();
-//      initialisation de la variable date avec l'heur actuel
-        $time = date('Y-m-d H:i:s', time());
-        $date =new \DateTime();
-        $date->format($time);
-
 
         $form = $this->createForm(OeuvreFormType::class, $oeuvre);
         $form->handleRequest($request);
@@ -158,7 +152,7 @@ class OeuvresAdminController extends AbstractController
     }
 
     //    Route permettant le modification d'un article
-    #[Route('/news_admin_update/{id}', name: 'update_news')]
+    #[Route('/oeuvre_admin_update/{id}', name: 'update_oeuvre')]
     public function updateNews(int $id,Request $request,SluggerInterface $slugger, TypeRepository $typeRepository,TagRepository $tagRepository, OeuvreRepository $repository): Response{
         $oeuvre = $repository->find($id);
         $tag = new Tag();
@@ -191,31 +185,17 @@ class OeuvresAdminController extends AbstractController
                 if (!file_exists($path)){
                     try {
                         $brochureFile->move(
-                            $this->getParameter('brochures_directory'),
+                            $this->getParameter('oeuvre_directory'),
                             $newFilename
                         );
                     } catch (FileException $e) { $e = null; }
                 }
 
             }
-            $oeuvre->setOeuvre(
-                $form->get('titre')->getData(),
-                $form->get('largeur')->getData(),
-                $form->get('hauteur')->getData(),
-                $newFilename,
-                $form->get('description')->getData(),
-                $form->get('idType')->getData()
-            );
-            //ajout de l'article avec le tag qui lui correspond
-            $tag->setLibelle($form->get('listeTags')->getData());
-            $oeuvre->addListeTag($tag);
-            //envoie de la requette pour ajouter le nouveau article
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($oeuvre);
-            $em->flush();
+
         }
 
-        return $this->render('news_admin/update.html.twig', [
+        return $this->render('oeuvres_admin/update.html.twig', [
             'oeuvres' => $oeuvre,
             'form' => $form->createView(),
         ]);

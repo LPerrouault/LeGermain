@@ -27,6 +27,16 @@ class OeuvreFormType extends AbstractType
                 'mapped' => false,
                 'choice_label' => 'libelle',
                 'attr' =>['class' =>'form-controle']))
+            ->add('listeTags',\Symfony\Bridge\Doctrine\Form\Type\EntityType::class, array(
+                'class' => 'App\Entity\Tag',
+                'mapped' => false,
+                'choice_label' => 'libelle',
+                'attr' =>['class' =>'form-controle']))
+            ->add('listeTags',\Symfony\Bridge\Doctrine\Form\Type\EntityType::class, array(
+                'class' => 'App\Entity\Tag',
+                'mapped' => false,
+                'choice_label' => 'libelle',
+                'attr' =>['class' =>'form-controle']))
             ->add('idType', \Symfony\Bridge\Doctrine\Form\Type\EntityType::class, array(
                 'class' => 'App\Entity\Type',
                 'mapped' => false,
