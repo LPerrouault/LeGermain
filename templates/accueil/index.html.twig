@@ -5,7 +5,7 @@
 
 {% block body %}
     <style>
-        .pi_accueil_bg{
+        .pi-accueil-bg{
             background-image: url('{{asset("images/banner/maple.png")}}');
             background-repeat: no-repeat;
             background-size: contain;
@@ -13,13 +13,13 @@
         }
     </style>
     <!-- bannière de l'accueil -->
-    <div class="pi_accueil_bg">
-        <div class="pi_banniere">
+    <div class="pi-accueil-bg">
+        <div class="pi-banniere">
             <a href="{{ path('accueil') }}">
-                <img src="{{asset('images/logo/logo2.png')}}" alt="Picassouille" class="pi_banniere_logo"/>
+                <img src="{{asset('images/logo/logo2.png')}}" alt="Picassouille" class="pi-banniere-logo"/>
             </a>
         </div>
-        <h1 class="pi_accroche_accueil">Illustrations, logos, affiches</h1>
+        <h1 class="pi-accroche-accueil">Illustrations, logos, affiches</h1>
     </div>
 
 
@@ -43,16 +43,16 @@
                         <div class="card-body">
                             <h3>Eugénie Picassouille</h3>
                         </div>
-                        <button id="pi_contacter_Eugénie_button">
-                            <a class="pi_txt_btn" href="{{ path('contact') }}">Me contacter</a>
+                        <button class="pi-btn-rouge pi-max-width">
+                            <a class="pi-btn-texte" href="{{ path('contact') }}">Me contacter</a>
                         </button>
-                        <p id="pi_txt_biographie_accueil">
+                        <p class="pi-texte pi-texte-justify"><br>
                             Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
                             j’exerce en tant qu’illustratrice graphiste et ai réalisé
                             de nombreux projets professionnels depuis.<br>
                             Vous pouvez décider de me contacter
                             dès maintenant pour commander la concrétisation de l'œuvre qui vous hante,
-                            ou bien vous baladez un peu sur mon site avant — on se retrouve dans
+                            ou bien vous balader un peu sur mon site avant — on se retrouve dans
                             Contact dans ce cas !<br>
                             À très vite ;)
                         </p>
@@ -67,76 +67,74 @@
 
 
     <!-- partie œuvres de l'accueil -->
-    <h2 class="pi_h2">Œuvres</h2>
+    <h2>Œuvres</h2>
 
     <!-- texte sous le titre -->
-    <p id="pi_txt_accroche_oeuvres">
+    <p class="pi-soustitre pi-texte-centre">
         Vous voulez un logo pour votre entreprise, une illustration pour votre décoration
         ou une affiche pour vos évènements ?<br>
         Vous êtes au bon endroit !
-    </p>
+    </p><br>
 
     <!-- trois cards les unes à côtés des autres pour présenter les catégories d'œuvres -->
     <div class="container mb-5">
         <div class="card-group">
             <div class="row">
-
                 <!-- card de la catégorie logo -->
                 <div class="col-4">
                     <!-- obligé de laisser border:none ici sinon les borders s'affichent -->
-                    <div class="card" style="border:none;">
+                    <div class="card">
                         <!-- image de la catégorie logo -->
-                        <img class="card-img-top" src="{{ asset('images/flamme.png') }}"
+                        <img class="card-img-top pi-card-img-oeuvre" src="{{ asset('images/flamme.png') }}"
                              alt="flamme blanche sur fond noir">
-                        <!-- texte lien Logo -->
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a class="pi_lien" href="{{ path('oeuvres') }}">Logos</a>
-                            </h4>
+                        <div class="pi-card-body-oeuvre">
+                            <h3 class="card-title">
+                                Logos
+                            </h3>
                         </div>
-                        <!-- bouton voir plus pour la catégorie logo -->
-                        <button class="pi_voir_plus_btn">
-                            <a class="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
-                        </button>
+
                     </div>
+                    <!-- bouton voir plus pour la catégorie logo -->
+                    <button class="pi-btn-rouge pi-btn-voirplus-oeuvre">
+                        <a class="pi-btn-texte" href="{{ path('oeuvres') }}">Voir plus</a>
+                    </button>
                 </div>
 
                 <div class="col-4">
                     <!-- obligé de laisser border:none ici sinon les borders s'affichent -->
-                    <div class="card" style="border:none;">
+                    <div class="card">
                         <!-- image de la catégorie illustrations -->
-                        <img class="card-img-top" src="{{ asset('images/roses.png') }}"
+                        <img class="card-img-top pi-card-img-oeuvre" src="{{ asset('images/roses.png') }}"
                              alt="une rose rouge et une rose rose">
-                        <!-- texte lien illustrations -->
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a class="pi_lien" href="{{ path('oeuvres') }}">Illustrations</a>
-                            </h4>
+                        <div class="pi-card-body-oeuvre">
+                            <h3 class="card-title">
+                                Illustrations
+                            </h3>
                         </div>
-                        <!-- bouton voir plus pour la catégorie illustrations -->
-                        <button class="pi_voir_plus_btn">
-                            <a class="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
-                        </button>
+
                     </div>
+                    <!-- bouton voir plus pour la catégorie illustrations -->
+                    <button class="pi-btn-rouge pi-btn-voirplus-oeuvre">
+                        <a class="pi-btn-texte" href="{{ path('oeuvres') }}">Voir plus</a>
+                    </button>
                 </div>
 
                 <div class="col-4">
                     <!-- obligé de laisser border:none ici sinon les borders s'affichent -->
-                    <div class="card" style="border:none;">
+                    <div class="card">
                         <!-- image de la catégorie affiches -->
-                        <img class="card-img-top" src="{{ asset('images/feuilles.jpg') }}"
+                        <img class="card-img-top pi-card-img-oeuvre" src="{{ asset('images/feuilles.jpg') }}"
                              alt="des feuilles">
-                        <!-- texte lien affiches -->
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a class="pi_lien"  href="{{ path('oeuvres') }}">Affiches</a>
-                            </h4>
+                        <div class="pi-card-body-oeuvre">
+                            <h3 class="card-title">
+                                Affiches
+                            </h3>
                         </div>
-                        <!-- bouton voir plus pour la catégorie affiches -->
-                        <button class="pi_voir_plus_btn">
-                            <a class="pi_txt_btn" href="{{ path('oeuvres') }}">voir plus</a>
-                        </button>
                     </div>
+                    <!-- bouton voir plus pour la catégorie affiches -->
+                    <button class="pi-btn-rouge pi-btn-voirplus-oeuvre">
+                        <a class="pi-btn-texte" href="{{ path('oeuvres') }}">Voir plus</a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -147,57 +145,56 @@
 
 
     <!-- partie les dernières actualités -->
-    <h2 class="pi_h2">Dernières actualités</h2>
+    <h2>Dernières actualités</h2>
 
     <!-- texte sous le titre -->
-    <p id="pi_txt_accroche_actualités">
+    <p class="pi-soustitre pi-texte-centre">
         Des nouvelles toutes fraîches !
-    </p>
+    </p><br>
 
     <!-- deux cards côtes à côtes étant les dernières actualités parues sur le site -->
     <div class="mb-5">
         <div class="container">
-            <div class="card-group">
+            <div class="card-group pi-accueil-actus">
                 <div class="row">
-                    <!-- card de l'actualité à gauche de la page -->
-                    <div class="col-6">
-                        <!-- obligé de laisser border:none ici sinon les borders s'affichent -->
-                        <div class="card" style="border:none;">
-                            <!-- image de l'actualité à gauche -->
-                            <img class="card-img-top" src="{{ asset('images/ampoule.jpg') }}" alt="ampoule sur fond noir avec un cœur jaune à l'intérieur">
-                            <!-- titre lien vers l'actualité -->
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a class="pi_lien" href="{{ path('news') }}">
-                                        23/10/2021 : Eurêka amoureux</a>
-                                </h4>
+                        <!-- card de l'actualité à gauche de la page -->
+                        <div class="col">
+                            <!-- obligé de laisser border:none ici sinon les borders s'affichent -->
+                            <div class="card pi-card-actu">
+                                <!-- image de l'actualité à gauche -->
+                                <img class="card-img-top pi-card-img-actu" src="{{ asset('images/ampoule.jpg') }}" alt="ampoule sur fond noir avec un cœur jaune à l'intérieur">
+                                <!-- titre lien vers l'actualité -->
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a class="pi-lien" href="{{ path('news') }}">
+                                            23/10/2021 : Eurêka amoureux</a>
+                                    </h4>
+                                </div>
                             </div>
-                            <!-- bouton voir plus d'actualités -->
-                            <button class="pi_voir_plus_btn">
-                                <a class="pi_txt_btn" href="{{ path('news') }}">voir plus</a>
-                            </button>
                         </div>
-                    </div>
 
-                    <!-- card de l'actualité à droite de la page -->
-                    <div class="col-6">
-                        <!-- image l'actualité à droite de la page -->
-                        <img class="card-img-top" src="{{ asset('images/ciel_sol.jpg') }}"
-                             alt="homme regardant le ciel à travers un trou dans le sol">
-                        <!-- titre lien de l'actualité -->
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a class="pi_lien" href="{{ path('news') }}">
-                                    9/11/2021 : La lune dans le sol</a>
-                            </h4>
+                        <!-- card de l'actualité à droite de la page -->
+                        <div class="col">
+                            <div class="card pi-card-actu">
+                                <!-- image l'actualité à droite de la page -->
+                                <img class="card-img-top pi-card-img-actu" src="{{ asset('images/ciel_sol.jpg') }}"
+                                     alt="homme regardant le ciel à travers un trou dans le sol">
+                                <!-- titre lien de l'actualité -->
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a class="pi-lien" href="{{ path('news') }}">
+                                            9/11/2021 : La lune dans le sol</a>
+                                    </h4>
+                                </div>
+                            </div>
                         </div>
-                        <!-- bouton voir plus d'actualités -->
-                        <button class="pi_voir_plus_btn">
-                            <a class="pi_txt_btn" href="{{ path('news') }}">voir plus</a>
-                        </button>
-                    </div>
                 </div>
             </div>
+            <br>
+            <!-- bouton voir plus d'actualités -->
+            <button class="pi-btn-rouge pi-btn-voirplus">
+                <a class="pi-btn-texte" href="{{ path('news') }}">Voir plus</a>
+            </button>
         </div>
     </div>
 

@@ -2,10 +2,10 @@
 //Penser à effectuer npm run dev ou npm run watch pour que ça marche
 //Recharger page du navigateur en ignorant le cache: CTRL+Shift+R
 
-//Noir : #2B2118
-//Beige : #DE955A
-//Blanc : #F8F7F4
-//Rouge : #7A1D07
+//Noir : #2B2118  ;
+//Beige : #DE955A ;
+//Blanc : #F8F7F4 ;
+//Rouge : #AD1815 ; :hover : #C5403E
 
 // Eléments en commun //
 body {
@@ -62,17 +62,17 @@ footer {
 }
 
 //Mise en place des différents du footer
-#information-contact {
+.pi-footer-information-contact {
     line-height: 1.25em;
 }
-#reseaux {
+.pi-footer-reseaux {
     position: absolute;
     top: 25%;
     left: 75%;
     padding: 0px;
     max-width: fit-content;
 }
-#copyright {
+.pi-footer-copyright {
     text-align: center
 }
 
@@ -84,7 +84,7 @@ footer {
 }
 
 //Bouton retour en haut de la page
-#pi_topBtn {
+#pi-topBtn {
     font-family: 'Rubik', sans-serif;
     height: 43px;
     width: 48px;
@@ -102,16 +102,17 @@ footer {
     padding-top: 5px;
     border-radius: 10px;
 }
-#pi_topBtn:hover {
+#pi-topBtn:hover {
     background-color: #C5403E;
 }
 
 //Eléments h*
-h1, h2, h3 {
+h1, h2, h3, h4 {
     text-align: center;
 }
-h2, h3 {
+h2, h3, h4 {
     font-family: 'Rubik', sans-serif;
+    font-weight: bold;
 }
 
 h1 {
@@ -119,12 +120,13 @@ h1 {
     font-size: 2.5em;
 }
 h2 {
-    font-weight: bold;
     font-size: 2em;
 }
 h3 {
-    font-weight: bold;
     font-size: 1.5em;
+}
+h4 {
+    font-size: 1em;
 }
 
 //Elément hr (ligne horizontale)
@@ -135,103 +137,130 @@ hr {
     border-top: 3px solid #AD1815;
     opacity: 1;
     border-radius: 10px;
-    margin: 0 10px 10px 10px;
+    margin: 0 10px 30px 10px;
     background-color: #AD1815;
 }
 
-    // Page accueil //
+//Classes en commun
+.pi-btn-rouge, .pi-btn-bleu {
+    border-radius: 10px;
+    height: 50px;
+    text-align: center;
+    padding: 0px 20px 0px 20px;
+    border: none;
+    color: #F8F7F4;
+    text-decoration: none;
+}
+.pi-btn-rouge {
+    background-color: #AD1815;
+}
+.pi-btn-rouge:hover {
+    background-color: #C5403E;
+}
+.pi-btn-bleu {
+
+}
+.pi-btn-bleu:hover {
+
+}
+//Texte des boutons
+.pi-btn-texte, .pi-btn-texte:hover {
+    font-family: 'Rubik', sans-serif;
+    color: #F8F7F4;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.pi-soustitre, .pi-texte, .pi-soustexte {
+    font-family: 'Source Sans Pro', sans-serif;
+} 
+.pi-soustitre {
+    font-size: 1.25em;
+}
+.pi-texte {
+    font-size: 1em;
+}
+.pi-soustexte {
+    font-size: 0.5em;
+}
+
+.pi-texte-centre {
+    text-align: center;
+}
+.pi-texte-justify {
+    text-align: justify;
+}
+
+//couleur des liens
+.pi-lien, .pi-lien:hover {
+    color: #2B2118;
+}
+
+.pi-max-width {
+    width: 100%;
+}
+
+.card {
+    border: 1px solid #AD1815;
+    background-color: #F8F7F4;
+}
+
+
+
+// Page accueil //
+
 //Bannière de l'accueil
-.pi_banniere {
+.pi-banniere {
     padding-top: 5.5em;
 }
-.pi_banniere_logo {
+.pi-banniere-logo {
     width:30em;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-.pi_accroche_accueil {
+.pi-accroche-accueil {
     padding-bottom: 5em;
 }
-//Description de l'auteur
-.pi-auteur-description {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 15px;
+
+//Boutons voir plus
+.pi-btn-voirplus-oeuvre, .pi-btn-voirplus {
+    width: 10em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pi-btn-voirplus-oeuvre {
+    position: relative;
+    top: -1.5em;
 }
 
-
-//titre de carte mis au centre
-.card-title {
-    text-align: center;
+.pi-card-img-oeuvre {
+    width: 20em;
+    height: 20em;
+}
+.pi-card-body-oeuvre {
+    background-color: #F8F7F4EE;
+    position: relative;
+    top: -2em;
+    padding-top: 1em;
 }
 
-//css page accueil
-//couleur des liens
-.pi_lien {
-    color: #2B2118;
-}
-.pi_lien:hover {
-    color: #2B2118;
+.pi-accueil-actus {
+    margin-left: auto;
+    margin-right: auto;
+    width:max-content;
 }
 
-//stylisation du texte des boutons
-.pi_txt_btn {
-    font-size: 22px;
-    color: #F8F7F4;
-    text-align: center;
+.pi-card-actu {
+    width: 30em;
 }
-.pi_txt_btn:hover {
-    color: #F8F7F4;
-}
-
-//stylisation des boutons voir plus
-.pi_voir_plus_btn {
-    background-color: #7A1D07;
-    width: 100%;
-    border-radius: 30px;
-    height: 50px;
-    text-align: center;
-    padding: 0px 20px 0px 20px;
-    border: none;
+.pi-card-img-actu {
+    width:available;
+    height: 10em;
+    object-fit: cover;
 }
 
-//css de la biographie d'Eugénie dans la page accueil
-//stylisation du texte de la biographie d'Eugénie
-#pi_txt_biographie_accueil {
-    font-size: 20px;
-    text-align: justify;
-}
-
-//bouton renvoyant à Contact dans la biographie d'Eugénie
-#pi_contacter_Eugénie_button {
-    text-align: center;
-    background-color: #7A1D07;
-    border-radius: 30px;
-    height: 50px;
-    width: 100%;
-}
-
-//stylisation des titres œuvres et dernières actualités dans accueil
-.pi_h2 {
-    font-size: 55px;
-    padding: 10px 0px 10px 0px;
-}
-
-//css de la partie œuvres dans accueil
-//sous-titre de la partie œuvres de l'accueil
-#pi_txt_accroche_oeuvres {
-    font-size: 25px;
-    text-align: center;
-    padding: 0px 0px 20px 0px;
-}
-
-//css partie actualités
-//sous-titre des dernières actualités
-#pi_txt_accroche_actualités {
-    font-size: 25px;
-    text-align: center;
-    padding: 10px 0px 10px 0px;
-}
 
 
 //Page contact//

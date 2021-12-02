@@ -12,7 +12,7 @@ import './styles/global.scss';
 //const $ = require('jquery');
 $(document).ready(function(){
     //Get the button
-    var mybutton = document.getElementById("pi_topBtn");
+    var mybutton = document.getElementById("pi-topBtn");
 // When the user scrolls down 20px from the top of the document, show the button
     window.onscroll = function() {scrollFunction()};
     function scrollFunction() {

@@ -74,13 +74,13 @@
             <footer id="footer">
                 <div class="container">
                     <div class='row'>
-                        <div id='information-contact' class='col-8'>
+                        <div class='col-8 pi-footer-information-contact'>
                             Eugénie Picassouille<br>
                             11 route du test 37000 TOURS<br>
                             eugeniepicassouille@gmail.com<br>
                             0602060206
                         </div>
-                        <div id='reseaux' class='col-4'>
+                        <div class='col-4 pi-footer-reseaux'>
                             <a href="https://facebook.com/">
                                 <img class="pi-logo-reseau" src="{{asset('images/logo/logo_facebook.png')}}" 
                                      onmouseover="this.src = '{{asset('images/logo/logo_facebook_h.png')}}'" 
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class='row'>
-                        <div id='copyright' class='col-12'>@ 2021 Eugénie Picassouille</div>
+                        <div class='col-12 pi-footer-copyright'>@ 2021 Eugénie Picassouille</div>
                     </div>
                 </div>
             </footer>
@@ -115,7 +115,7 @@
                     document.body.scrollTop = 0;
                     document.documentElement.scrollTop = 0;
                 };
-                topFunction()" id="pi_topBtn" title="Go to top">^
+                topFunction()" id="pi-topBtn" title="Go to top">^
         </button>
 
         <!-- Accès à JQuery, Popper.js et JS de Bootstrap pour le bon fonctionnement de Bootstrap-->
