@@ -1,0 +1,14 @@
+<div class="card">
+    <a href="{{ path('news_views', {id: article.id}) }}">
+        <img class="card-img-top" src="{{ asset('/image/article/'~article.nomFichierImage) | trans}}" alt="{{ article.titre }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ article.titre }}</h5>
+            <div class="card-time">{{ article.dateHeureEnregistrement|date('d/m/Y') }}</div>
+        </div>
+    </a>
+    <div>
+        {% for t in article.listeTags %}
+             <em class="text-muted text-primary text-italic">#{{ t.libelle}}</em>
+        {% endfor %}
+    </div>
+</div>

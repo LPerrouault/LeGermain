@@ -19,6 +19,9 @@ framework:
 
 when@test:
     framework:
+        assets:
+            json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+
         test: true
         session:
             storage_factory_id: session.storage.factory.mock_file

@@ -23,6 +23,9 @@
     "doctrine/common": {
         "version": "3.1.2"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.5.1"
+    },
     "doctrine/dbal": {
         "version": "2.13.3"
     },
@@ -43,6 +46,18 @@
             "config/packages/test/doctrine.yaml",
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "1f5514cfa15b947298df4d771e694e578d4c204d"
+        },
+        "files": [
+            "src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -85,8 +100,20 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
+    "fakerphp/faker": {
+        "version": "v1.16.0"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
+    },
+    "imagine/imagine": {
+        "version": "1.2.4"
+    },
+    "knplabs/knp-components": {
+        "version": "v3.3.0"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.7.0"
     },
     "friendsofsymfony/ckeditor-bundle": {
         "version": "2.3",
@@ -106,11 +133,37 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.4.0"
     },
+    "liip/imagine-bundle": {
+        "version": "2.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.8",
+            "ref": "d1227d002b70d1a1f941d91845fcd7ac7fbfc929"
+        },
+        "files": [
+            "config/routes/liip_imagine.yaml",
+            "config/packages/liip_imagine.yaml"
+        ]
+    },
     "monolog/monolog": {
         "version": "2.3.4"
     },
     "myclabs/deep-copy": {
         "version": "1.10.2"
+    },
+    "nelmio/alice": {
+        "version": "3.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.2",
+            "ref": "0b9900ece737bec7752e4155c0164639dd9b0cb0"
+        },
+        "files": [
+            "config/packages/test/nelmio_alice.yaml",
+            "config/packages/dev/nelmio_alice.yaml"
+        ]
     },
     "nikic/php-parser": {
         "version": "v4.13.0"
@@ -619,6 +672,9 @@
     },
     "theseer/tokenizer": {
         "version": "1.2.1"
+    },
+    "twbs/bootstrap": {
+        "version": "v5.1.3"
     },
     "twig/extra-bundle": {
         "version": "v3.3.3"

@@ -2,49 +2,42 @@
 
 namespace App\Repository;
 
-use App\Entity\Tag;
+use App\DataFixtures\SeachData;
+use App\Entity\Article;
+use App\Entity\tag;
+use Couchbase\SearchSortGeoDistance;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Types\Array_;
+use function Symfony\Component\Translation\t;
 
 /**
- * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
- * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
- * @method Tag[]    findAll()
- * @method Tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method tag|null find($id, $lockMode = null, $lockVersion = null)
+ * @method tag|null findOneBy(array $criteria, array $orderBy = null)
+ * @method tag[]    findAll()
+ * @method tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class TagRepository extends ServiceEntityRepository
 {
+    /**
+     * @var int
+     */
+    public $page =1;
+
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Tag::class);
+        parent::__construct($registry, tag::class);
     }
 
-    // /**
-    //  * @return Tag[] Returns an array of Tag objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+   public function filterTag()
+   {
+       $query = $this->createQueryBuilder('t')
+                    ->leftJoin(Article::class, 'a')
+                    ->where('t.listeArticles = a.listeTags')
+                    ->getQuery()
+                    ->getResult();
 
-    /*
-    public function findOneBySomeField($value): ?Tag
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+        return $query;
+   }
 }
