@@ -127,7 +127,7 @@ class NewsAdminController extends AbstractController
             $repository->updateArticle($id,$form->get('titre')->getData(),$newFilename, $form->get('corpsArticle')->getData());
         }
 
-        return $this->render('news_admin/update.html.twig', [
+        return $this->render('news_admin/', [
             'article' => $article,
             'form' => $form->createView(),
         ]);
