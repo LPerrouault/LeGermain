@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Ateliers-détails{% endblock %}
+
 {% block body %}
 
     <style>
@@ -9,9 +11,7 @@
 
     <div class="example-wrapper">
 
-
         <section class="Ateliers">
-                <atelier>
                     <h2> {{ atelier.titre }} </h2>
                     <div class="content">
                         <p> {{ atelier.description }} </p>
@@ -22,7 +22,7 @@
                         </button>
 
                     </div>
-                </atelier>
+
         </section>
 
     </div>

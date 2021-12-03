@@ -12,7 +12,7 @@
 
 <section class="Ateliers">
     {% for atelier in ateliers %}
-        <atelier>
+
             <h2> {{ atelier.titre }} </h2>
                 <div class="content">
                     <p> {{ atelier.description }} </p>
@@ -21,7 +21,7 @@
                         <a href="{{ path('ateliers_details',{id: atelier.id}) }}">Voir l'atelier</a>
                     </button>
                 </div>
-        </atelier>
+
     {% endfor %}
 
 </section>

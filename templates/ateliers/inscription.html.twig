@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Ateliers-inscription{% endblock %}
+
 {% block body %}
 
     <style>
@@ -13,7 +15,7 @@
 
         <section class="Ateliers">
 
-                <atelier>
+                <div class="atelier" >
                     <h2> {{ atelier.titre }} </h2>
                     <div class="content">
                         <p> {{ atelier.description }} </p>
@@ -21,18 +23,111 @@
                         <p> Pour s'inscrire à cet atelier veuillez remplir le formulaire ci-dessous : </p>
 
                     </div>
-                </atelier>
+                </div>
 
             </section>
 
         <section class="Inscription">
 
-                <inscription>
-                    <p> Le formulaire  : </p>
+        <div class="inscription">
 
-                   {{ form(formInscription) }}
+            <div class="container">
 
-                </inscription>
+                <div class='row'>
+
+                    <h2 class="col text-center">Formulaire </h2>
+
+                    <div class="pi-contact col-12">
+                        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                        {{ form_start(form, {'method' : 'POST', }) }}
+
+                        <div class="pi-contact-error">
+                            {% if error is defined %}
+                                {{ include('ateliers/inscription_erreur.html.twig') }}
+                            {% endif %}
+                        </div>
+
+                        <div class="pi-contact-form">
+                            <!-- Si des données incorrectes ont déjà été saisies -->
+                            <div class="container">
+                                <div class="row form-group">
+                                    <div class="col-2">
+                                        {{ form_label(form.nom) }}
+                                    </div>
+                                    <div class="col">
+                                        {% if nom is defined %}
+                                            {{ form_widget(form.nom, {'attr': {'value': nom}}) }}
+                                        {% else %}
+                                            {{ form_widget(form.nom) }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-2">
+                                        {{ form_label(form.prenom) }}
+                                    </div>
+                                    <div class="col">
+                                        {% if prenom is defined %}
+                                            {{ form_widget(form.prenom, {'attr': {'value': prenom}}) }}
+                                        {% else %}
+                                            {{ form_widget(form.prenom) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-2">
+                                        {{ form_label(form.email) }}
+                                    </div>
+                                    <div class="col">
+                                        {% if email is defined %}
+                                            {{ form_widget(form.email, {'attr': {'value': email}}) }}
+                                        {% else %}
+                                            {{ form_widget(form.email) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-2">
+                                        {{ form_label(form.telephone) }}
+                                    </div>
+                                    <div class="col">
+                                        {% if sujet is defined %}
+                                            {{ form_widget(form.telephone, {'attr': {'value': telephone}}) }}
+                                        {% else %}
+                                            {{ form_widget(form.telephone) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-2">
+                                        {{ form_label(form.message) }}
+                                    </div>
+                                    <div class="col">
+                                        {% if sujet is defined %}
+                                            {{ form_widget(form.message, {'attr': {'value': message}}) }}
+                                        {% else %}
+                                            {{ form_widget(form.message) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="row pi-contact-buttons">
+                                    <div class="col text-center">
+                                        {{ form_row(form.save, {'label': 'Envoyer' }) }}
+                                    </div>
+                                    <div class="col text-center">
+                                        {{ form_row(form.reset, {'label' : "Effacer"}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+
+            </div>
+
+        </div>
 
         </section>
 
