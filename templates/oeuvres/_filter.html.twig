@@ -1,0 +1,22 @@
+<form>
+    <h4>Type d'oeuvres</h4>
+    {% for type in types %}
+        <div class="form-check">
+            <input class="form-check-input" name="searchType[{{ type.libelle }}]"  type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                {{ type.libelle }}
+            </label>
+        </div>
+    {% endfor %}
+    <h4>Catégories</h4>
+    {% for tag in tags %}
+        <div class="form-check">
+            <input class="form-check-input" name="searchTag[{{ tag.libelle }}]"  type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                {{ tag.libelle }}
+            </label>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Filtrer</button>
+    <div class="btnMargin"><a class="button btn-reset w-75" href="{{ path('news') }}">Rèinitialiser filtre</a></div>
+</form>

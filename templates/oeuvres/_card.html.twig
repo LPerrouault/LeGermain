@@ -1,0 +1,18 @@
+<div class="oeuvres-gallery">
+    <a href="{{ path('oeuvres_views', {id: oeuvres.id}) }}">
+        <div class="card cardOeuvre">
+            <img class="cardOeuvre-img img-fluid" src="{{ asset('/images/oeuvres/'~oeuvres.nomFichierImage) | trans}}" alt="{{ oeuvres.titre }}">
+            <div class="cardOeuvre-titre">
+                <h5 class="card-title">{{ oeuvres.titre }}</h5>
+            </div>
+        </div>
+    </a>
+    {#<div>
+        {% for t in oeuvres.listeTags %}
+             <em class="text-muted text-primary text-italic">#{{ t.libelle}}</em>
+        {% endfor %}
+        {% for type in types %}
+            <em class="text-muted text-primary text-italic">#{{ type.libelle}}</em>
+        {% endfor %}
+    </div>#}
+</div>

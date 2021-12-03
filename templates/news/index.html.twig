@@ -4,20 +4,20 @@
 {% block nav_news %}active{% endblock %}
 
 {% block body %}
-
-
-    <h2>Page des NEWS</h2>
-
     <div class="container">
+        <h2>Page des NEWS</h2>
         <div class="row">
-            <div class="col-md-3">{% include 'news/_filter.html.twig'  %}</div>
-            <div class="col-md-9">
-                <div class="grid">
-                    {% for article in articles %}
-                        {% include 'news/_card.html.twig' %}
-                    {% endfor %}
-                </div>
-
+            <div class="col-2">
+                {% include 'news/_filter.html.twig'  %}
+            </div>
+            <div class="col-10">
+                <section>
+                    <div class="mosaic">
+                        {% for article in articles %}
+                            {% include 'news/_card.html.twig' %}
+                        {% endfor %}
+                    </div>
+                </section>
                 <div class="mt-4">
                     {{ knp_pagination_render(articles) }}
                 </div>

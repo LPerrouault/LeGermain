@@ -7,12 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\MailContact;
 use \Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-
 //use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ContactController extends AbstractController {
@@ -137,9 +134,6 @@ class ContactController extends AbstractController {
                           'config' => array(
                           'uiColor' => '#ffffff',
                           'toolbar' => 'standard'))) */
-                        ->add('reset', ResetType::class, array(
-                            'attr' => array('class' => 'save')))
-                        ->add('save', SubmitType::class, ['label' => 'Envoyer'])
                         ->setAction($this->generateUrl('contact_envoi'))
                         ->getForm();
     }
