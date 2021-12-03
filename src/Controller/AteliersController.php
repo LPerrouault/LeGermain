@@ -6,6 +6,7 @@ use App\Entity\Atelier;
 use App\Entity\Inscription;
 use App\Form\InscriptionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -105,20 +106,21 @@ class AteliersController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         //Récupération des réponses
+        //rajouter l'id ausssi pour voir s'il c'est nécessaire
+     //   $id = $request->get('form'["id_atelier_id"]);
         $nom = $request->get('form')["nom"];
         $prenom = $request->get('form')["prenom"];
         $email = $request->get('form')["email"];
         $telephone = $request->get('form')["telephone"];
         $message = $request->get('form')["message"];
-        $îd = $request->get('form'["id"]);
 
         //Vérification serveur des données
-        $error_message = $this->check_data_form_inscription($nom, $prenom, $email, $telephone, $message, $id);
+        $error_message = $this->check_data_form_inscription(/*$id,*/ $nom, $prenom, $email, $telephone, $message);
         //S'il n'y a pas de message d'erreur retourné lors de la vérification
         if ($error_message == null) {
             //On insère les données dans la base de données
             $message_complet = new Inscription();
-            $message_complet->setInscription($nom, $prenom, $email, $telephone, $message, $id);
+            $message_complet->setInscription(/*$id,*/ $nom, $prenom, $email, $telephone, $message);
             $entityManager->persist($message_complet);
             try {
                 //Insertion des données
@@ -143,6 +145,7 @@ class AteliersController extends AbstractController
                     'atelier' => $atelier,
                     'form' => $form,
                     'error' => $error_message,
+              //      'id' => $id,
                     'nom' => $nom,
                     'prenom' => $prenom,
                     'email' => $email,
@@ -168,8 +171,8 @@ class AteliersController extends AbstractController
             $error = "Veuillez insérer le contenu de votre message";
         }
         //Le telephone ne doit pas être null
-        if (empty($telephone) && filter_var($telephone)) {
-            $error = "Veuillez insérer un numéro de téléphone valide";
+        if (empty($telephone)) {
+            $error = "Veuillez insérer un numéro de téléphone";
         }
         //L'email ne doit pas être null, et avoir une forme d'email
         if (empty($email) && filter_var($email)) {
@@ -198,6 +201,9 @@ class AteliersController extends AbstractController
         $inscription->setIdAtelier($atelier);
 
         return $this->createFormBuilder($inscription)
+            //Essai de mettre le champ hidden (et non type car il n'y a pas d'utilisation de Form\Type pour l'id avec le 'hidden-row'
+            ->add('id', NumberType::class, array(
+                'attr' => array('class' => 'hidden-row')))
             ->add('nom', TextType::class, array('required' => false))
             ->add('prenom', TextType::class, array('required' => false))
             ->add('email', EmailType::class, array('required' => false))
@@ -206,8 +212,8 @@ class AteliersController extends AbstractController
             ->add('reset', ResetType::class, array(
                 'attr' => array('class' => 'save')))
             ->add('save', SubmitType::class, ['label' => 'Envoyer'])
-            ->setAction($this->generateUrl('ateliers'))
-        //    ->setAction($this->generateUrl('inscription_ateliers'))
+        //    ->setAction($this->generateUrl('ateliers'))
+            ->setAction($this->generateUrl('inscription_ateliers'))
             ->getForm();
 
     }

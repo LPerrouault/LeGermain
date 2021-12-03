@@ -51,6 +51,7 @@
                             <!-- Si des données incorrectes ont déjà été saisies -->
                             <div class="container">
                                 <div class="row form-group">
+
                                     <div class="col-2">
                                         {{ form_label(form.nom) }}
                                     </div>
@@ -91,7 +92,7 @@
                                         {{ form_label(form.telephone) }}
                                     </div>
                                     <div class="col">
-                                        {% if sujet is defined %}
+                                        {% if telephone is defined %}
                                             {{ form_widget(form.telephone, {'attr': {'value': telephone}}) }}
                                         {% else %}
                                             {{ form_widget(form.telephone) }}
@@ -104,7 +105,7 @@
                                         {{ form_label(form.message) }}
                                     </div>
                                     <div class="col">
-                                        {% if sujet is defined %}
+                                        {% if message is defined %}
                                             {{ form_widget(form.message, {'attr': {'value': message}}) }}
                                         {% else %}
                                             {{ form_widget(form.message) }}
