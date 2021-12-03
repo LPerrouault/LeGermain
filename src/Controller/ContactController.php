@@ -74,7 +74,7 @@ class ContactController extends AbstractController {
                                 'nom' => $nom,
                                 'prenom' => $prenom,
                                 'email' => $email,
-                                'sujet' => $contenu,
+                                'sujet' => $sujet,
                                 'contenu' => $contenu,
             ]);
         }
@@ -102,9 +102,9 @@ class ContactController extends AbstractController {
             $error = "Veuillez insérer un sujet pour votre message";
         }
         //L'email ne doit pas être null, et avoir une forme d'email
-        if (empty($email) && filter_var($email)) {
+        if (empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = "Veuillez insérer une adresse mail valide " .
-                    "(exemple : test@gmail.com)";
+                    "(ex: test@gmail.com)";
         }
         //Le prénom ne doit pas être null
         if (empty($prenom)) {
