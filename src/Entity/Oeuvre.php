@@ -58,7 +58,7 @@ class Oeuvre
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_publication;
+    private $datePublication;
 
     public function __construct()
     {
@@ -143,12 +143,12 @@ class Oeuvre
     }
     public function getDatePublication(): ?\DateTimeInterface
     {
-        return $this->date_publication;
+        return $this->datePublication;
     }
 
-    public function setDatePublication(\DateTimeInterface $date_publication): self
+    public function setDatePublication(\DateTimeInterface $datePublication): self
     {
-        $this->date_publication = $date_publication;
+        $this->datePublication = $datePublication;
 
         return $this;
     }
@@ -177,13 +177,13 @@ class Oeuvre
         return $this;
     }
     
-    public function setOeuvre(string $titre, int $largeur, int $hauteur, string $nomFichierImage, string $description, ?Type $idType,\DateTime $datePublication){
+    public function setOeuvre(string $titre, int $largeur, int $hauteur, string $nomFichierImage, string $description, ?Type $idType,\DateTime $date){
         $this->titre = $titre;
         $this->largeur = $largeur;
         $this->hauteur = $hauteur;
         $this->nomFichierImage = $nomFichierImage;
         $this->description = $description;
         $this->idType = $idType;
-        $this->date_publication = $datePublication;
+        $this->datePublication = $date;
     }
 }
