@@ -1,22 +1,29 @@
-<di>
-   <div class="col-2">
-       <span>{{ contact.date_contact }}</span>
+<di class="row border">
+   <div class="col-2 border">
+       <span>{{ contact.dat_contact }}</span>
    </div>
-    <div class="col-2">
+    <div class="col-2 border">
         <span>{{ contact.sujet }}</span>
     </div>
-    <div class="col-2">
+    <div class="col-3">
         <span>{{ contact.email }}</span>
     </div>
-    <div class="col-2">
-        <span>{{ contact.reponse }}</span>
+    <div class="col-1 border">
+        {% if contact.reponse == 1 %}
+        <input class="form-check-input" type="checkbox" value="reponse" id="flexCheckIndeterminate" checked="checked">
+        {% else %}
+        <input class="form-check-input" type="checkbox" value="reponse" id="flexCheckIndeterminate">
+        {% endif %}
+        <label class="form-check-label" for="flexCheckIndeterminate">
+            Répondue
+        </label>
     </div>
-    <div class="col-2">
-        <a class="btn-primary"></a>
+    <div class="col-2 border text-center">
+        <a class="btn-primary">Aperçu</a>
     </div>
-    <div class="col-2">
+    <div class="col-2 border text-center">
         <div class="col-2">
-            <a class="btn-danger"></a>
+            <a class="btn-danger">Supression</a>
         </div>
     </div>
 </di>

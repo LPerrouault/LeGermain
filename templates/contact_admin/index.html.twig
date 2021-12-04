@@ -4,15 +4,13 @@
 
 {% block body %}
     <div class="container">
-        <h2>News - Admin</h2>
+        <h2>Demande de contact</h2>
             <div class="row">
-                {% include 'filter.html.twig'  %}
+                {% include 'contact_admin/filter.html.twig' %}
             </div>
             <div>
                 {% for contact in contacts %}
-                    <div class="row">
-                        {% include '_card.html.twig' %}
-                    </div>
+                        {% include 'contact_admin/_card.html.twig' %}
                 {% endfor %}
             </div>
     </div>

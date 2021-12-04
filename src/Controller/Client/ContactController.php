@@ -42,17 +42,22 @@ class ContactController extends AbstractController {
         $sujet = $request->get('form')["sujet"];
         $contenu = $request->get('form')["contenu"];
 
+        //variable d'enregistreent de la date actuel
+        $time = date('Y-m-d H:i:s', time());
+        $date =new \DateTime();
+        $date->format($time);
+
         //Vérification serveur des données
         $error_message = $this->check_data_formcontact($nom, $prenom, $email, $sujet, $contenu);
         //S'il n'y a pas de message d'erreur retourné lors de la vérification
         if ($error_message == null) {
             //On insère les données dans la base de données
             $message_complet = new MailContact();
-            $message_complet->setMailContact($nom, $prenom, $email, $sujet, $contenu);
-            //$entityManager->persist($message_complet);
+            $message_complet->setMailContact($nom, $prenom, $email, $sujet, $contenu, $date);
+            $entityManager->persist($message_complet);
             try {
                 //Insertion des données
-                //$entityManager->flush();
+                $entityManager->flush();
                 //Affichage de la page de succès avec objet MailContact créé
                 return $this->render('client/contact/succes_envoi.html.twig', [
                             'controller_name' => 'TestController',
