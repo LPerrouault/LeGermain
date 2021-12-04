@@ -55,6 +55,11 @@ class Oeuvre
      */
     private $listeTags;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_publication;
+
     public function __construct()
     {
         $this->listeTags = new ArrayCollection();
@@ -136,6 +141,17 @@ class Oeuvre
 
         return $this;
     }
+    public function getDatePublication(): ?\DateTimeInterface
+    {
+        return $this->date_publication;
+    }
+
+    public function setDatePublication(\DateTimeInterface $date_publication): self
+    {
+        $this->date_publication = $date_publication;
+
+        return $this;
+    }
 
     /**
      * @return Collection|Tag[]
@@ -161,12 +177,13 @@ class Oeuvre
         return $this;
     }
     
-    public function setOeuvre(string $titre, int $largeur, int $hauteur, string $nomFichierImage, string $description, ?Type $idType){
+    public function setOeuvre(string $titre, int $largeur, int $hauteur, string $nomFichierImage, string $description, ?Type $idType,\DateTime $datePublication){
         $this->titre = $titre;
         $this->largeur = $largeur;
         $this->hauteur = $hauteur;
         $this->nomFichierImage = $nomFichierImage;
         $this->description = $description;
         $this->idType = $idType;
+        $this->date_publication = $datePublication;
     }
 }

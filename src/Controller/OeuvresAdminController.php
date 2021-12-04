@@ -96,6 +96,11 @@ class OeuvresAdminController extends AbstractController
         $oeuvre= new Oeuvre();
         $tag = new Tag();
 
+//      variable d'enregistreent de la date actuel
+        $time = date('Y-m-d H:i:s', time());
+        $date =new \DateTime();
+        $date->format($time);
+
         $form = $this->createForm(OeuvreFormType::class, $oeuvre);
         $form->handleRequest($request);
 
@@ -131,7 +136,8 @@ class OeuvresAdminController extends AbstractController
                     $form->get('hauteur')->getData(),
                     $newFilename,
                     $form->get('description')->getData(),
-                    $form->get('idType')->getData()
+                    $form->get('idType')->getData(),
+                    $date
                 );
                 //ajout de l'article avec le tag qui lui correspond
                 $oeuvre->addListeTag($form->get('listeTags')->getData());
@@ -198,7 +204,8 @@ class OeuvresAdminController extends AbstractController
                     $form->get('hauteur')->getData(),
                     $newFilename,
                     $form->get('description')->getData(),
-                    $form->get('idType')->getData()
+                    $form->get('idType')->getData(),
+                    $oeuvre->getDatePublication()
                 );
 //              On enregistre dans le tag qui correspond a l'oeuvre
                 $oldTag = $tagRepository->searchTagOeuvre($id);

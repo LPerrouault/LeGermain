@@ -1,7 +1,7 @@
 <div class="ouvres-gallery ">
     <a href="{{ path('oeuvres_views', {id: oeuvres.id}) }}">
         <div class="cardOeuvre">
-            <img class="cardOeuvre-img img-fluid" src="{{ asset('/image/'~oeuvres.nomFichierImage) | trans}}" alt="{{ oeuvres.titre }}">
+            <img class="cardOeuvre-img img-fluid" src="{{ asset('/image/oeuvre/'~oeuvres.nomFichierImage) | trans}}" alt="{{ oeuvres.titre }}">
             <div class=" cardOeuvre-titre">
                 <h5 class="card-title">{{ oeuvres.titre }}</h5>
             </div>
