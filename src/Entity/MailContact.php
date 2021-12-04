@@ -50,6 +50,11 @@ class MailContact
      * @ORM\Column(type="boolean")
      */
     private $reponse;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dat_contact;
     
     /**
      * Accesseurs (get/set)
@@ -206,6 +211,18 @@ class MailContact
     public function setRepondu(){
         $this->setReponse(1);
     }
+
+    public function getDatContact(): ?\DateTimeInterface
+    {
+        return $this->dat_contact;
+    }
+
+    public function setDatContact(\DateTimeInterface $dat_contact): self
+    {
+        $this->dat_contact = $dat_contact;
+
+        return $this;
+    }
     
     public function setMailContact($nom, $prenom, $email, $sujet, $contenu){
        $this->nom = $nom;
@@ -215,4 +232,6 @@ class MailContact
        $this->contenu = $contenu;
        $this->setARepondre();
     }
+
+
 }
