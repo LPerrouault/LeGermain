@@ -1,0 +1,17 @@
+
+
+{% extends 'base.html.twig' %}
+{% block title %}supression - Picassouille{% endblock %}
+{% block body %}
+    <div class="container">
+        <form>
+            <h1>Le message suivant a été suprimmé</h1>
+            <span class="view-title row"><h4>{{ contacts.sujet }}</h4></span>
+            <span class="view-nom row">{{ contacts.nom  }}</span>
+            <span class="view-prenom row">{{ contacts.prenom  }}</span>
+            <span class="view-description row">{{ contacts.contenu }}</span>
+            <span class="view-date row"><p class="card-time">{{ contacts.dateContacts|date('d/m/Y') }}</p></span>
+            <button class="btn btn-primary row"type="submit" onclick=""><a class="text-white" href="{{ path('contact_admin') }}">Retour</a></button>
+        </form>
+    </div>
+{% endblock %}
