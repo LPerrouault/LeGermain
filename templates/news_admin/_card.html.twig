@@ -1,0 +1,24 @@
+<li style="height: 21%; margin: 1em 0 1em;">
+    <a href="{{ path('news_admin_views', {id: article.id}) }}">
+        <section class="row">
+            <div class="col-4">
+                <img class="card-img-top" style="width: 80%;" src="{{ asset('/image/article/'~article.nomFichierImage) | trans}}" alt="{{ article.titre }}">
+            </div>
+            <div class="news-body col-8">
+                <span class="news-title">
+                    <h3 class="news-title">{{ article.titre }}</h3>
+                </span>
+                {% for t in article.listeTags %}
+                    <span class="meta">
+                        <span class="date">{{ article.dateHeureEnregistrement|date('d/m/Y') }}</span>
+                        <span class="tag">{{ t.libelle}}</span>
+                    </span>
+                {% endfor %}
+            </div>
+        </section>
+    </a>
+    <div class="row">
+        <a class="btn btn-primary col-6" href="{{ path('update_news', {id: article.id}) }}">Modifier</a>
+        <a class="btn btn-danger col-6" href="{{ path('remove_news', {id: article.id}) }}">Supprimer</a>
+    </div>
+</li>

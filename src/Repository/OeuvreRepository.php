@@ -37,7 +37,9 @@ class OeuvreRepository extends ServiceEntityRepository
     {
         $query = $this
             ->createQueryBuilder('o')
-            ->select('o');
+            ->select('o')
+            ->orderBy('o.id', 'DESC');
+
 
         if (!empty($searchData->tags)){
             $query = $query
@@ -62,6 +64,7 @@ class OeuvreRepository extends ServiceEntityRepository
                 ->createQueryBuilder('o')
                 ->select('t', 'o')
                 ->join('o.listeTags', 't')
+                ->orderBy('o.id', 'DESC')
                 ->andWhere('t.libelle IN (:tagOeuvre)')
                 ->setParameter('tagOeuvre', $oeuvreTag);
 
@@ -118,4 +121,5 @@ class OeuvreRepository extends ServiceEntityRepository
             9
         );
     }
+
 }

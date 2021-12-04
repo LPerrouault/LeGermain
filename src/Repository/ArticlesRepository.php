@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\DataFixtures\SeachData;
 use App\Entity\Article;
+use App\Entity\Tag;
 use App\Service\TestData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -44,6 +45,7 @@ class ArticlesRepository extends ServiceEntityRepository
             $query = $query
                 ->andWhere('t.id IN (:listeArticle)')
                 ->setParameter('listeArticle', $searchData->tags);
+
         }
 
         $query=$query->getQuery();
@@ -77,4 +79,39 @@ class ArticlesRepository extends ServiceEntityRepository
             10
         );
     }
+
+    public function updateArticle($id, $titre, $nomFichier , $corpsArticle){
+       if ($id!=null) {
+           $query = $this
+               ->createQueryBuilder('articles')
+               ->update();
+           if ($titre != null && $nomFichier != null && $corpsArticle != null){
+               $query->set('articles.titre', ':titre')
+                      ->set('articles.nomFichierImage', ':nomFichier')
+                      ->set('articles.corpsArticle', ':corpsArticle')
+                      ->setParameter('titre', $titre)
+                      ->setParameter('nomFichier', $nomFichier)
+                      ->setParameter('corpsArticle', $corpsArticle);
+
+           }
+           elseif ($titre != null) {
+               $query->set('articles.titre', ':titre')
+                      ->setParameter('titre', $titre);
+
+           } elseif ($nomFichier != null) {
+               $query->set('articles.nomFichierImage', ':nomFichier')
+                     ->setParameter('nomFichier', $nomFichier);
+
+           } elseif ($corpsArticle == null) {
+               $query->set('articles.corpsArticle', ':corpsArticle')
+                     ->setParameter('corpsArticle', $corpsArticle);
+           }
+           $query->where('articles.id = ?2')
+               ->setParameter(2, $id);
+
+           return $query->getQuery()->getResult();
+       }
+
+    }
+
 }
