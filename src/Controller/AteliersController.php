@@ -20,7 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class AteliersController extends AbstractController
 {
     /**
-     * Affichage de la page Ateliers
+     * Affichage de la page Ateliers avec tous les ateliers
      * @return Response
      */
     #[Route('/ateliers', name: 'ateliers')]
@@ -32,20 +32,20 @@ class AteliersController extends AbstractController
 
         //Affiche les données dans la page
         return $this->render('ateliers/index.html.twig', [
-                'controller_name' => 'AteliersController',
-                'ateliers' => $ateliers
+            'controller_name' => 'AteliersController',
+            'ateliers' => $ateliers
         ]);
     }
 
     /**
-     * Prend en paramètre l'id de l'Atelier et affiche les détails de l'atelier
+     * Prend en paramètre l'id de l'Atelier et affiche les détails de l'atelier selectionné
      * @param $id
      * @return Response
      */
     #[Route('/ateliers/{id}', name: 'ateliers_details')]
     public function ateliersDetails($id): Response {
 
-        //récupère les données depuis la base de données
+        //récupère les données de l'id mis en paramètre depuis la base de données
         $repo = $this->getDoctrine()->getRepository(Atelier::class);
         $atelier = $repo->find($id);
 
@@ -64,24 +64,21 @@ class AteliersController extends AbstractController
     #[Route('/ateliers/inscription/{id}', name: 'ateliers_inscription')]
     public function ateliersInscription($id) : Response {
 
-        //récupère les données depuis la base de données
+        //récupère les données de l'id mis en paramètre depuis la base de données
         $repo = $this->getDoctrine()->getRepository(Atelier::class);
         $atelier = $repo->find($id);
 
-        /*$reposi = $this->getDoctrine()->getRepository(Inscription::class);
-        $inscription = $reposi->findAll();*/
-
-        //création du formulaire pour l'inscription à l'atelier
+        //création du formulaire pour l'inscription à l'atelier avec la méthode getInscriptionForm (qui est plus bas dans le code)
         $form = AteliersController::getInscriptionForm($atelier);
 
         //affichage de la page d'inscription avec render du formulaire
         return $this->render('ateliers/inscription.html.twig', [
             'atelier' => $atelier,
-            //'inscription' => $inscription,
             'form' => $form->createView()
         ]);
     }
 
+    //Ici le premier essai de la création du formulaire avec le Form\Type mais non utilisé au final
     /*public function new(Request $request): Response
     {
         $inscription = new Inscription;
@@ -96,31 +93,33 @@ class AteliersController extends AbstractController
      * Vérification des données rentrer dans le formulaire
      * S'il y a une erreur renvoie un message
      */
-    #[Route('ateliers/inscription/{id}', name: 'inscription_ateliers')]
+    #[Route('ateliers/inscription', name: 'inscription_ateliers')]
     public function form_validation(Request $request, $id): Response {
 
-        //récupère les données depuis la base de données
+        //récupère les données de l'id mis en paramètre depuis la base de données
         $repo = $this->getDoctrine()->getRepository(Atelier::class);
         $atelier = $repo->find($id);
 
+        //prend les données
         $entityManager = $this->getDoctrine()->getManager();
 
         //Récupération des réponses
-        //rajouter l'id ausssi pour voir s'il c'est nécessaire
-     //   $id = $request->get('form'["id_atelier_id"]);
+        //la variable pour récuperer l'id de l'atelier est mis en commentaire car pour le moment
+        //je ne vois pas comment l'utiliser
+    //    $id = $request->get('form'["id_atelier_id"]);
         $nom = $request->get('form')["nom"];
         $prenom = $request->get('form')["prenom"];
         $email = $request->get('form')["email"];
         $telephone = $request->get('form')["telephone"];
         $message = $request->get('form')["message"];
 
-        //Vérification serveur des données
-        $error_message = $this->check_data_form_inscription(/*$id,*/ $nom, $prenom, $email, $telephone, $message);
+        //Vérification serveur des données avec check_data_form_inscription qui est déclarer en bas
+        $error_message = $this->check_data_form_inscription($id, $nom, $prenom, $email, $telephone, $message);
         //S'il n'y a pas de message d'erreur retourné lors de la vérification
         if ($error_message == null) {
             //On insère les données dans la base de données
             $message_complet = new Inscription();
-            $message_complet->setInscription(/*$id,*/ $nom, $prenom, $email, $telephone, $message);
+            $message_complet->setInscription($id, $nom, $prenom, $email, $telephone, $message);
             $entityManager->persist($message_complet);
             try {
                 //Insertion des données
@@ -128,7 +127,7 @@ class AteliersController extends AbstractController
                 //Affichage de la page de succès avec objet Inscription créé
                 return $this->render('ateliers/inscription_succes.html.twig', [
                     'controller_name' => 'AteliersController',
-                    'inscription' => $message_complet,
+                    'inscription' => $message_complet->getId(),
                 ]);
             } catch (Exception $e) {
                 throw new Exception($e->getMessage() . " Ligne " . $e->getLine());
@@ -137,21 +136,21 @@ class AteliersController extends AbstractController
         //Sinon, il y a une erreur, retourner sur page précédente, garder les
         //données saisies et l'afficher
         else {
-            //Création du formulaire de contact
-            $form = AteliersController::getInscriptionForm();
+            //Création du formulaire de l'atelier avec la méthode getInscriptionForm
+            $form = AteliersController::getInscriptionForm($atelier);
             //Affichage de la page contact avec render du formulaire
             return $this->renderForm('ateliers/inscription.html.twig',
                 [
                     'atelier' => $atelier,
                     'form' => $form,
                     'error' => $error_message,
-              //      'id' => $id,
+                    'id' => $id,
                     'nom' => $nom,
                     'prenom' => $prenom,
                     'email' => $email,
                     'telephone' => $telephone,
                     'contenu' => $message,
-            ]);
+                ]);
         }
     }
 
@@ -191,19 +190,22 @@ class AteliersController extends AbstractController
     }
 
     /**
-     * Retourne le formulaire de contact
+     * Retourne le formulaire de l'atelier
      * @param Atelier|null $atelier (l'id de l'atelier)
      * @return \Symfony\Component\Form\FormInterface
      */
+    //la fonction a pris en paramètre l'id de l'atelier provenant de App\Entity\Atelier
     public function getInscriptionForm(?atelier $atelier) {
 
         $inscription = new Inscription();
+        //ici la variable inscription prend donc l'id de l'atelier pour l'inscription en question
+        //la méthode setIdAtelier provient de App\Entity\Inscription
         $inscription->setIdAtelier($atelier);
 
+        //retourne la création du formulaire de l'atelier
         return $this->createFormBuilder($inscription)
-            //Essai de mettre le champ hidden (et non type car il n'y a pas d'utilisation de Form\Type pour l'id avec le 'hidden-row'
-            ->add('id', NumberType::class, array(
-                'attr' => array('class' => 'hidden-row')))
+            // rajout de l'id est en commentaire, je ne sais pas toujours pas s'il est nécessaire ou non
+            //    ->add('id', NumberType::class, array('required' => false))
             ->add('nom', TextType::class, array('required' => false))
             ->add('prenom', TextType::class, array('required' => false))
             ->add('email', EmailType::class, array('required' => false))
@@ -212,8 +214,12 @@ class AteliersController extends AbstractController
             ->add('reset', ResetType::class, array(
                 'attr' => array('class' => 'save')))
             ->add('save', SubmitType::class, ['label' => 'Envoyer'])
-        //    ->setAction($this->generateUrl('ateliers'))
-            ->setAction($this->generateUrl('inscription_ateliers'))
+            //ici je retourne à la page 'ateliers' quand on appuie sur Envoyer
+            ->setAction($this->generateUrl('ateliers'))
+            //car avec l'action juste en dessus, on obtient l'erreur de l'id manquant
+            //pour la page des inscriptions ('inscription_ateliers' est la route pour la méthode :
+            // public function form_validation()
+        //  ->setAction($this->generateUrl('inscription_ateliers'))
             ->getForm();
 
     }
