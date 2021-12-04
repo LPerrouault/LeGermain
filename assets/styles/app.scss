@@ -289,14 +289,14 @@ hr {
 .btn{
     font-weight: bold;
 }
-//page news
+
 
 .bi-back {
     text-decoration: none;
     color: black;
     font-size: 25px;
 }
-
+//page news
 .taille { min-height: 90em; }
 .grid{
     display: grid;
@@ -308,26 +308,21 @@ hr {
     position: sticky;
     top: 20px;
 }
-
 .mosaic{
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-gap: 20px;
 
 }
-
 .meta{
     width: 100%;
 }
-
 .tag {
     color: #FFFFFF;
     background-color: #7A1D07;
     border-radius: 0.1em;
     padding: 0.45rem 1.25rem;
 }
-
-
 .date{
     display: inline-block;
     padding: 0.45rem 1.25rem;
@@ -336,13 +331,19 @@ hr {
 
 //page oeuvre
 
-.cardOeuvre {
-    position: relative;
-    height: 100%;
+
+.pi-card-oeuvre {
+    height: 10em;
     width: 100%;
 }
 
-.cardOeuvre-titre {
+.pi-card-oeuvre-img {
+    width: 20em;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pi-card-oeuvre-titre {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -353,14 +354,11 @@ hr {
     visibility: hidden;
 }
 
-.cardOeuvre:hover .cardOeuvre-titre {
+.pi-card-oeuvre:hover .pi-card-oeuvre-titre {
     visibility: visible;
     text-align: center;
-    padding-top: 40%;
+    padding-top: 4.5em;
     opacity: 1;
 }
-
-
-
 //Page contact//
 

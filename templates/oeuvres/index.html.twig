@@ -4,89 +4,52 @@
 {% block nav_oeuvres %}active{% endblock %}
 
 {% block body %}
-</style>
-<div class="pi-page">
-    <div class="container">
-        <form>
-            <!-- Boutons correspondant aux types des oeuvres -->
-            <div class="row">
-                {% for type in types %}
-                    <div class="col-4">
-                        <input name="searchType[{{ type.libelle }}]"  type="checkbox" value="" id="searchType[{{ type.libelle }}]" hidden/>
-                        <label class="pi-btn-rouge pi-max-width" id="pi-oeuvre-libelle-{{ type.libelle }}" for="searchType[{{ type.libelle }}]">
-                            <div class="pi-btn-texte">
-                                <h4>{{ type.libelle }}</h4>
-                            </div>
-                        </label>
-                    </div>
-                {% endfor %}
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-2">
-                    <h4>Catégories</h4>
-                    {% for tag in tags %}
-                        <div class="form-check">
-                            <input class="form-check-input" name="searchTag[{{ tag.libelle }}]"  type="checkbox" value="" id="searchTag[{{ tag.libelle }}]"/>
-                            <label class="form-check-label pi-texte" for="searchTag[{{ tag.libelle }}]">
-                                {{ tag.libelle }}
+    <div class="pi-page">
+        <div class="container">
+            <form>
+                <!-- Boutons correspondant aux types des oeuvres -->
+                <div class="row">
+                    {% for type in types %}
+                        <div class="col-4">
+                            <input name="searchType[{{ type.libelle }}]"  type="checkbox" value="" id="searchType[{{ type.libelle }}]" hidden/>
+                            <label class="pi-btn-rouge pi-max-width" id="pi-oeuvre-libelle-{{ type.libelle }}" for="searchType[{{ type.libelle }}]">
+                                <div class="pi-btn-texte">{{ type.libelle }}</div>
                             </label>
                         </div>
                     {% endfor %}
-                    <div class="form-group">
-                        <button type="submit" class="pi-btn-bleu pi-btn-texte">Filtrer</button>
-                        <button class="pi-btn-texte pi-btn-rouge" href="{{ path('oeuvres') }}">Réinitialiser</button>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <div>
+                            <h4>Catégories</h4>
+                            <div style="padding-bottom: 10px;">
+                                {% for tag in tags %}
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="searchTag[{{ tag.libelle }}]"  type="checkbox" value="" id="searchTag[{{ tag.libelle }}]"/>
+                                        <label class="form-check-label pi-texte" for="searchTag[{{ tag.libelle }}]">
+                                            {{ tag.libelle }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <br>
+                            <button type="submit" class="pi-btn-bleu pi-btn-texte pi-max-width">Filtrer</button>
+                            <button class="pi-btn-texte pi-btn-rouge pi-max-width" href="{{ path('oeuvres') }}">Réinitialiser</button>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="mosaic">
+                            {% for oeuvres in oeuvres %}
+                                {% include 'oeuvres/_card.html.twig' %}
+                            {% endfor %}
+                        </div>
+                        <div class="mt-4">
+                            {{ knp_pagination_render(oeuvres) }}
+                        </div>
                     </div>
                 </div>
-                <div class="col-1"></div>
-                <div class="col-9">
-                    <div class="mosaic">
-                        {% for oeuvres in oeuvres %}
-                            {% include 'oeuvres/_card.html.twig' %}
-                        {% endfor %}
-                    </div>
-                    <div class="mt-4">
-                        {{ knp_pagination_render(oeuvres) }}
-                    </div>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
-<script>
-    //Modification de la couleur de fond des boutons des types d'oeuvres
-    //Pour le logo
-    var pi_check_logo = document.getElementById("searchType[Logo]");
-    var pi_check_illustration = document.getElementById("searchType[Illustration]");
-    var pi_check_affiche = document.getElementById("searchType[Affiche]");
-    function pi_changement_couleur_bouton_logo() {
-        if ($(this).is(":checked")) {
-            document.getElementById("pi-oeuvre-libelle-Logo").classList.add("pi-btn-rouge-clicked");
-        } else {
-            document.getElementById("pi-oeuvre-libelle-Logo").classList.remove("pi-btn-rouge-clicked");
-        }
-    }
-    ;
-    function pi_changement_couleur_bouton_illustration() {
-        if ($(this).is(":checked")) {
-            document.getElementById("pi-oeuvre-libelle-Illustration").classList.add("pi-btn-rouge-clicked");
-        } else {
-            document.getElementById("pi-oeuvre-libelle-Illustration").classList.remove("pi-btn-rouge-clicked");
-        }
-    }
-    ;
-    function pi_changement_couleur_bouton_affiche() {
-        if ($(this).is(":checked")) {
-            document.getElementById("pi-oeuvre-libelle-Affiche").classList.add("pi-btn-rouge-clicked");
-        } else {
-            document.getElementById("pi-oeuvre-libelle-Affiche").classList.remove("pi-btn-rouge-clicked");
-        }
-    }
-    ;
-
-    pi_check_logo.addEventListener("click", pi_changement_couleur_bouton_logo, false);
-    pi_check_illustration.addEventListener("click", pi_changement_couleur_bouton_illustration, false);
-    pi_check_affiche.addEventListener("click", pi_changement_couleur_bouton_affiche, false);
-</script>
 {% endblock %}
