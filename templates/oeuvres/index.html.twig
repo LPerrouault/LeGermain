@@ -23,16 +23,14 @@
                     <div class="col-2">
                         <div>
                             <h4>Catégories</h4>
-                            <div style="padding-bottom: 10px;">
-                                {% for tag in tags %}
-                                    <div class="form-check">
-                                        <input class="form-check-input" name="searchTag[{{ tag.libelle }}]"  type="checkbox" value="" id="searchTag[{{ tag.libelle }}]"/>
-                                        <label class="form-check-label pi-texte" for="searchTag[{{ tag.libelle }}]">
-                                            {{ tag.libelle }}
-                                        </label>
-                                    </div>
-                                {% endfor %}
-                            </div>
+                            {% for tag in tags %}
+                                <div class="form-check">
+                                    <input class="form-check-input" name="searchTag[{{ tag.libelle }}]"  type="checkbox" value="" id="searchTag[{{ tag.libelle }}]"/>
+                                    <label class="form-check-label pi-texte" for="searchTag[{{ tag.libelle }}]">
+                                        {{ tag.libelle }}
+                                    </label>
+                                </div>
+                            {% endfor %}
                             <br>
                             <button type="submit" class="pi-btn-bleu pi-btn-texte pi-max-width">Filtrer</button>
                             <button class="pi-btn-texte pi-btn-rouge pi-max-width" href="{{ path('oeuvres') }}">Réinitialiser</button>

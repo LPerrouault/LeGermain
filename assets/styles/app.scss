@@ -290,13 +290,12 @@ hr {
     font-weight: bold;
 }
 
-
+//Commun aux pages news et oeuvres
 .bi-back {
     text-decoration: none;
     color: black;
     font-size: 25px;
 }
-//page news
 .taille { min-height: 90em; }
 .grid{
     display: grid;
@@ -330,8 +329,6 @@ hr {
 }
 
 //page oeuvre
-
-
 .pi-card-oeuvre {
     height: 10em;
     width: 100%;
@@ -359,6 +356,10 @@ hr {
     text-align: center;
     padding-top: 4.5em;
     opacity: 1;
+}
+
+.pi-oeuvre-detail-img {
+    width: 100%;
 }
 //Page contact//
 
