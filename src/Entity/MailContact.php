@@ -54,7 +54,7 @@ class MailContact
     /**
      * @ORM\Column(type="datetime")
      */
-    private $dat_contact;
+    private $date_contacts;
     
     /**
      * Accesseurs (get/set)
@@ -194,7 +194,19 @@ class MailContact
 
         return $this;
     }
-    
+    public function getDateContacts(): ?\DateTimeInterface
+    {
+        return $this->date_contacts;
+    }
+
+    public function setDateContacts(\DateTimeInterface $date_contacts): self
+    {
+        $this->date_contacts = $date_contacts;
+
+        return $this;
+    }
+
+
     /**
      * Méthodes
      */
@@ -212,26 +224,17 @@ class MailContact
         $this->setReponse(1);
     }
 
-    public function getDatContact(): ?\DateTimeInterface
-    {
-        return $this->dat_contact;
-    }
-
-    public function setDatContact(\DateTimeInterface $dat_contact): self
-    {
-        $this->dat_contact = $dat_contact;
-
-        return $this;
-    }
     
-    public function setMailContact($nom, $prenom, $email, $sujet, $contenu){
+    public function setMailContact($nom, $prenom, $email, $sujet, $contenu, $date_contacts){
        $this->nom = $nom;
        $this->prenom = $prenom;
        $this->email = $email;
        $this->sujet = $sujet;
        $this->contenu = $contenu;
+       $this->date_contacts = $date_contacts;
        $this->setARepondre();
     }
+
 
 
 }
