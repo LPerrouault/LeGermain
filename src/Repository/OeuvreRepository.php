@@ -50,7 +50,7 @@ class OeuvreRepository extends ServiceEntityRepository
         return $this->paginator->paginate(
             $query,
             $searchData->page,
-            10
+            9
         );
     }
 
@@ -70,7 +70,7 @@ class OeuvreRepository extends ServiceEntityRepository
         return $this->paginator->paginate(
             $query,
             $searchData->page,
-            10
+            9
         );
     }
 
@@ -90,7 +90,7 @@ class OeuvreRepository extends ServiceEntityRepository
         return $this->paginator->paginate(
             $query,
             $searchData->page,
-            10
+            9
         );
     }
 
@@ -115,7 +115,7 @@ class OeuvreRepository extends ServiceEntityRepository
         return $this->paginator->paginate(
             $query,
             $searchData->page,
-            10
+            9
         );
     }
 }
