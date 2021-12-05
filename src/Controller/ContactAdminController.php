@@ -12,7 +12,7 @@ use function Sodium\add;
 
 class ContactAdminController extends AbstractController
 {
-    #[Route('/contact_admin', name: 'contact_admin')]
+    #[Route('admin/contact_admin', name: 'contact_admin')]
     public function index(MailContactRepository $contactRepository, Request $request): Response
     {
         // filtre enregistrement des valeur des bouton dans une varriable
@@ -41,7 +41,7 @@ class ContactAdminController extends AbstractController
     }
 
     //route pour l'apercue du message sélectionné
-    #[Route('/contact_admin_view/{id}', name: 'contact_admin_view')]
+    #[Route('admin/contact_admin_view/{id}', name: 'contact_admin_view')]
     public function view(int $id, MailContactRepository $contactRepository): Response
     {
         //on afficge le message par l'id du message sélectionner
@@ -51,7 +51,7 @@ class ContactAdminController extends AbstractController
         ]);
     }
     //route pour la supresion du message sélectionné
-    #[Route('/contact_admin_remove/{id}', name: 'contact_admin_remove')]
+    #[Route('admin/contact_admin_remove/{id}', name: 'contact_admin_remove')]
     public function remove(int $id, MailContactRepository $contactRepository): Response
     {
         //on supprime le message par l'id du message sélectionner
