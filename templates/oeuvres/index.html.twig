@@ -21,20 +21,18 @@
                 <br>
                 <div class="row">
                     <div class="col-2">
-                        <div>
-                            <h4>Catégories</h4>
-                            {% for tag in tags %}
-                                <div class="form-check">
-                                    <input class="form-check-input" name="searchTag[{{ tag.libelle }}]"  type="checkbox" value="" id="searchTag[{{ tag.libelle }}]"/>
-                                    <label class="form-check-label pi-texte" for="searchTag[{{ tag.libelle }}]">
-                                        {{ tag.libelle }}
-                                    </label>
-                                </div>
-                            {% endfor %}
-                            <br>
-                            <button type="submit" class="pi-btn-bleu pi-btn-texte pi-max-width">Filtrer</button>
-                            <button class="pi-btn-texte pi-btn-rouge pi-max-width" href="{{ path('oeuvres') }}">Réinitialiser</button>
-                        </div>
+                        <h4>Catégories</h4>
+                        {% for tag in tags %}
+                            <div class="form-check">
+                                <input class="form-check-input" name="searchTag[{{ tag.libelle }}]"  type="checkbox" value="" id="searchTag[{{ tag.libelle }}]"/>
+                                <label class="form-check-label pi-texte" for="searchTag[{{ tag.libelle }}]">
+                                    {{ tag.libelle }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                        <br>
+                        <button type="submit" class="pi-btn-bleu pi-btn-texte pi-max-width">Filtrer</button>
+                        <button class="pi-btn-texte pi-btn-rouge pi-max-width" href="{{ path('oeuvres') }}">Réinitialiser</button>
                     </div>
                     <div class="col-10">
                         <div class="mosaic">

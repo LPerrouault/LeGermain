@@ -141,7 +141,7 @@ hr {
     background-color: #AD1815;
 }
 
-//Classes en commun
+//Classes en commun//
 .pi-page {
     margin: 1em 0;
 }
@@ -212,10 +212,11 @@ hr {
     background-color: #F8F7F4;
 }
 
-
+.pi-pas-souligne {
+    text-decoration: none;
+}
 
 // Page accueil //
-
 //Bannière de l'accueil
 .pi-banniere {
     padding-top: 5.5em;
@@ -290,7 +291,7 @@ hr {
     font-weight: bold;
 }
 
-//Commun aux pages news et oeuvres
+//Commun aux pages news et oeuvres//
 .bi-back {
     text-decoration: none;
     color: black;
@@ -322,12 +323,6 @@ hr {
     border-radius: 0.1em;
     padding: 0.45rem 1.25rem;
 }
-.date{
-    display: inline-block;
-    padding: 0.45rem 1.25rem;
-    color: #2B2118;
-}
-
 //page oeuvre
 .pi-card-oeuvre {
     height: 10em;
@@ -360,6 +355,22 @@ hr {
 
 .pi-oeuvre-detail-img {
     width: 100%;
+}
+
+//Page News/Actualité//
+.pi-card-news-img {
+    height: 8em;
+    width: 15em;
+    object-fit: cover;
+}
+
+.pi-card-news-content {
+    margin-left: 2.5em;
+    color: #2B2118;
+    text-decoration: none;
+}
+.pi-card-news-content:hover {
+    color: #AD1815;
 }
 //Page contact//
 

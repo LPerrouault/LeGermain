@@ -39,6 +39,7 @@ class ArticlesRepository extends ServiceEntityRepository
         $query = $this
             ->createQueryBuilder('articles')
             ->select('t', 'articles')
+            ->orderBy('articles.dateHeureEnregistrement', 'DESC')
             ->join('articles.listeTags', 't');
 
         if (!empty($searchData->tags)){
