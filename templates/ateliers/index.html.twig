@@ -4,18 +4,19 @@
 {% block nav_ateliers %}active{% endblock %}
 
 {% block body %}
-
-<div class="pi-page">
+    <div class="pi-page">
         <div class="container">
-        {% for atelier in ateliers %}
-                <h2> {{ atelier.titre }} </h2>
+            {% for atelier in ateliers %}
+                <div class="card pi-page container">
+                    <h4>{{ atelier.titre }}</h4>
                     <div class="content">
-                        <p> {{ atelier.description }} </p>
-                        <button class="btn btn-primary bg-light">
-                            <a href="{{ path('ateliers_details',{id: atelier.id}) }}">Voir l'atelier</a>
+                        <p class="pi-texte"> {{ atelier.description }} </p>
+                        <button class="pi-btn-rouge">
+                            <a class="pi-btn-texte" href="{{ path('ateliers_details',{id: atelier.id}) }}">Voir l'atelier</a>
                         </button>
                     </div>
-        {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock %}
