@@ -5,17 +5,13 @@ namespace App\Controller;
 use App\Entity\Atelier;
 use App\Entity\Inscription;
 use App\Form\InscriptionType;
+use App\Repository\AtelierRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ResetType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+
 
 class AteliersController extends AbstractController
 {
@@ -42,54 +38,16 @@ class AteliersController extends AbstractController
      * @param $id
      * @return Response
      */
-    #[Route('/ateliers/{id}', name: 'ateliers_details')]
-    public function ateliersDetails($id): Response {
-
+    #[Route('/ateliers/{id}', name: 'views_atelier')]
+    public function ateliersDetails($id, AtelierRepository $repository): Response {
         //récupère les données depuis la base de données
-        $repo = $this->getDoctrine()->getRepository(Atelier::class);
-        $atelier = $repo->find($id);
+        $atelier = $repository->find($id);
 
         //affiche les données dans la page
-        return $this->render('ateliers/details.html.twig', [
+        return $this->render('ateliers/_view.html.twig', [
             'atelier' => $atelier
         ]);
     }
-
-    /**
-     * Affiche la page d'inscription pour l'atelier en question
-     * et la création du formulaire
-     * @param $id
-     * @return Response
-     */
-    #[Route('/ateliers/inscription/{id}', name: 'ateliers_inscription')]
-    public function ateliersInscription($id) : Response {
-
-        //récupère les données depuis la base de données
-        $repo = $this->getDoctrine()->getRepository(Atelier::class);
-        $atelier = $repo->find($id);
-
-        /*$reposi = $this->getDoctrine()->getRepository(Inscription::class);
-        $inscription = $reposi->findAll();*/
-
-        //création du formulaire pour l'inscription à l'atelier
-        $form = AteliersController::getInscriptionForm($atelier);
-
-        //affichage de la page d'inscription avec render du formulaire
-        return $this->render('ateliers/inscription.html.twig', [
-            'atelier' => $atelier,
-            //'inscription' => $inscription,
-            'form' => $form->createView()
-        ]);
-    }
-
-    /*public function new(Request $request): Response
-    {
-        $inscription = new Inscription;
-        $formInscription = $this->createForm(InscriptionType::class, $inscription);
-        return $this->render('ateliers/inscription.html.twig', [
-            'form' => $formInscription->createView()
-        ]);
-    }*/
 
 
     /*
@@ -97,62 +55,49 @@ class AteliersController extends AbstractController
      * S'il y a une erreur renvoie un message
      */
     #[Route('ateliers/inscription/{id}', name: 'inscription_ateliers')]
-    public function form_validation(Request $request, $id): Response {
+    public function form_validation($id, Request $request,AtelierRepository $atelierRepository ): Response {
 
         //récupère les données depuis la base de données
-        $repo = $this->getDoctrine()->getRepository(Atelier::class);
-        $atelier = $repo->find($id);
+        $atelier = $atelierRepository->find($id);
+        $inscription = new Inscription();
+        $error_message = null;
 
-        $entityManager = $this->getDoctrine()->getManager();
+        $form = $this->createForm(InscriptionType::class, $inscription);
+        $form->handleRequest($request);
 
         //Récupération des réponses
         //rajouter l'id ausssi pour voir s'il c'est nécessaire
-     //   $id = $request->get('form'["id_atelier_id"]);
-        $nom = $request->get('form')["nom"];
-        $prenom = $request->get('form')["prenom"];
-        $email = $request->get('form')["email"];
-        $telephone = $request->get('form')["telephone"];
-        $message = $request->get('form')["message"];
+        $nom = $form->get('nom')->getData();
+        $prenom = $form->get('prenom')->getData();
+        $email = $form->get('email')->getData();
+        $telephone = $form->get('telephone')->getData();
+        $message = $form->get('message')->getData();
 
-        //Vérification serveur des données
-        $error_message = $this->check_data_form_inscription(/*$id,*/ $nom, $prenom, $email, $telephone, $message);
-        //S'il n'y a pas de message d'erreur retourné lors de la vérification
-        if ($error_message == null) {
-            //On insère les données dans la base de données
-            $message_complet = new Inscription();
-            $message_complet->setInscription(/*$id,*/ $nom, $prenom, $email, $telephone, $message);
-            $entityManager->persist($message_complet);
-            try {
-                //Insertion des données
-                $entityManager->flush();
-                //Affichage de la page de succès avec objet Inscription créé
-                return $this->render('ateliers/inscription_succes.html.twig', [
-                    'controller_name' => 'AteliersController',
-                    'inscription' => $message_complet,
-                ]);
-            } catch (Exception $e) {
-                throw new Exception($e->getMessage() . " Ligne " . $e->getLine());
+        //on verrifie que le fomulaire à bien été soumis
+        if ($form->isSubmitted() && $form->isValid()){
+
+            //Vérification des données avec check_data_form_inscription qui est déclarer en bas
+            $error_message = $this->check_data_form_inscription($id, $nom, $prenom, $email, $telephone, $message);
+
+            //on vérifie si il n'i a pas d'erreur
+            if (empty($error_message)){
+                //On insère les données dans la base de données
+                $inscription->setInscription($nom,$prenom,$email,$telephone,$message,$atelier);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($inscription);
+                $em->flush();
+
+                return $this->redirectToRoute('success');
             }
         }
-        //Sinon, il y a une erreur, retourner sur page précédente, garder les
-        //données saisies et l'afficher
-        else {
-            //Création du formulaire de contact
-            $form = AteliersController::getInscriptionForm();
             //Affichage de la page contact avec render du formulaire
-            return $this->renderForm('ateliers/inscription.html.twig',
-                [
-                    'atelier' => $atelier,
-                    'form' => $form,
-                    'error' => $error_message,
-              //      'id' => $id,
-                    'nom' => $nom,
-                    'prenom' => $prenom,
-                    'email' => $email,
-                    'telephone' => $telephone,
-                    'contenu' => $message,
+        return $this->renderForm('ateliers/inscription.html.twig',
+            [
+                'atelier' => $atelier,
+                'form' => $form,
+                'error' => $error_message,
+
             ]);
-        }
     }
 
     /**
@@ -171,13 +116,13 @@ class AteliersController extends AbstractController
             $error = "Veuillez insérer le contenu de votre message";
         }
         //Le telephone ne doit pas être null
-        if (empty($telephone)) {
-            $error = "Veuillez insérer un numéro de téléphone";
+        if (empty($telephone) || $telephone =! 10) {
+            $error = "Veuillez insérer un numéro de téléphone valide";
         }
         //L'email ne doit pas être null, et avoir une forme d'email
         if (empty($email) && filter_var($email)) {
             $error = "Veuillez insérer une adresse mail valide " .
-                "(exemple : test@gmail.com)";
+                "(exemple : exemple@email.com)";
         }
         //Le prénom ne doit pas être null
         if (empty($prenom)) {
@@ -190,42 +135,11 @@ class AteliersController extends AbstractController
         return $error;
     }
 
-    /**
-     * Retourne le formulaire de contact
-     * @param Atelier|null $atelier (l'id de l'atelier)
-     * @return \Symfony\Component\Form\FormInterface
-     */
-    public function getInscriptionForm(?atelier $atelier) {
-
-        $inscription = new Inscription();
-        $inscription->setIdAtelier($atelier);
-
-        return $this->createFormBuilder($inscription)
-            //Essai de mettre le champ hidden (et non type car il n'y a pas d'utilisation de Form\Type pour l'id avec le 'hidden-row'
-            ->add('id', NumberType::class, array(
-                'attr' => array('class' => 'hidden-row')))
-            ->add('nom', TextType::class, array('required' => false))
-            ->add('prenom', TextType::class, array('required' => false))
-            ->add('email', EmailType::class, array('required' => false))
-            ->add('telephone', TelType::class, array('required' => false))
-            ->add('message', TextareaType::class, array('required' => false))
-            ->add('reset', ResetType::class, array(
-                'attr' => array('class' => 'save')))
-            ->add('save', SubmitType::class, ['label' => 'Envoyer'])
-        //    ->setAction($this->generateUrl('ateliers'))
-            ->setAction($this->generateUrl('inscription_ateliers'))
-            ->getForm();
-
+    //route en cas de succes du formulaire
+    #[Route('/ateliers/inscription-succes', name: 'success')]
+    public function inscriptionSucces(): Response {
+        return $this->render('ateliers/_succes.html.twig', [
+        ]);
     }
-
-
-    /**
-    public function index(): Response
-    {
-    return $this->render('ateliers/index.html.twig', [
-    'controller_name' => 'AteliersController',
-    ]);
-    }
-     */
 
 }

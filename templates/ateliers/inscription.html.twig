@@ -4,10 +4,6 @@
 
 {% block body %}
 
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
 
 
     <div class="example-wrapper">
@@ -30,28 +26,24 @@
         <section class="Inscription">
 
         <div class="inscription">
-
             <div class="container">
-
                 <div class='row'>
-
                     <h2 class="col text-center">Formulaire </h2>
-
                     <div class="pi-contact col-12">
                         {% form_theme form 'bootstrap_4_layout.html.twig' %}
                         {{ form_start(form, {'method' : 'POST', }) }}
-
                         <div class="pi-contact-error">
-                            {% if error is defined %}
-                                {{ include('ateliers/inscription_erreur.html.twig') }}
-                            {% endif %}
                         </div>
-
                         <div class="pi-contact-form">
                             <!-- Si des données incorrectes ont déjà été saisies -->
-                            <div class="container">
+                            {% set errorMessage = error %}
+                            {% if errorMessage is not null %}
+                                <div class="example-wrapper alert-danger">
+                                    <div class="inscription_error"> Erreur </div>
+                                    <div class="inscription_error_text"> {{ error }} </div>
+                                </div>
+                            {% endif %}
                                 <div class="row form-group">
-
                                     <div class="col-2">
                                         {{ form_label(form.nom) }}
                                     </div>
@@ -73,7 +65,6 @@
                                         {% endif %}
                                     </div>
                                 </div>
-
                                 <div class="row form-group">
                                     <div class="col-2">
                                         {{ form_label(form.email) }}
@@ -99,7 +90,6 @@
                                         {% endif %}
                                     </div>
                                 </div>
-
                                 <div class="row form-group">
                                     <div class="col-2">
                                         {{ form_label(form.message) }}
@@ -112,26 +102,12 @@
                                         {% endif %}
                                     </div>
                                 </div>
-
-                                <div class="row pi-contact-buttons">
-                                    <div class="col text-center">
-                                        {{ form_row(form.save, {'label': 'Envoyer' }) }}
-                                    </div>
-                                    <div class="col text-center">
-                                        {{ form_row(form.reset, {'label' : "Effacer"}) }}
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         {{ form_end(form) }}
                     </div>
 
             </div>
-
         </div>
-
-        </section>
-
     </div>
 
 {% endblock %}

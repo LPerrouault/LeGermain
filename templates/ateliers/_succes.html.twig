@@ -9,17 +9,11 @@
     </style>
 
     <div class="example-wrapper">
-
         <div class="inscription_succes"> Succes </div>
-
-        <h2>Succès de l'envoi</h2>
-
+        <h2>Inscription à l'atelier confirmé</h2>
         <div>
-            {{ Inscription.nom }} {{ Inscription.nom }}, le message suivant a bien été envoyé:<br>
-            Votre adresse: {{ Inscription.email }}<br>
-            Votre message:<br> {{ Inscription.message }}
+            <a class="btn btn-primary" href="{{ path('ateliers') }}">Retour</a>
         </div>
-
     </div>
 
 {% endblock body %}

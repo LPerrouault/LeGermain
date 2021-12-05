@@ -10,21 +10,16 @@
     </style>
 
     <div class="example-wrapper">
-
         <section class="Ateliers">
                     <h2> {{ atelier.titre }} </h2>
                     <div class="content">
                         <p> {{ atelier.description }} </p>
                         <p> {{ atelier.duree }} h </p>
-
                         <button class="btn btn-primary bg-light">
-                            <a href="{{ path('ateliers_inscription',{id: atelier.id}) }}">S'inscrire</a>
+                            <a href="{{ path('inscription_ateliers',{id: atelier.id}) }}">S'inscrire</a>
                         </button>
-
                     </div>
-
         </section>
-
     </div>
 
 {% endblock %}

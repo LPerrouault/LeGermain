@@ -9,22 +9,16 @@
 </style>
 
 <div class="example-wrapper">
-
-<section class="Ateliers">
-    {% for atelier in ateliers %}
-
-            <h2> {{ atelier.titre }} </h2>
-                <div class="content">
-                    <p> {{ atelier.description }} </p>
-
-                    <button class="btn btn-primary bg-light">
-                        <a href="{{ path('ateliers_details',{id: atelier.id}) }}">Voir l'atelier</a>
-                    </button>
-                </div>
-
-    {% endfor %}
-
-</section>
-
+    <section class="Ateliers">
+        {% for atelier in ateliers %}
+                <h2> {{ atelier.titre }} </h2>
+                    <div class="content">
+                        <p> {{ atelier.description }} </p>
+                        <button class="btn btn-primary bg-light">
+                            <a href="{{ path('ateliers_details',{id: atelier.id}) }}">Voir l'atelier</a>
+                        </button>
+                    </div>
+        {% endfor %}
+    </section>
 </div>
 {% endblock %}
