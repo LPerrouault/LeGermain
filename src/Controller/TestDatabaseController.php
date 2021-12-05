@@ -7,8 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 
-use App\Entity\Type;
-use App\Entity\Tag;
+use App\Entity\type;
+use App\Entity\tag;
 use App\Entity\Atelier;
 use App\Entity\Article;
 use App\Entity\Oeuvre;
@@ -23,56 +23,56 @@ class TestDatabaseController extends AbstractController {
     public function index(): Response {
         $entityManager = $this->getDoctrine()->getManager();
         //Création des types
-        $ty1 = new Type();
+        $ty1 = new type();
         $ty1->setLibelle("Affiche");
-        $ty2 = new Type();
+        $ty2 = new type();
         $ty2->setLibelle("Illustration");
-        $ty3 = new Type();
+        $ty3 = new type();
         $ty3->setLibelle("Logo");
         //Test d'insertion de données dans la base de données
-        $ty1Found = $this->getDoctrine()->getRepository(Type::class)->findOneBy(['libelle' => 'Affiche']);
+        $ty1Found = $this->getDoctrine()->getRepository(type::class)->findOneBy(['libelle' => 'Affiche']);
         if (!$ty1Found) {
             $entityManager->persist($ty1);
             $entityManager->persist($ty2);
             $entityManager->persist($ty3);
         }
         //Création des tags
-        $ta1 = new Tag();
+        $ta1 = new tag();
         $ta1->setLibelle("atelier");
-        $ta2 = new Tag();
+        $ta2 = new tag();
         $ta2->setLibelle("oeuvre");
-        $ta3 = new Tag();
+        $ta3 = new tag();
         $ta3->setLibelle("news");
-        $ta4 = new Tag();
+        $ta4 = new tag();
         $ta4->setLibelle("exposition");
-        $ta5 = new Tag();
+        $ta5 = new tag();
         $ta5->setLibelle("commande");
-        $ta6 = new Tag();
+        $ta6 = new tag();
         $ta6->setLibelle("monochrome");
-        $ta7 = new Tag();
+        $ta7 = new tag();
         $ta7->setLibelle("couleur");
-        $ta8 = new Tag();
+        $ta8 = new tag();
         $ta8->setLibelle("paysage");
-        $ta9 = new Tag();
+        $ta9 = new tag();
         $ta9->setLibelle("transparent");
-        $ta10 = new Tag();
+        $ta10 = new tag();
         $ta10->setLibelle("personnage");
-        $ta11 = new Tag();
+        $ta11 = new tag();
         $ta11->setLibelle("portait");
-        $ta12 = new Tag();
+        $ta12 = new tag();
         $ta12->setLibelle("décor");
-        $ta13 = new Tag();
+        $ta13 = new tag();
         $ta13->setLibelle("carré");
-        $ta14 = new Tag();
+        $ta14 = new tag();
         $ta14->setLibelle("petit");
-        $ta15 = new Tag();
+        $ta15 = new tag();
         $ta15->setLibelle("moyen");
-        $ta16 = new Tag();
+        $ta16 = new tag();
         $ta16->setLibelle("grand");
-        $ta17 = new Tag();
+        $ta17 = new tag();
         $ta17->setLibelle("évènement");
         
-        $ta1Found = $this->getDoctrine()->getRepository(Tag::class)->findOneBy(['libelle' => 'atelier']);
+        $ta1Found = $this->getDoctrine()->getRepository(tag::class)->findOneBy(['libelle' => 'atelier']);
         if (!$ta1Found) {
             //Persistance des tags
             $entityManager->persist($ta1);

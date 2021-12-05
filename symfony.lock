@@ -136,6 +136,12 @@
             "ref": "f5ad42002183a6881962683e6d84bbb25cdfce5d"
         }
     },
+    "giggsey/libphonenumber-for-php": {
+        "version": "8.12.38"
+    },
+    "giggsey/locale": {
+        "version": "2.1"
+    },
     "laminas/laminas-code": {
         "version": "4.4.3"
     },
