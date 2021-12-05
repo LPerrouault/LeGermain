@@ -18,7 +18,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class OeuvresAdminController extends AbstractController
 {
-    #[Route('/oeuvres_admin', name: 'oeuvres_admin')]
+    #[Route('admin/oeuvres_admin', name: 'oeuvres_admin')]
     public function index(OeuvreRepository $repository, Request $request): Response
     {
 //       Initialisation du variable SearchDat qui stoque les tag des article
@@ -63,7 +63,7 @@ class OeuvresAdminController extends AbstractController
     }
 
 //  route permettant de visualiser l'article
-    #[Route('/oeuvres_admin/{id}', name: 'oeuvres_admin_views')]
+    #[Route('admin/oeuvres_admin/{id}', name: 'oeuvres_admin_views')]
     public function affichageNews(int $id, OeuvreRepository $repository): Response{
         $oeuvres = $repository->find($id);
 
@@ -73,7 +73,7 @@ class OeuvresAdminController extends AbstractController
     }
 
 //    route permettant la confirmation de la supression de l'article
-    #[Route('/oeuvre_admin_remove/{id}', name: 'remove_oeuvre')]
+    #[Route('admin/oeuvre_admin_remove/{id}', name: 'remove_oeuvre')]
     public function removeNews(int $id, Request $request, OeuvreRepository $repository, TagRepository $tagRepository): Response{
         $oeuvre = $repository->find($id);
         $tag = $tagRepository->searchTagOeuvre($oeuvre->getId());
@@ -91,7 +91,7 @@ class OeuvresAdminController extends AbstractController
     }
 
 //  route permettant l'ajout d'un article dans la base de donné et de upload le fichier associer
-    #[Route('/oeuvre_admin_add', name: 'oeuvre_admin_add')]
+    #[Route('admin/oeuvre_admin_add', name: 'oeuvre_admin_add')]
     public function addNews(Request $request, TypeRepository $typeRepository, SluggerInterface $slugger): Response{
         $oeuvre= new Oeuvre();
         $tag = new Tag();
@@ -157,7 +157,7 @@ class OeuvresAdminController extends AbstractController
     }
 
     //    Route permettant le modification d'un article
-    #[Route('/oeuvre_admin_update/{id}', name: 'update_oeuvre')]
+    #[Route('admin/oeuvre_admin_update/{id}', name: 'update_oeuvre')]
     public function updateNews(int $id,Request $request,SluggerInterface $slugger,TagRepository $tagRepository, OeuvreRepository $repository): Response{
         $oeuvre = $repository->find($id);
         $tag = new Tag();
@@ -234,7 +234,7 @@ class OeuvresAdminController extends AbstractController
     }
 
 // route succé creaton de l'article
-    #[Route('/oeuvre_admin_add_success', name: 'success_add')]
+    #[Route('admin/oeuvre_admin_add_success', name: 'success_add')]
     public function successAdd(): Response{
         return $this->render('oeuvres_admin/success_add.html.twig', [
         ]);

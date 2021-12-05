@@ -21,7 +21,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class NewsAdminController extends AbstractController
 {
-    #[Route('/news_admin', name: 'news_admin')]
+    #[Route('admin/news_admin', name: 'news_admin')]
     public function index(ArticlesRepository $articlesRepository, Request $request): Response
     {
 //       Initialisation du variable SearchDat qui stoque les tag des article
@@ -60,7 +60,7 @@ class NewsAdminController extends AbstractController
     }
 
 //  route permettant de visualiser l'article
-    #[Route('/news_admin/{id}', name: 'news_admin_views')]
+    #[Route('admin/news_admin/{id}', name: 'news_admin_views')]
     public function affichageNews(int $id, ArticlesRepository $repository): Response{
         $article = $repository->find($id);
         return $this->render('news_admin/view.html.twig', [
@@ -69,7 +69,7 @@ class NewsAdminController extends AbstractController
     }
 
 //    route permettant la confirmation de la supression de l'article
-    #[Route('/news_admin_remove/{id}', name: 'remove_news')]
+    #[Route('admin/news_admin_remove/{id}', name: 'remove_news')]
     public function removeNews(int $id, Request $request, ArticlesRepository $repository, TagRepository $tagRepository): Response{
         $article = $repository->find($id);
         $tag = $tagRepository->searchTagArticle($article->getId());
@@ -87,7 +87,7 @@ class NewsAdminController extends AbstractController
     }
 
 //    Route permettant le modification d'un article
-    #[Route('/news_admin_update/{id}', name: 'update_news')]
+    #[Route('admin/news_admin_update/{id}', name: 'update_news')]
     public function updateNews(int $id,Request $request,SluggerInterface $slugger,TagRepository $tagRepository, ArticlesRepository $repository): Response{
         $article = $repository->find($id);
         $tag = $tagRepository->searchTagArticle($id);
@@ -134,7 +134,7 @@ class NewsAdminController extends AbstractController
     }
 
 //  route permettant l'ajout d'un article dans la base de donné et de upload le fichier associer
-    #[Route('/news_admin_add', name: 'news_admin_add')]
+    #[Route('admin/news_admin_add', name: 'news_admin_add')]
     public function addNews(Request $request, SluggerInterface $slugger): Response{
         $article = new Article();
         $tag = new Tag();
@@ -198,7 +198,7 @@ class NewsAdminController extends AbstractController
     }
 
 // route succé creaton de l'article
-    #[Route('/news_admin_add_success', name: 'success_add')]
+    #[Route('admin/news_admin_add_success', name: 'success_add')]
     public function successAdd(ArticlesRepository $repository): Response{
         return $this->render('news_admin/success_add.html.twig', [
         ]);
