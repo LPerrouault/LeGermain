@@ -1,0 +1,22 @@
+<a href="{{ path('news_views', {id: article.id}) }}" class="pi-pas-souligne">
+    <div class="card pi-card-news">
+        <div class="row">
+            <div class="col-3">
+                <img class="card-img-top pi-card-news-img" src="{{ asset('/images/news/'~article.nomFichierImage) | trans}}" alt="{{ article.titre }}">
+            </div>
+            <div class="col-9">
+                <div class="pi-page pi-card-news-content">
+                    <h4>{{ article.titre }}</h4>
+                    <p class="pi-texte">
+                        Publié le {{ article.dateHeureEnregistrement|date('d/m/Y') }}
+                    </p>
+                    <em class="text-muted text-primary text-italic">
+                        {% for t in article.listeTags %}
+                            {{ t.libelle}}
+                        {% endfor %}
+                    </em>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>

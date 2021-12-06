@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Ateliers{% endblock %}
+{% block nav_ateliers %}active{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <header class="page-header">
-        <a><a href="{{ path('accueil') }}">Accueil</a> <a href="{{ path('news') }}">News</a>
-            <a href="{{ path('oeuvres') }}">Œuvres</a> <a href="{{ path('ateliers') }}">Ateliers</a>
-            <a href="{{ path('contact') }}">Contact</a>
-    </header>
-
-    <h2>Page des ATELIERS</h2>
-
-</div>
+    <div class="pi-page">
+        <div class="container">
+            {% for atelier in ateliers %}
+                <div class="card pi-page container">
+                    <h4>{{ atelier.titre }}</h4>
+                    <div class="content">
+                        <p class="pi-texte"> {{ atelier.description }} </p>
+                        <button class="pi-btn-rouge">
+                            <a class="pi-btn-texte" href="{{ path('ateliers_details',{id: atelier.id}) }}">Voir l'atelier</a>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

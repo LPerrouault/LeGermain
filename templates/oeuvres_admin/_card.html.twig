@@ -1,0 +1,23 @@
+<li style="height: 21%; margin: 1em 0 1em;">
+    <a href="{{ path('oeuvres_admin_views', {id: oeuvre.id}) }}">
+        <section class="row">
+            <div class="col-4">
+                <img class="card-img-top" style="width: 80%;" src="{{ asset('/images/oeuvres/'~oeuvre.nomFichierImage) | trans}}" alt="{{ oeuvre.titre }}">
+            </div>
+            <div class="news-body col-8">
+                <span class="news-title">
+                    <h3 class="news-title">{{ oeuvre.titre }}</h3>
+                </span>
+                <span class="meta">
+                    {% for t in oeuvre.listeTags %}
+                        <span class="tag">{{ t.libelle}}</span>
+                     {% endfor %}
+                </span>
+            </div>
+        </section>
+    </a>
+    <div class="row">
+        <a class="btn btn-primary col-6" href="{{ path('update_oeuvre', {id: oeuvre.id}) }}">Modifier</a>
+        <a class="btn btn-danger col-6" href="{{ path('remove_oeuvre', {id: oeuvre.id}) }}">Supprimer</a>
+    </div>
+</li>

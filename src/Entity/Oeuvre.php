@@ -45,15 +45,20 @@ class Oeuvre
     private $nomFichierImage;
 
     /**
-     * @ORM\ManyToOne(targetEntity=type::class, cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Type::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $idType;
 
     /**
-     * @ORM\ManyToMany(targetEntity=tag::class, inversedBy="listeOeuvres", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="listeOeuvres", cascade={"persist"})
      */
     private $listeTags;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $datePublication;
 
     public function __construct()
     {
@@ -125,27 +130,38 @@ class Oeuvre
         return $this;
     }
 
-    public function getIdType(): ?type
+    public function getIdType(): ?Type
     {
         return $this->idType;
     }
 
-    public function setIdType(?type $idType): self
+    public function setIdType(?Type $idType): self
     {
         $this->idType = $idType;
 
         return $this;
     }
+    public function getDatePublication(): ?\DateTimeInterface
+    {
+        return $this->datePublication;
+    }
+
+    public function setDatePublication(\DateTimeInterface $datePublication): self
+    {
+        $this->datePublication = $datePublication;
+
+        return $this;
+    }
 
     /**
-     * @return Collection|tag[]
+     * @return Collection|Tag[]
      */
     public function getListeTags(): Collection
     {
         return $this->listeTags;
     }
 
-    public function addListeTag(tag $listeTag): self
+    public function addListeTag(Tag $listeTag): self
     {
         if (!$this->listeTags->contains($listeTag)) {
             $this->listeTags[] = $listeTag;
@@ -154,19 +170,20 @@ class Oeuvre
         return $this;
     }
 
-    public function removeListeTag(tag $listeTag): self
+    public function removeListeTag(Tag $listeTag): self
     {
         $this->listeTags->removeElement($listeTag);
 
         return $this;
     }
     
-    public function setOeuvre(string $titre, int $largeur, int $hauteur, string $nomFichierImage, string $description, ?type $idType){
+    public function setOeuvre(string $titre, int $largeur, int $hauteur, string $nomFichierImage, string $description, ?Type $idType,\DateTime $date){
         $this->titre = $titre;
         $this->largeur = $largeur;
         $this->hauteur = $hauteur;
         $this->nomFichierImage = $nomFichierImage;
         $this->description = $description;
         $this->idType = $idType;
+        $this->datePublication = $date;
     }
 }

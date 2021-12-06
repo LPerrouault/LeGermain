@@ -1,39 +1,202 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
+{% block nav_accueil %}active{% endblock %}
 
 {% block body %}
     <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .pi-accueil-bg{
+            background-image: url('{{asset("images/banner/rasp.png")}}');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
     </style>
-
-    <div class="example-wrapper">
-        <!--Le header avant la nav-->
-        <header class="page-header">
-            <a href="{{ path('accueil') }}">Accueil</a> <a href="{{ path('news') }}">News</a>
-                <a href="{{ path('oeuvres') }}">Œuvres</a> <a href="{{ path('ateliers') }}">Ateliers</a>
-                <a href="{{ path('contact') }}">Contact</a>
-        </header>
-
-        <h1>Picassouille</h1>
-        <p>Illustrations, logos, affiches</p>
-        <br><br><br><br><br>
-
-        <h2>Eugénie Picassouille</h2>
-        <p><a href="{{ path('contact') }}">Me contacter</a></p>
-        <br><br><br><br><br>
-
-        <h2>Œuvres</h2>
-        <p>Logos <br><a href="{{ path('oeuvres') }}">voir plus</a></p><br>
-        <p>Illustrations <br><a href="{{ path('oeuvres') }}">voir plus</a></p><br>
-        <p>Affiches <br><a href="{{ path('oeuvres') }}">voir plus</a></p>
-        <br><br><br><br><br>
-
-        <h2>Dernières actualités</h2>
-        <p>Là y aura deux vignettes d'articles <br><a href="{{ path('news') }}">voir plus</a></p>
-        <br><br><br><br><br>
-
+    <!-- bannière de l'accueil -->
+    <div class="pi-accueil-bg">
+        <div class="pi-banniere">
+            <a href="{{ path('accueil') }}">
+                <img src="{{asset('images/logo/logo2.png')}}" alt="Picassouille" class="pi-banniere-logo"/>
+            </a>
+        </div>
+        <h1 class="pi-accroche-accueil">Illustrations, logos, affiches</h1>
     </div>
+
+
+
+    <!-- biographie d'Eugénie -->
+    <div class="mb-5">
+        <div class="container">
+            <div class="card-group">
+                <div class="row">
+
+                    <!-- car de l'image du chat roux faisant un clin d'œil -->
+                    <div class="col-6">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ asset('images/auteur.png') }}"
+                                 alt="chat roux faisant un clin d'œil" width="465" height="400">
+                        </div>
+                    </div>
+
+                    <!-- card du texte de la biographie -->
+                    <div class="col-6">
+                        <div class="card-body">
+                            <h3>Eugénie Picassouille</h3>
+                        </div>
+                        <button class="pi-btn-rouge pi-max-width">
+                            <a class="pi-btn-texte" href="{{ path('contact') }}">Me contacter</a>
+                        </button>
+                        <p class="pi-texte pi-texte-justify"><br>
+                            Diplômée de l’École nationale supérieure des Beaux Arts de Paris depuis 2017,
+                            j’exerce en tant qu’illustratrice graphiste et ai réalisé
+                            de nombreux projets professionnels depuis.<br>
+                            Vous pouvez décider de me contacter
+                            dès maintenant pour commander la concrétisation de l'œuvre qui vous hante,
+                            ou bien vous balader un peu sur mon site avant — on se retrouve dans
+                            Contact dans ce cas !<br>
+                            À très vite ;)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+
+
+    <!-- partie œuvres de l'accueil -->
+    <h2>Œuvres</h2>
+
+    <!-- texte sous le titre -->
+    <p class="pi-soustitre pi-texte-centre">
+        Vous voulez un logo pour votre entreprise, une illustration pour votre décoration
+        ou une affiche pour vos évènements ?<br>
+        Vous êtes au bon endroit !
+    </p><br>
+
+    <!-- trois cards les unes à côtés des autres pour présenter les catégories d'œuvres -->
+    <div class="container mb-5">
+        <div class="card-group">
+            <div class="row">
+                <!-- card de la catégorie logo -->
+                <div class="col-4">
+                    <!-- obligé de laisser border:none ici sinon les borders s'affichent -->
+                    <div class="card">
+                        <!-- image de la catégorie logo -->
+                        <img class="card-img-top pi-card-img-oeuvre" src="{{ asset('images/logo.png') }}"
+                             alt="flamme blanche sur fond noir">
+                        <div class="pi-card-body-oeuvre">
+                            <h3 class="card-title">
+                                Logos
+                            </h3>
+                        </div>
+
+                    </div>
+                    <!-- bouton voir plus pour la catégorie logo -->
+                    <button class="pi-btn-rouge pi-btn-voirplus-oeuvre">
+                        <a class="pi-btn-texte" href="{{ path('oeuvres') }}">Voir plus</a>
+                    </button>
+                </div>
+
+                <div class="col-4">
+                    <!-- obligé de laisser border:none ici sinon les borders s'affichent -->
+                    <div class="card">
+                        <!-- image de la catégorie illustrations -->
+                        <img class="card-img-top pi-card-img-oeuvre" src="{{ asset('images/illustration.png') }}"
+                             alt="une rose rouge et une rose rose">
+                        <div class="pi-card-body-oeuvre">
+                            <h3 class="card-title">
+                                Illustrations
+                            </h3>
+                        </div>
+
+                    </div>
+                    <!-- bouton voir plus pour la catégorie illustrations -->
+                    <button class="pi-btn-rouge pi-btn-voirplus-oeuvre">
+                        <a class="pi-btn-texte" href="{{ path('oeuvres') }}">Voir plus</a>
+                    </button>
+                </div>
+
+                <div class="col-4">
+                    <!-- obligé de laisser border:none ici sinon les borders s'affichent -->
+                    <div class="card">
+                        <!-- image de la catégorie affiches -->
+                        <img class="card-img-top pi-card-img-oeuvre" src="{{ asset('images/affiche.jpg') }}"
+                             alt="des feuilles">
+                        <div class="pi-card-body-oeuvre">
+                            <h3 class="card-title">
+                                Affiches
+                            </h3>
+                        </div>
+                    </div>
+                    <!-- bouton voir plus pour la catégorie affiches -->
+                    <button class="pi-btn-rouge pi-btn-voirplus-oeuvre">
+                        <a class="pi-btn-texte" href="{{ path('oeuvres') }}">Voir plus</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+
+
+    <!-- partie les dernières actualités -->
+    <h2>Dernières actualités</h2>
+
+    <!-- texte sous le titre -->
+    <p class="pi-soustitre pi-texte-centre">
+        Des nouvelles toutes fraîches !
+    </p><br>
+
+    <!-- deux cards côtes à côtes étant les dernières actualités parues sur le site -->
+    <div class="mb-5">
+        <div class="container">
+            <div class="card-group pi-accueil-actus">
+                <div class="row">
+                        <!-- card de l'actualité à gauche de la page -->
+                        <div class="col">
+                            <!-- obligé de laisser border:none ici sinon les borders s'affichent -->
+                            <div class="card pi-card-actu">
+                                <!-- image de l'actualité à gauche -->
+                                <img class="card-img-top pi-card-img-actu" src="{{ asset('images/news/ampoule.jpg') }}" alt="ampoule sur fond noir avec un cœur jaune à l'intérieur">
+                                <!-- titre lien vers l'actualité -->
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a class="pi-lien" href="{{ path('news') }}">
+                                            23/10/2021 : Eurêka amoureux</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- card de l'actualité à droite de la page -->
+                        <div class="col">
+                            <div class="card pi-card-actu">
+                                <!-- image l'actualité à droite de la page -->
+                                <img class="card-img-top pi-card-img-actu" src="{{ asset('images/news/ciel_sol.jpg') }}"
+                                     alt="homme regardant le ciel à travers un trou dans le sol">
+                                <!-- titre lien de l'actualité -->
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a class="pi-lien" href="{{ path('news') }}">
+                                            9/11/2021 : La lune dans le sol</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <!-- bouton voir plus d'actualités -->
+            <button class="pi-btn-rouge pi-btn-voirplus">
+                <a class="pi-btn-texte" href="{{ path('news') }}">Voir plus</a>
+            </button>
+        </div>
+    </div>
+
+
 
 {% endblock %}

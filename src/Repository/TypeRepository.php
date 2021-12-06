@@ -36,15 +36,16 @@ class TypeRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Type
+
+    public function findOneBySomeField($value)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $query = $this->createQueryBuilder('t')
+            ->select('t.id')
+            ->andWhere('t.libelle = :val')
+            ->setParameter('val', $value);
+        dd($query->getQuery()->getResult());
+
+        return $query->getQuery()->getResult();
     }
-    */
+
 }

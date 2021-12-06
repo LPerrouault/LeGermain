@@ -3,24 +3,139 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Accueil{% endblock %} - Picassouille</title>
+
+        <!-- Lien vers Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+              crossorigin="anonymous">
+
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
+        <!-- CSS de Picassouille placé en dernier pour avoir plus d'importance que les autres-->
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-
+        <!-- Liens vers les polices d'écriture-->
+        <!-- Rubik Bold-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet"> 
+        <!-- Source Sans Pro -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
     </head>
+
     <body>
-        {% block body %}{% endblock %}
+        <div id="page-container">
+            <div id="content-wrap">
+                <!-- Navigation -->
+                <nav class="navbar navbar-expand-md">
+                    <!-- Logo Picassouille -->
+                    <a href="{{ path('accueil') }}">
+                        <img class="navbar-brand" src="{{asset('images/logo/logo.png')}}" alt="Picassouille"/>
+                    </a>
+                    <!-- Bouton de collapse du menu (sur petit écrans)-->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Eléments de navigation de la navbar-->
+                    <div id="nav-links" class="container d-flex flex-column flex-md-row justify-content-between">
+                        <div class="collapse navbar-collapse" id="collapsible-navbar">
+                            <ul class="navbar-nav">
+                                <!-- Dans la page de l'accueil, ajouter active dans le block nav_accueil
+                                pour définir cette page comme la page active-->
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_accueil %}{% endblock %}" href="{{ path('accueil') }}">Accueil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_oeuvres %}{% endblock %}" href="{{ path('oeuvres') }}">Œuvres</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_news %}{% endblock %}" href="{{ path('news') }}">News</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_ateliers %}{% endblock %}" href="{{ path('ateliers') }}">Ateliers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% block nav_contact %}{% endblock %}" href="{{ path('contact') }}">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                </nav>
+
+                <!-- Contenu de la page -->
+                {% block body %}{% endblock %}
+            </div>
+            {% block footer %}
+                <footer id="footer">
+                    <div class="container">
+                        <div class='row'>
+                            <div class='col-8 pi-footer-information-contact'>
+                                Eugénie Picassouille<br>
+                                11 route du test 37000 TOURS<br>
+                                eugeniepicassouille@gmail.com<br>
+                                0602060206
+                            </div>
+                            <div class='col-4 pi-footer-reseaux'>
+                                <a href="https://facebook.com/">
+                                    <img class="pi-logo-reseau" src="{{asset('images/logo/logo_facebook.png')}}" 
+                                         onmouseover="this.src = '{{asset('images/logo/logo_facebook_h.png')}}'" 
+                                         onmouseout="this.src = '{{asset('images/logo/logo_facebook.png')}}'" alt="Facebook"/>
+                                </a>
+                                <a class="pi-logo-reseau" href="https://twitter.com/">
+                                    <img class="pi-logo-reseau" src="{{asset('images/logo/logo_twitter.png')}}" 
+                                         onmouseover="this.src = '{{asset('images/logo/logo_twitter_h.png')}}'" 
+                                         onmouseout="this.src = '{{asset('images/logo/logo_twitter.png')}}'" alt="Twitter"/>
+                                </a>
+                                <a class="pi-logo-reseau" href="https://instagram.com/">
+                                    <img class="pi-logo-reseau" src="{{asset('images/logo/logo_instagram.png')}}" 
+                                         onmouseover="this.src = '{{asset('images/logo/logo_instagram_h.png')}}'" 
+                                         onmouseout="this.src = '{{asset('images/logo/logo_instagram.png')}}'" alt="Instagram"/>
+                                </a>
+                                <a class="pi-logo-reseau" href="https://indeed.com/">
+                                    <img class="pi-logo-reseau" src="{{asset('images/logo/logo_indeed.png')}}" 
+                                         onmouseover="this.src = '{{asset('images/logo/logo_indeed_h.png')}}'" 
+                                         onmouseout="this.src = '{{asset('images/logo/logo_indeed.png')}}'" alt="Indeed"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-12 pi-footer-copyright'>@ 2021 Eugénie Picassouille</div>
+                        </div>
+                    </div>
+                </footer>
+            {% endblock %}
+        </div>
 
         <!--bouton top page-->
-        <button onclick="function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-        }
-        topFunction()" id="myBtn" title="Go to top">Top</button>
+        <button onclick="function pi_top_function() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+                ;
+                pi_top_function()" id="pi-topBtn" title="Go to top">^
+        </button>
+
+        <!-- Accès à JQuery, Popper.js et JS de Bootstrap pour le bon fonctionnement de Bootstrap-->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+                crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+                crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+                crossorigin="anonymous">
+        </script>
+
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

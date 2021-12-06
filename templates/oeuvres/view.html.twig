@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Œuvres{% endblock %}
+{% block nav_oeuvres %}active{% endblock %}
+
+{% block body %}
+    <div class="pi-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-1">
+                    <!-- Affichage d'un bouton permettant le retour à la liste des oeuvres -->
+                    <a class="pi-btn-texte" href="{{ path('oeuvres') }}">
+                        <button class="pi-btn-rouge pi-max-width">
+                            <
+                        </button>
+                    </a>
+                </div>
+                <div class="col-7">
+                    <img class="pi-oeuvre-detail-img" src="{{ asset('/images/oeuvres/'~oeuvres.nomFichierImage) | trans}}" alt="{{ oeuvres.titre }}"/>
+                </div>
+                <div class="col-4">
+                    <h3 class="pi-soustitre">{{ oeuvres.titre }}</h3>
+                    <p class="pi-texte">
+                        Largeur: {{ oeuvres.largeur }} px<br>
+                        Hauteur: {{ oeuvres.hauteur }} px <br>
+                        Date de publication: {{ oeuvres.datepublication|date('Y-m-d H:i:s') }}
+                    </p>
+                    <p class="pi-texte">{{ oeuvres.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

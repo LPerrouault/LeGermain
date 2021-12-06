@@ -40,7 +40,7 @@ class Article
     private $corpsArticle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=tag::class, inversedBy="listeArticles", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="listeArticles", cascade={"persist"})
      */
     private $listeTags;
 
@@ -78,12 +78,12 @@ class Article
         return $this;
     }
 
-    public function getDateHeureEnregistrement(): ?\DateTimeInterface
+    public function getDateHeureEnregistrement(): ?\DateTime
     {
         return $this->dateHeureEnregistrement;
     }
 
-    public function setDateHeureEnregistrement(\DateTimeInterface $dateHeureEnregistrement): self
+    public function setDateHeureEnregistrement(\DateTime $dateHeureEnregistrement): self
     {
         $this->dateHeureEnregistrement = $dateHeureEnregistrement;
 
@@ -103,14 +103,14 @@ class Article
     }
 
     /**
-     * @return Collection|tag[]
+     * @return Collection|Tag[]
      */
     public function getListeTags(): Collection
     {
         return $this->listeTags;
     }
 
-    public function addListeTag(tag $listeTag): self
+    public function addListeTag(Tag $listeTag): self
     {
         if (!$this->listeTags->contains($listeTag)) {
             $this->listeTags[] = $listeTag;
@@ -119,14 +119,14 @@ class Article
         return $this;
     }
 
-    public function removeListeTag(tag $listeTag): self
+    public function removeListeTag(Tag $listeTag): self
     {
         $this->listeTags->removeElement($listeTag);
 
         return $this;
     }
-    
-    public function setArticle(string $titre, \DateTimeInterface $dateHeureEnregistrement, string $nomFichierImage, string $corpsArticle){
+
+    public function setArticle(string $titre, \DateTime $dateHeureEnregistrement, string $nomFichierImage, string $corpsArticle){
         $this->titre = $titre;
         $this->dateHeureEnregistrement = $dateHeureEnregistrement;
         $this->nomFichierImage = $nomFichierImage;

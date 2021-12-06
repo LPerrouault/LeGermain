@@ -1,26 +1,376 @@
-
 @import "~bootstrap/scss/bootstrap";
-//penser à effectuer npm run dev ou npm run watch pour que ça marche
+//Penser à effectuer npm run dev ou npm run watch pour que ça marche
+//Recharger page du navigateur en ignorant le cache: CTRL+Shift+R
 
+//Noir : #2B2118  ;
+//Beige : #DE955A ;
+//Blanc : #F8F7F4 ;
+//Rouge : #AD1815 ; :hover : #C5403E
+
+// Eléments en commun //
 body {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+    background-color: #F8F7F4;
+    color: #2B2118;
 }
-#myBtn {
+
+//Affichage du footer en bas de la page
+#page-container {
+    position: relative;
+    min-height: 100vh;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+#content-wrap {
+    padding-bottom: 8rem; /* Footer height */
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 8rem;         /* Footer height */
+    padding: 20px 0px;
+}
+
+//Stylisation de la navbar et du footer
+.navbar, footer {
+    background-color: #2B2118;
+    font-family: 'Rubik', sans-serif;
+}
+footer {
+    font-size: 14px;
+}
+.nav-link { 
+    color: #DE955A;
+}
+//Les liens pointés et de la page actuelle sont de la même couleur
+.active, .nav-link:hover, .nav-link:active, footer {
+    color: #F8F7F4;
+}
+//Séparation visuelle des liens de nav
+#nav-links {
+    margin-left: 10em;
+}
+.nav-item {
+    padding-left: 5em;
+}
+//Taille du logo Picassouille
+.navbar-brand {
+    width: 10em; 
+    padding: 10px;
+    margin: 0 10px;
+}
+
+//Mise en place des différents du footer
+.pi-footer-information-contact {
+    line-height: 1.25em;
+}
+.pi-footer-reseaux {
+    position: absolute;
+    top: 25%;
+    left: 75%;
+    padding: 0px;
+    max-width: fit-content;
+}
+.pi-footer-copyright {
+    text-align: center
+}
+
+//Taille des logos des réseaux sociaux
+.pi-logo-reseau {
+    max-width: 3em;
+    height: auto;
+    margin-left: 0.2em;
+}
+
+//Bouton retour en haut de la page
+#pi-topBtn {
+    font-family: 'Rubik', sans-serif;
+    height: 43px;
+    width: 48px;
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 30px;
+    bottom: 37px;
+    right: 40px;
     z-index: 99;
-    font-size: 18px;
+    font-size: 40px;
     border: none;
     outline: none;
-    background-color: #ff0000;
-    color: white;
+    background-color: #AD1815;
+    color: #F8F7F4;
     cursor: pointer;
-    padding: 15px;
-    border-radius: 4px;
+    padding-top: 5px;
+    border-radius: 10px;
 }
-#myBtn:hover {
-    background-color: #555;
+#pi-topBtn:hover {
+    background-color: #C5403E;
 }
+
+//Eléments h*
+h1, h2, h3, h4 {
+    text-align: center;
+}
+h2, h3, h4 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+}
+
+h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2.5em;
+}
+h2 {
+    font-size: 2em;
+}
+h3 {
+    font-size: 1.5em;
+}
+h4 {
+    font-size: 1em;
+}
+
+//Elément hr (ligne horizontale)
+hr {
+    display: block; 
+    height: 1px;
+    border: 0; 
+    border-top: 3px solid #AD1815;
+    opacity: 1;
+    border-radius: 10px;
+    margin: 0 10px 30px 10px;
+    background-color: #AD1815;
+}
+
+//Classes en commun//
+.pi-page {
+    margin: 1em 0;
+}
+
+.pi-btn-rouge, .pi-btn-bleu {
+    border-radius: 10px;
+    height: 50px;
+    text-align: center;
+    padding: 0px 20px 0px 20px;
+    border: none;
+    color: #F8F7F4;
+    text-decoration: none;
+}
+.pi-btn-rouge {
+    background-color: #AD1815;
+}
+.pi-btn-rouge:hover, .pi-btn-rouge-clicked {
+    background-color: #C5403E;
+}
+.pi-btn-bleu {
+    background-color: #0D6EFD;
+}
+.pi-btn-bleu:hover {
+    background-color: #5D8FE0;
+}
+//Texte des boutons
+.pi-btn-texte, .pi-btn-texte:hover {
+    font-family: 'Rubik', sans-serif;
+    color: #F8F7F4;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.pi-soustitre, .pi-texte, .pi-soustexte {
+    font-family: 'Source Sans Pro', sans-serif;
+} 
+.pi-soustitre {
+    font-size: 1.25em;
+}
+.pi-texte {
+    font-size: 1em;
+}
+.pi-soustexte {
+    font-size: 0.8em;
+}
+
+.pi-texte-centre {
+    text-align: center;
+}
+.pi-texte-justify {
+    text-align: justify;
+}
+
+//Liens
+.pi-lien, .pi-lien:hover {
+    color: #2B2118;
+}
+.pi-lien {
+    text-decoration: none;
+}
+
+.pi-max-width {
+    width: 100%;
+}
+
+.card {
+    border: 1px solid #AD1815;
+    background-color: #F8F7F4;
+}
+
+.pi-pas-souligne {
+    text-decoration: none;
+}
+
+// Page accueil //
+//Bannière de l'accueil
+.pi-banniere {
+    padding-top: 5.5em;
+}
+.pi-banniere-logo {
+    width:30em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pi-accroche-accueil {
+    padding-bottom: 5em;
+}
+
+//Boutons voir plus
+.pi-btn-voirplus-oeuvre, .pi-btn-voirplus {
+    width: 10em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pi-btn-voirplus-oeuvre {
+    position: relative;
+    top: -1.5em;
+}
+
+.pi-card-img-oeuvre {
+    width: 20em;
+    height: 20em;
+}
+.pi-card-body-oeuvre {
+    background-color: #F8F7F4EE;
+    position: relative;
+    top: -2em;
+    padding-top: 1em;
+}
+
+.pi-accueil-actus {
+    margin-left: auto;
+    margin-right: auto;
+    width:max-content;
+}
+
+.pi-card-actu {
+    width: 30em;
+}
+.pi-card-img-actu {
+    width:available;
+    height: 10em;
+    object-fit: cover;
+}
+
+
+
+//page Actualités et Oeuvres
+
+.btn-reset {
+    background-color: white;
+    color: #E61414;
+    border: 2px solid #E61414;
+    border-radius: 16px;
+}
+
+.btn-reset:hover {
+    background-color: #E61414;
+    text-decoration: none;
+    color: #E61414;
+    color: white;
+}
+
+.btn{
+    font-weight: bold;
+}
+
+//Commun aux pages news et oeuvres//
+.bi-back {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}
+.taille { min-height: 90em; }
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+.filter{
+    display: block;
+    position: sticky;
+    top: 20px;
+}
+.mosaic{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 20px;
+
+}
+.meta{
+    width: 100%;
+}
+.tag {
+    color: #FFFFFF;
+    background-color: #7A1D07;
+    border-radius: 0.1em;
+    padding: 0.45rem 1.25rem;
+}
+//page oeuvre
+.pi-card-oeuvre {
+    height: 10em;
+    width: 100%;
+}
+
+.pi-card-oeuvre-img {
+    width: 20em;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pi-card-oeuvre-titre {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #2B2118EE;
+    color: #fff;
+    visibility: hidden;
+}
+
+.pi-card-oeuvre:hover .pi-card-oeuvre-titre {
+    visibility: visible;
+    text-align: center;
+    padding-top: 4.5em;
+    opacity: 1;
+}
+
+.pi-oeuvre-detail-img {
+    width: 100%;
+}
+
+//Page News/Actualité//
+.pi-card-news-img {
+    height: 8em;
+    width: 15em;
+    object-fit: cover;
+}
+
+.pi-card-news-content {
+    margin-left: 2.5em;
+    color: #2B2118;
+    text-decoration: none;
+}
+.pi-card-news-content:hover {
+    color: #AD1815;
+}
+//Page contact//
+
