@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\tag;
+use App\Entity\Tag;
 
 class SeachData
 {
@@ -17,7 +17,7 @@ class SeachData
     public $q = '';
 
     /**
-     * @var tag[]
+     * @var Tag[]
      */
     public $tags = [];
 

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\MailContact;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,32 +20,34 @@ class MailContactRepository extends ServiceEntityRepository
         parent::__construct($registry, MailContact::class);
     }
 
-    // /**
-    //  * @return MailContact[] Returns an array of MailContact objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    //fonction qui renvoie par order decroissant sur le chant date tous les message
+    public function orderByAll(){
+        $query = $this->createQueryBuilder('mail')
+                 ->select('mail')
+                 ->orderBy('mail.dateContacts', 'DESC');
 
-    /*
-    public function findOneBySomeField($value): ?MailContact
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $query->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT);
     }
-    */
+
+    //fonction qui renvoie par order decroissant sur le chant date tous les message non repondu
+    public function orderByWait(){
+        $query = $this->createQueryBuilder('mail')
+            ->select('mail')
+            ->where('mail.reponse = 0')
+            ->orderBy('mail.dateContacts', 'DESC');
+
+        return $query->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT);
+    }
+
+    //fonction qui renvoie par order decroissant sur le chant date tous les message  repondu
+    public function orderByReply(){
+        $query = $this->createQueryBuilder('mail')
+            ->select('mail')
+            ->where('mail.reponse = 1')
+            ->orderBy('mail.dateContacts', 'DESC');
+
+        return $query->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT);
+    }
+
+
 }

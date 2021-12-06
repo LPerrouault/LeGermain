@@ -111,7 +111,7 @@ class NewsAdminController extends AbstractController
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename .'.' . $brochureFile->guessExtension();
 
-                $path = '/public/image/article/'.$newFilename;
+                $path = '/public/images/news/'.$newFilename;
 
                 //verification si le fichier existe false on upload, true on fait rien
                 if (!file_exists($path)){
@@ -158,7 +158,7 @@ class NewsAdminController extends AbstractController
                     $safeFilename = $slugger->slug($originalFilename);
                     $newFilename = $safeFilename .'.' . $brochureFile->guessExtension();
 
-                    $path = '/public/image/article/'.$newFilename;
+                    $path = '/public/images/news/'.$newFilename;
 
                     //verification si le fichier existe false on upload, true on fait rien
                     if (!file_exists($path)){

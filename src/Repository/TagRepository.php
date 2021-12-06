@@ -14,10 +14,10 @@ use phpDocumentor\Reflection\Types\Array_;
 use function Symfony\Component\Translation\t;
 
 /**
- * @method tag|null find($id, $lockMode = null, $lockVersion = null)
- * @method tag|null findOneBy(array $criteria, array $orderBy = null)
- * @method tag[]    findAll()
- * @method tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Tag[]    findAll()
+ * @method Tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class TagRepository extends ServiceEntityRepository
 {
@@ -28,11 +28,11 @@ class TagRepository extends ServiceEntityRepository
 
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, tag::class);
+        parent::__construct($registry, Tag::class);
     }
 
     // /**
-    //  * @return tag[] Returns an array of tag objects
+    //  * @return Tag[] Returns an array of Tag objects
     //  */
     /*
     public function findByExampleField($value)
@@ -90,7 +90,7 @@ class TagRepository extends ServiceEntityRepository
    }
 }
     /*
-    public function findOneBySomeField($value): ?tag
+    public function findOneBySomeField($value): ?Tag
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

@@ -115,7 +115,7 @@ class OeuvresAdminController extends AbstractController
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename .'.' . $brochureFile->guessExtension();
 
-                $path = '/public/image/oeuvre/'.$newFilename;
+                $path = '/public/images/oeuvres/'.$newFilename;
 
                 //verification si le fichier existe false on upload, true on fait rien
                 if (!file_exists($path)){
@@ -184,7 +184,7 @@ class OeuvresAdminController extends AbstractController
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename .'.' . $brochureFile->guessExtension();
 
-                $path = '/public/image/oeuvre/'.$newFilename;
+                $path = '/public/images/oeuvres/'.$newFilename;
 
                 //verification si le fichier existe false on upload, true on fait rien
                 if (!file_exists($path)){

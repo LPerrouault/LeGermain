@@ -2,7 +2,7 @@
     <a href="{{ path('oeuvres_admin_views', {id: oeuvre.id}) }}">
         <section class="row">
             <div class="col-4">
-                <img class="card-img-top" style="width: 80%;" src="{{ asset('/image/oeuvre/'~oeuvre.nomFichierImage) | trans}}" alt="{{ oeuvre.titre }}">
+                <img class="card-img-top" style="width: 80%;" src="{{ asset('/images/oeuvres/'~oeuvre.nomFichierImage) | trans}}" alt="{{ oeuvre.titre }}">
             </div>
             <div class="news-body col-8">
                 <span class="news-title">

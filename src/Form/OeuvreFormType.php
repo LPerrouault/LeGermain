@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
@@ -48,7 +49,7 @@ class OeuvreFormType extends AbstractType
                     new Image()
                 ]
             ])
-            ->add('description',CKEditorType::class, array(
+            ->add('description',TextareaType::class, array(
                 'config' => array(
                     'uiColor' => '#ffffff',
                     'toolbar' => 'standard')))
