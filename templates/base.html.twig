@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
 
         <title>{% block title %}Accueil{% endblock %} - Picassouille</title>
-        
+
         <!-- Lien vers Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
               crossorigin="anonymous">
-        
+
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         <!-- CSS de Picassouille placé en dernier pour avoir plus d'importance que les autres-->
@@ -27,6 +27,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
     </head>
+
     <body>
         <div id="page-container">
             <div id="content-wrap">
@@ -71,50 +72,53 @@
                 <!-- Contenu de la page -->
                 {% block body %}{% endblock %}
             </div>
-            <footer id="footer">
-                <div class="container">
-                    <div class='row'>
-                        <div class='col-8 pi-footer-information-contact'>
-                            Eugénie Picassouille<br>
-                            11 route du test 37000 TOURS<br>
-                            eugeniepicassouille@gmail.com<br>
-                            0602060206
+            {% block footer %}
+                <footer id="footer">
+                    <div class="container">
+                        <div class='row'>
+                            <div class='col-8 pi-footer-information-contact'>
+                                Eugénie Picassouille<br>
+                                11 route du test 37000 TOURS<br>
+                                eugeniepicassouille@gmail.com<br>
+                                0602060206
+                            </div>
+                            <div class='col-4 pi-footer-reseaux'>
+                                <a href="https://facebook.com/">
+                                    <img class="pi-logo-reseau" src="{{asset('images/logo/logo_facebook.png')}}" 
+                                         onmouseover="this.src = '{{asset('images/logo/logo_facebook_h.png')}}'" 
+                                         onmouseout="this.src = '{{asset('images/logo/logo_facebook.png')}}'" alt="Facebook"/>
+                                </a>
+                                <a class="pi-logo-reseau" href="https://twitter.com/">
+                                    <img class="pi-logo-reseau" src="{{asset('images/logo/logo_twitter.png')}}" 
+                                         onmouseover="this.src = '{{asset('images/logo/logo_twitter_h.png')}}'" 
+                                         onmouseout="this.src = '{{asset('images/logo/logo_twitter.png')}}'" alt="Twitter"/>
+                                </a>
+                                <a class="pi-logo-reseau" href="https://instagram.com/">
+                                    <img class="pi-logo-reseau" src="{{asset('images/logo/logo_instagram.png')}}" 
+                                         onmouseover="this.src = '{{asset('images/logo/logo_instagram_h.png')}}'" 
+                                         onmouseout="this.src = '{{asset('images/logo/logo_instagram.png')}}'" alt="Instagram"/>
+                                </a>
+                                <a class="pi-logo-reseau" href="https://indeed.com/">
+                                    <img class="pi-logo-reseau" src="{{asset('images/logo/logo_indeed.png')}}" 
+                                         onmouseover="this.src = '{{asset('images/logo/logo_indeed_h.png')}}'" 
+                                         onmouseout="this.src = '{{asset('images/logo/logo_indeed.png')}}'" alt="Indeed"/>
+                                </a>
+                            </div>
                         </div>
-                        <div class='col-4 pi-footer-reseaux'>
-                            <a href="https://facebook.com/">
-                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_facebook.png')}}" 
-                                     onmouseover="this.src = '{{asset('images/logo/logo_facebook_h.png')}}'" 
-                                     onmouseout="this.src = '{{asset('images/logo/logo_facebook.png')}}'" alt="Facebook"/>
-                            </a>
-                            <a class="pi-logo-reseau" href="https://twitter.com/">
-                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_twitter.png')}}" 
-                                     onmouseover="this.src = '{{asset('images/logo/logo_twitter_h.png')}}'" 
-                                     onmouseout="this.src = '{{asset('images/logo/logo_twitter.png')}}'" alt="Twitter"/>
-                            </a>
-                            <a class="pi-logo-reseau" href="https://instagram.com/">
-                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_instagram.png')}}" 
-                                     onmouseover="this.src = '{{asset('images/logo/logo_instagram_h.png')}}'" 
-                                     onmouseout="this.src = '{{asset('images/logo/logo_instagram.png')}}'" alt="Instagram"/>
-                            </a>
-                            <a class="pi-logo-reseau" href="https://indeed.com/">
-                                <img class="pi-logo-reseau" src="{{asset('images/logo/logo_indeed.png')}}" 
-                                     onmouseover="this.src = '{{asset('images/logo/logo_indeed_h.png')}}'" 
-                                     onmouseout="this.src = '{{asset('images/logo/logo_indeed.png')}}'" alt="Indeed"/>
-                            </a>
+                        <div class='row'>
+                            <div class='col-12 pi-footer-copyright'>@ 2021 Eugénie Picassouille</div>
                         </div>
                     </div>
-                    <div class='row'>
-                        <div class='col-12 pi-footer-copyright'>@ 2021 Eugénie Picassouille</div>
-                    </div>
-                </div>
-            </footer>
+                </footer>
+            {% endblock %}
         </div>
 
         <!--bouton top page-->
         <button onclick="function pi_top_function() {
                     document.body.scrollTop = 0;
                     document.documentElement.scrollTop = 0;
-                };
+                }
+                ;
                 pi_top_function()" id="pi-topBtn" title="Go to top">^
         </button>
 
@@ -131,7 +135,7 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
                 crossorigin="anonymous">
         </script>
-        
+
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
