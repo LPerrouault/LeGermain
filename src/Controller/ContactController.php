@@ -10,6 +10,7 @@ use \Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 //use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ContactController extends AbstractController {
@@ -45,9 +46,12 @@ class ContactController extends AbstractController {
         $error_message = $this->check_data_formcontact($nom, $prenom, $email, $sujet, $contenu);
         //S'il n'y a pas de message d'erreur retourné lors de la vérification
         if ($error_message == null) {
+            $time = date('Y-m-d H:i:s', time());
+            $date = new \DateTime();
+            $date->format($time);
             //On insère les données dans la base de données
             $message_complet = new MailContact();
-            $message_complet->setMailContact($nom, $prenom, $email, $sujet, $contenu);
+            $message_complet->setMailContact($nom, $prenom, $email, $sujet, $contenu, $date);
             $entityManager->persist($message_complet);
             try {
                 //Insertion des données
